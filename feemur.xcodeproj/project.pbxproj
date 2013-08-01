@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD117AA1AFD00334619 /* UIKit.framework */; };
+		A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
+		A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */; };
+		A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CDA17AA1AFD00334619 /* InfoPlist.strings */; };
+		A5B51CDE17AA1AFD00334619 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CDD17AA1AFD00334619 /* main.m */; };
+		A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CE117AA1AFD00334619 /* AppDelegate.m */; };
+		A5B51CE417AA1AFD00334619 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE317AA1AFD00334619 /* Default.png */; };
+		A5B51CE617AA1AFD00334619 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE517AA1AFD00334619 /* Default@2x.png */; };
+		A5B51CE817AA1AFE00334619 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */; };
+		A5B51CEB17AA1AFE00334619 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE917AA1AFE00334619 /* MainStoryboard_iPhone.storyboard */; };
+		A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */; };
+		A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CF017AA1AFE00334619 /* FirstViewController.m */; };
+		A5B51CF317AA1AFE00334619 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CF217AA1AFE00334619 /* first.png */; };
+		A5B51CF517AA1AFE00334619 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CF417AA1AFE00334619 /* first@2x.png */; };
+		A5B51CF817AA1AFE00334619 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CF717AA1AFE00334619 /* SecondViewController.m */; };
+		A5B51CFA17AA1AFE00334619 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CF917AA1AFE00334619 /* second.png */; };
+		A5B51CFC17AA1AFE00334619 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CFB17AA1AFE00334619 /* second@2x.png */; };
+		A5B51D0417AA1AFE00334619 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51D0317AA1AFE00334619 /* SenTestingKit.framework */; };
+		A5B51D0517AA1AFE00334619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD117AA1AFD00334619 /* UIKit.framework */; };
+		A5B51D0617AA1AFE00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
+		A5B51D0E17AA1AFE00334619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B51D0C17AA1AFE00334619 /* InfoPlist.strings */; };
+		A5B51D1117AA1AFE00334619 /* feemurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D1017AA1AFE00334619 /* feemurTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5B51D0717AA1AFE00334619 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5B51CC617AA1AFD00334619 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5B51CCD17AA1AFD00334619;
+			remoteInfo = feemur;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5B51CCE17AA1AFD00334619 /* feemur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feemur.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B51CD117AA1AFD00334619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		A5B51CD317AA1AFD00334619 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		A5B51CD917AA1AFD00334619 /* feemur-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "feemur-Info.plist"; sourceTree = "<group>"; };
+		A5B51CDB17AA1AFD00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5B51CDD17AA1AFD00334619 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5B51CDF17AA1AFD00334619 /* feemur-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feemur-Prefix.pch"; sourceTree = "<group>"; };
+		A5B51CE017AA1AFD00334619 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A5B51CE117AA1AFD00334619 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5B51CE317AA1AFD00334619 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A5B51CE517AA1AFD00334619 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A5B51CEA17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		A5B51CED17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		A5B51CEF17AA1AFE00334619 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		A5B51CF017AA1AFE00334619 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		A5B51CF217AA1AFE00334619 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		A5B51CF417AA1AFE00334619 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		A5B51CF617AA1AFE00334619 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		A5B51CF717AA1AFE00334619 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		A5B51CF917AA1AFE00334619 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		A5B51CFB17AA1AFE00334619 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		A5B51D0217AA1AFE00334619 /* feemurTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = feemurTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5B51D0317AA1AFE00334619 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		A5B51D0B17AA1AFE00334619 /* feemurTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "feemurTests-Info.plist"; sourceTree = "<group>"; };
+		A5B51D0D17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5B51D0F17AA1AFE00334619 /* feemurTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = feemurTests.h; sourceTree = "<group>"; };
+		A5B51D1017AA1AFE00334619 /* feemurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = feemurTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5B51CCB17AA1AFD00334619 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */,
+				A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */,
+				A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B51CFE17AA1AFE00334619 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51D0417AA1AFE00334619 /* SenTestingKit.framework in Frameworks */,
+				A5B51D0517AA1AFE00334619 /* UIKit.framework in Frameworks */,
+				A5B51D0617AA1AFE00334619 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5B51CC517AA1AFD00334619 = {
+			isa = PBXGroup;
+			children = (
+				A5B51CD717AA1AFD00334619 /* feemur */,
+				A5B51D0917AA1AFE00334619 /* feemurTests */,
+				A5B51CD017AA1AFD00334619 /* Frameworks */,
+				A5B51CCF17AA1AFD00334619 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5B51CCF17AA1AFD00334619 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51CCE17AA1AFD00334619 /* feemur.app */,
+				A5B51D0217AA1AFE00334619 /* feemurTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5B51CD017AA1AFD00334619 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51CD117AA1AFD00334619 /* UIKit.framework */,
+				A5B51CD317AA1AFD00334619 /* Foundation.framework */,
+				A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */,
+				A5B51D0317AA1AFE00334619 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5B51CD717AA1AFD00334619 /* feemur */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51CE017AA1AFD00334619 /* AppDelegate.h */,
+				A5B51CE117AA1AFD00334619 /* AppDelegate.m */,
+				A5B51CE917AA1AFE00334619 /* MainStoryboard_iPhone.storyboard */,
+				A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */,
+				A5B51CEF17AA1AFE00334619 /* FirstViewController.h */,
+				A5B51CF017AA1AFE00334619 /* FirstViewController.m */,
+				A5B51CF217AA1AFE00334619 /* first.png */,
+				A5B51CF417AA1AFE00334619 /* first@2x.png */,
+				A5B51CF617AA1AFE00334619 /* SecondViewController.h */,
+				A5B51CF717AA1AFE00334619 /* SecondViewController.m */,
+				A5B51CF917AA1AFE00334619 /* second.png */,
+				A5B51CFB17AA1AFE00334619 /* second@2x.png */,
+				A5B51CD817AA1AFD00334619 /* Supporting Files */,
+			);
+			path = feemur;
+			sourceTree = "<group>";
+		};
+		A5B51CD817AA1AFD00334619 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51CD917AA1AFD00334619 /* feemur-Info.plist */,
+				A5B51CDA17AA1AFD00334619 /* InfoPlist.strings */,
+				A5B51CDD17AA1AFD00334619 /* main.m */,
+				A5B51CDF17AA1AFD00334619 /* feemur-Prefix.pch */,
+				A5B51CE317AA1AFD00334619 /* Default.png */,
+				A5B51CE517AA1AFD00334619 /* Default@2x.png */,
+				A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5B51D0917AA1AFE00334619 /* feemurTests */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51D0F17AA1AFE00334619 /* feemurTests.h */,
+				A5B51D1017AA1AFE00334619 /* feemurTests.m */,
+				A5B51D0A17AA1AFE00334619 /* Supporting Files */,
+			);
+			path = feemurTests;
+			sourceTree = "<group>";
+		};
+		A5B51D0A17AA1AFE00334619 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51D0B17AA1AFE00334619 /* feemurTests-Info.plist */,
+				A5B51D0C17AA1AFE00334619 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5B51CCD17AA1AFD00334619 /* feemur */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B51D1417AA1AFE00334619 /* Build configuration list for PBXNativeTarget "feemur" */;
+			buildPhases = (
+				A5B51CCA17AA1AFD00334619 /* Sources */,
+				A5B51CCB17AA1AFD00334619 /* Frameworks */,
+				A5B51CCC17AA1AFD00334619 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = feemur;
+			productName = feemur;
+			productReference = A5B51CCE17AA1AFD00334619 /* feemur.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5B51D0117AA1AFE00334619 /* feemurTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5B51D1717AA1AFE00334619 /* Build configuration list for PBXNativeTarget "feemurTests" */;
+			buildPhases = (
+				A5B51CFD17AA1AFE00334619 /* Sources */,
+				A5B51CFE17AA1AFE00334619 /* Frameworks */,
+				A5B51CFF17AA1AFE00334619 /* Resources */,
+				A5B51D0017AA1AFE00334619 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5B51D0817AA1AFE00334619 /* PBXTargetDependency */,
+			);
+			name = feemurTests;
+			productName = feemurTests;
+			productReference = A5B51D0217AA1AFE00334619 /* feemurTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5B51CC617AA1AFD00334619 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Zauce Tech";
+			};
+			buildConfigurationList = A5B51CC917AA1AFD00334619 /* Build configuration list for PBXProject "feemur" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5B51CC517AA1AFD00334619;
+			productRefGroup = A5B51CCF17AA1AFD00334619 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5B51CCD17AA1AFD00334619 /* feemur */,
+				A5B51D0117AA1AFE00334619 /* feemurTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5B51CCC17AA1AFD00334619 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */,
+				A5B51CE417AA1AFD00334619 /* Default.png in Resources */,
+				A5B51CE617AA1AFD00334619 /* Default@2x.png in Resources */,
+				A5B51CE817AA1AFE00334619 /* Default-568h@2x.png in Resources */,
+				A5B51CEB17AA1AFE00334619 /* MainStoryboard_iPhone.storyboard in Resources */,
+				A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */,
+				A5B51CF317AA1AFE00334619 /* first.png in Resources */,
+				A5B51CF517AA1AFE00334619 /* first@2x.png in Resources */,
+				A5B51CFA17AA1AFE00334619 /* second.png in Resources */,
+				A5B51CFC17AA1AFE00334619 /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B51CFF17AA1AFE00334619 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51D0E17AA1AFE00334619 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5B51D0017AA1AFE00334619 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5B51CCA17AA1AFD00334619 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51CDE17AA1AFD00334619 /* main.m in Sources */,
+				A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */,
+				A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */,
+				A5B51CF817AA1AFE00334619 /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5B51CFD17AA1AFE00334619 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B51D1117AA1AFE00334619 /* feemurTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5B51D0817AA1AFE00334619 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5B51CCD17AA1AFD00334619 /* feemur */;
+			targetProxy = A5B51D0717AA1AFE00334619 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5B51CDA17AA1AFD00334619 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B51CDB17AA1AFD00334619 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5B51CE917AA1AFE00334619 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B51CEA17AA1AFE00334619 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B51CED17AA1AFE00334619 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		A5B51D0C17AA1AFE00334619 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5B51D0D17AA1AFE00334619 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5B51D1217AA1AFE00334619 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A5B51D1317AA1AFE00334619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5B51D1517AA1AFE00334619 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
+				INFOPLIST_FILE = "feemur/feemur-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A5B51D1617AA1AFE00334619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
+				INFOPLIST_FILE = "feemur/feemur-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A5B51D1817AA1AFE00334619 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/feemur.app/feemur";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
+				INFOPLIST_FILE = "feemurTests/feemurTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		A5B51D1917AA1AFE00334619 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/feemur.app/feemur";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
+				INFOPLIST_FILE = "feemurTests/feemurTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5B51CC917AA1AFD00334619 /* Build configuration list for PBXProject "feemur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B51D1217AA1AFE00334619 /* Debug */,
+				A5B51D1317AA1AFE00334619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5B51D1417AA1AFE00334619 /* Build configuration list for PBXNativeTarget "feemur" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B51D1517AA1AFE00334619 /* Debug */,
+				A5B51D1617AA1AFE00334619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5B51D1717AA1AFE00334619 /* Build configuration list for PBXNativeTarget "feemurTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5B51D1817AA1AFE00334619 /* Debug */,
+				A5B51D1917AA1AFE00334619 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5B51CC617AA1AFD00334619 /* Project object */;
+}
