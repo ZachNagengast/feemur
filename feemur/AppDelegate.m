@@ -13,7 +13,38 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    NSString *deviceType = [UIDevice currentDevice].model;
+    
+    if([deviceType isEqualToString:@"iPhone"])
+    {
+        [[PocketAPI sharedAPI] setConsumerKey:@"17051-ab7c88cebd4dd6037e6267cf"];
+    }
+    if([deviceType isEqualToString:@"iPad"]) {
+        [[PocketAPI sharedAPI] setConsumerKey:@"17051-0ea35db855b04a1c86b7d8c8"];
+    }
+    if([deviceType isEqualToString:@"iPhone Simulator"])
+    {
+        [[PocketAPI sharedAPI] setConsumerKey:@"17051-ab7c88cebd4dd6037e6267cf"];
+    }
+    
+    NSLog(@"Device: %@", deviceType);
+    
     return YES;
+}
+
+-(BOOL)application:(UIApplication *)application
+           openURL:(NSURL *)url
+ sourceApplication:(NSString *)sourceApplication
+        annotation:(id)annotation{
+    
+    if([[PocketAPI sharedAPI] handleOpenURL:url]){
+        return YES;
+    }else{
+        // if you handle your own custom url-schemes, do it here
+        return NO;
+    }
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

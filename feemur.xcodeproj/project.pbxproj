@@ -29,6 +29,12 @@
 		A5B51D0617AA1AFE00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
 		A5B51D0E17AA1AFE00334619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B51D0C17AA1AFE00334619 /* InfoPlist.strings */; };
 		A5B51D1117AA1AFE00334619 /* feemurTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D1017AA1AFE00334619 /* feemurTests.m */; };
+		A5B51D1D17AB74CD00334619 /* PocketHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D1C17AB74CD00334619 /* PocketHandler.m */; };
+		A5B51D2917AD964800334619 /* PocketAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D2117AD964800334619 /* PocketAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5B51D2A17AD964800334619 /* PocketAPILogin.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D2317AD964800334619 /* PocketAPILogin.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5B51D2B17AD964800334619 /* PocketAPIOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D2517AD964800334619 /* PocketAPIOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5B51D2C17AD964800334619 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51D2817AD964800334619 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A5B51D2E17AD96A800334619 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51D2D17AD96A800334619 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,19 @@
 		A5B51D0D17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5B51D0F17AA1AFE00334619 /* feemurTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = feemurTests.h; sourceTree = "<group>"; };
 		A5B51D1017AA1AFE00334619 /* feemurTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = feemurTests.m; sourceTree = "<group>"; };
+		A5B51D1B17AB74CD00334619 /* PocketHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketHandler.h; sourceTree = "<group>"; };
+		A5B51D1C17AB74CD00334619 /* PocketHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketHandler.m; sourceTree = "<group>"; };
+		A5B51D1F17AD964800334619 /* PocketAPI+NSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PocketAPI+NSOperation.h"; sourceTree = "<group>"; };
+		A5B51D2017AD964800334619 /* PocketAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPI.h; sourceTree = "<group>"; };
+		A5B51D2117AD964800334619 /* PocketAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPI.m; sourceTree = "<group>"; };
+		A5B51D2217AD964800334619 /* PocketAPILogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPILogin.h; sourceTree = "<group>"; };
+		A5B51D2317AD964800334619 /* PocketAPILogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPILogin.m; sourceTree = "<group>"; };
+		A5B51D2417AD964800334619 /* PocketAPIOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPIOperation.h; sourceTree = "<group>"; };
+		A5B51D2517AD964800334619 /* PocketAPIOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PocketAPIOperation.m; sourceTree = "<group>"; };
+		A5B51D2617AD964800334619 /* PocketAPITypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PocketAPITypes.h; sourceTree = "<group>"; };
+		A5B51D2717AD964800334619 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		A5B51D2817AD964800334619 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		A5B51D2D17AD96A800334619 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B51D2E17AD96A800334619 /* Security.framework in Frameworks */,
 				A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */,
 				A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */,
 				A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */,
@@ -100,6 +120,8 @@
 		A5B51CC517AA1AFD00334619 = {
 			isa = PBXGroup;
 			children = (
+				A5B51D2D17AD96A800334619 /* Security.framework */,
+				A5B51D1E17AD964800334619 /* SDK */,
 				A5B51CD717AA1AFD00334619 /* feemur */,
 				A5B51D0917AA1AFE00334619 /* feemurTests */,
 				A5B51CD017AA1AFD00334619 /* Frameworks */,
@@ -132,6 +154,8 @@
 			children = (
 				A5B51CE017AA1AFD00334619 /* AppDelegate.h */,
 				A5B51CE117AA1AFD00334619 /* AppDelegate.m */,
+				A5B51D1B17AB74CD00334619 /* PocketHandler.h */,
+				A5B51D1C17AB74CD00334619 /* PocketHandler.m */,
 				A5B51CE917AA1AFE00334619 /* MainStoryboard_iPhone.storyboard */,
 				A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */,
 				A5B51CEF17AA1AFE00334619 /* FirstViewController.h */,
@@ -178,6 +202,23 @@
 				A5B51D0C17AA1AFE00334619 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5B51D1E17AD964800334619 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				A5B51D1F17AD964800334619 /* PocketAPI+NSOperation.h */,
+				A5B51D2017AD964800334619 /* PocketAPI.h */,
+				A5B51D2117AD964800334619 /* PocketAPI.m */,
+				A5B51D2217AD964800334619 /* PocketAPILogin.h */,
+				A5B51D2317AD964800334619 /* PocketAPILogin.m */,
+				A5B51D2417AD964800334619 /* PocketAPIOperation.h */,
+				A5B51D2517AD964800334619 /* PocketAPIOperation.m */,
+				A5B51D2617AD964800334619 /* PocketAPITypes.h */,
+				A5B51D2717AD964800334619 /* SFHFKeychainUtils.h */,
+				A5B51D2817AD964800334619 /* SFHFKeychainUtils.m */,
+			);
+			path = SDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,6 +340,11 @@
 				A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */,
 				A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */,
 				A5B51CF817AA1AFE00334619 /* SecondViewController.m in Sources */,
+				A5B51D1D17AB74CD00334619 /* PocketHandler.m in Sources */,
+				A5B51D2917AD964800334619 /* PocketAPI.m in Sources */,
+				A5B51D2A17AD964800334619 /* PocketAPILogin.m in Sources */,
+				A5B51D2B17AD964800334619 /* PocketAPIOperation.m in Sources */,
+				A5B51D2C17AD964800334619 /* SFHFKeychainUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +535,7 @@
 				A5B51D1617AA1AFE00334619 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5B51D1717AA1AFE00334619 /* Build configuration list for PBXNativeTarget "feemurTests" */ = {
 			isa = XCConfigurationList;
@@ -497,6 +544,7 @@
 				A5B51D1917AA1AFE00334619 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

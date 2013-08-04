@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PocketAPI.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

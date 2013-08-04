@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PocketHandler.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController{
+    PocketHandler *pocket;
+    NSDictionary *latestLinks;
+    NSTimer *timeoutTimer;
+    int timeout;
+}
+
+@property(nonatomic,retain) NSTimer *timeoutTimer;
+@property(nonatomic,retain) NSDictionary *latestLinks;
+
+-(void)pocketTimeout;
 
 @end
