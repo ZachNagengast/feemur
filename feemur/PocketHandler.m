@@ -33,7 +33,7 @@
 }
 
 -(void)getLinks{
-    NSLog(@"retrieving links");
+    NSLog(@"retrieving links from pocket");
     pkt_API = [PocketAPI sharedAPI];
     NSString *apiMethod = @"get";
     PocketAPIHTTPMethod httpMethod = PocketAPIHTTPMethodPOST; // usually PocketAPIHTTPMethodPOST

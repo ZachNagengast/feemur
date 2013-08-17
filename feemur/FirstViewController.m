@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "API.h"
 
 @interface FirstViewController ()
 
@@ -19,6 +20,17 @@
 {
     [super viewDidLoad];
     timeout = 0;
+    
+    [[API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                             @"login",@"command",
+                                             @"zachariah",@"username",
+                                             @"test",@"password",
+                                             nil]
+                               onCompletion:^(NSDictionary *json) {
+                                   
+                                   //completion
+                                   NSLog(@"%@",json);
+                               }];
     
     pocket = [[PocketHandler alloc]init];
     if ([pocket isLoggedIn] == NO) {
@@ -57,7 +69,61 @@
 
 -(void)updateLinks{
     NSLog(@"Links found: %i", [[[latestLinks objectForKey:@"list"] allKeys] count]);
+    //Talk to the server through the api with JSON stuff
+    NSLog(@"Retrieving links from server...");
+    [[API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                             @"submitlinks",@"command",
+    //                                         latestLinks,@"urls",
+                                             @"test",@"urls",
+                                             nil]
+                               onCompletion:^(NSDictionary *json) {
+                                   
+                                   //completion
+                                   if (![json objectForKey:@"error"]) {
+                                       NSLog(@"Links submitted");
+                                       //success
+                                       [[[UIAlertView alloc]initWithTitle:@"Success!"
+                                                                message:@"Your urls have been posted!"
+                                                                delegate:nil
+                                                                cancelButtonTitle:@"Yay!"
+                                                                otherButtonTitles: nil] show];
+                                       
+                                   } else {
+                                       //error, check for expired session and if so - authorize the user
+                                       NSString* errorMsg = [json objectForKey:@"error"];
+                                       NSLog(@"%@", errorMsg);
+                                   }
+                                   
+                               }];
+    
+}
 
+-(void)submitLinks{
+    NSLog(@"Submitting links...");
+    [[API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                             @"submitlinks",@"command",
+                                             latestLinks,@"urls",
+                                             nil]
+                               onCompletion:^(NSDictionary *json) {
+                                   
+                                   //completion
+                                   if (![json objectForKey:@"error"]) {
+                                       NSLog(@"Links submitted");
+                                       //success
+                                       //                                       [[[UIAlertView alloc]initWithTitle:@"Success!"
+                                       //                                                                  message:@"Your urls have been posted!"
+                                       //                                                                 delegate:nil
+                                       //                                                        cancelButtonTitle:@"Yay!"
+                                       //                                                        otherButtonTitles: nil] show];
+                                       //                                       [self dismissModalViewControllerAnimated:TRUE];
+                                       
+                                   } else {
+                                       //error, check for expired session and if so - authorize the user
+                                       NSString* errorMsg = [json objectForKey:@"error"];
+                                       NSLog(@"%@", errorMsg);
+                                   }
+                                   
+                               }];
 }
 
 - (void)didReceiveMemoryWarning
