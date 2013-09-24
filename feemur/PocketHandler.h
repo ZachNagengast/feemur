@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "PocketAPI.h"
 #import "PocketAPILogin.h"
+#import "DataHandler.h"
+#import "MCSwipeTableViewCell.h"
 
 @interface PocketHandler : NSObject{
     BOOL loggedIn;
@@ -18,6 +20,7 @@
     NSMutableArray *urlList;
     NSMutableArray *titleList;
     NSMutableArray *dateList;
+    DataHandler *data;
 }
 
 @property(nonatomic,retain) NSDictionary *latestResponse;
@@ -26,7 +29,8 @@
 @property(nonatomic,retain) NSMutableArray *dateList;
 
 -(void)getLinks;
--(void)saveLink:(NSString*)urlString;
+-(void)saveLink:(NSString*)urlString forCell:(MCSwipeTableViewCell *)cell;
+-(void)deleteLink:(NSString*)itemId forCell:(MCSwipeTableViewCell *)cell;
 -(void)login;
 -(BOOL)isLoggedIn;
 -(NSString*)pocketUsername;

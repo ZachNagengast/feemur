@@ -8,6 +8,9 @@
 
 #import "PocketHandler.h"
 #import "PocketAPI.h"
+#import "MCSwipeTableViewCell.h"
+
+#define POCKET_LIST_KEY @"pocketLinks"
 
 @implementation PocketHandler
 @synthesize latestResponse, urlList,titleList,dateList;
@@ -34,6 +37,9 @@
 
 -(void)getLinks{
     NSLog(@"retrieving links from pocket");
+    if (!data) {
+        data = [[DataHandler alloc]init];
+    }
     pkt_API = [PocketAPI sharedAPI];
     NSString *apiMethod = @"get";
     PocketAPIHTTPMethod httpMethod = PocketAPIHTTPMethodPOST; // usually PocketAPIHTTPMethodPOST
@@ -52,15 +58,16 @@
                                      }
                                      
                                      latestResponse = response;
-                                     [self interpretLinks];
-                                     NSLog(@"Response retrieved");
+                                     //Save the links locally
+                                     [data storeLinks:latestResponse forName:POCKET_LIST_KEY];
+                                     NSLog(@"Pocket response retrieved");
                                  }];
     return;
 }
 
--(void)saveLink:(NSString *)urlString{
+-(void)saveLink:(NSString *)urlString forCell:(MCSwipeTableViewCell *)cell{
     NSURL *url = [NSURL URLWithString:urlString];
-                  [[PocketAPI sharedAPI] saveURL:url handler: ^(PocketAPI *API, NSURL *URL, NSError *error){
+    [[PocketAPI sharedAPI] saveURL:url handler: ^(PocketAPI *API, NSURL *URL, NSError *error){
         if(error){
             // there was an issue connecting to Pocket
             // present some UI to notify if necessary
@@ -68,9 +75,52 @@
         }else{
             NSLog(@"Saved link: %@", urlString);
             // the URL was saved successfully
+            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur"
+                                                              message:[NSString stringWithFormat:@"Saved %@ to Pocket", urlString]
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Ok"
+                                                    otherButtonTitles:nil];
+            message.show;
         }
     }];
     return;
+}
+
+-(void)deleteLink:(NSString *)itemId forCell:(MCSwipeTableViewCell *)cell{
+    pkt_API = [PocketAPI sharedAPI];
+    NSString *apiMethod = @"send";
+    NSArray *dictArray = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                         @"delete", @"action",
+                         itemId, @"item_id",
+                         nil]];
+    PocketAPIHTTPMethod httpMethod = PocketAPIHTTPMethodPOST; // usually PocketAPIHTTPMethodPOST
+    NSDictionary *arguments = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [pkt_API consumerKey], @"consumer_key",
+                               [pkt_API pkt_getToken], @"access_token",
+                               dictArray,@"actions",
+                               nil];
+    
+    [[PocketAPI sharedAPI] callAPIMethod:apiMethod
+                          withHTTPMethod:httpMethod
+                               arguments:arguments
+                                 handler: ^(PocketAPI *api, NSString *apiMethod, NSDictionary *response, NSError *error){
+                                     // handle the response here
+                                     if (error) {
+                                         NSLog(@"%@",error);
+                                     }else{
+                                         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur"
+                                                                                           message:[NSString stringWithFormat:@"Deleted %@ from Pocket", cell.urlLabel.text]
+                                                                                          delegate:nil
+                                                                                 cancelButtonTitle:@"Ok"
+                                                                                 otherButtonTitles:nil];
+                                         message.show;
+                                     }
+                                     
+                                     NSLog(@"Item deleted %@",response);
+                                     
+                                 }];
+    return;
+
 }
 
 -(void)interpretLinks{
@@ -87,14 +137,13 @@
         [titleList addObject:[object valueForKey:@"resolved_url"]];
         [dateList addObject:[object valueForKey:@"time_added"]];
     }
-    NSLog(@"%@",urlList);
-    NSLog(@"%@",titleList);
-    NSLog(@"%@",dateList);
+//    NSLog(@"%@",urlList);
+//    NSLog(@"%@",titleList);
+//    NSLog(@"%@",dateList);
 
 }
 
 -(BOOL)isLoggedIn{
-    NSLog([[PocketAPI sharedAPI] isLoggedIn] ? @"Logged in: Yes" : @"Logged in: No");
     return [[PocketAPI sharedAPI] isLoggedIn];
 }
 
