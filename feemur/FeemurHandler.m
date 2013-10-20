@@ -59,6 +59,7 @@
 }
 
 -(BOOL)hasLoginData{
+    keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"FeemurLogin" accessGroup:nil];
     if ([keychainItem objectForKey:(__bridge id)(kSecAttrAccount)]){
         return TRUE;
     }else{

@@ -10,6 +10,7 @@
 
 static CGFloat const kMCStop1 = 0.25; // Percentage limit to trigger the first action
 static CGFloat const kMCStop2 = 1.00; // Percentage limit to trigger the second action
+static CGFloat const kMCStop4 = 0;
 static CGFloat const kMCBounceAmplitude = 20.0; // Maximum bounce amplitude when using the MCSwipeTableViewCellModeSwitch mode
 static NSTimeInterval const kMCBounceDuration1 = 0.2; // Duration of the first part of the bounce animation
 static NSTimeInterval const kMCBounceDuration2 = 0.1; // Duration of the second part of the bounce animation
@@ -39,37 +40,46 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
         // Helpers
         CGSize size = self.contentView.frame.size;
         // Initialize Main Label
-        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 8.0, size.width - 16.0, size.height - 16.0)];
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 30.0, size.width - 16.0, size.height - 16.0)];
-        self.urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, -11.0, size.width - 16.0, size.height - 16.0)];
-        self.countLabel = [[UILabel alloc] initWithFrame:CGRectMake(12.0, 8.0, size.width - 16.0, size.height - 16.0)];
+        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 8.0, size.width - 43.0 -43, size.height -16)];
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 36.0, size.width - 43.0, size.height - 16.0)];
+        self.urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 0.0, size.width - 43.0, size.height - 16.0)];
+        self.countLabel = [[UILabel alloc] initWithFrame:CGRectMake(-16.0, 16.0, 78, size.height - 16.0)];
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(-16.0, 24.0+8, 78, size.height - 16.0)];
 
         // Configure Labels
         [self.mainLabel setFont:[UIFont systemFontOfSize:18]];
         [self.mainLabel setTextAlignment:NSTextAlignmentLeft];
         [self.mainLabel setTextColor:[UIColor darkTextColor]];
-        [self.mainLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [self.mainLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [self.mainLabel setNumberOfLines:0];
+        [self.mainLabel setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         
         [self.descriptionLabel setFont:[UIFont systemFontOfSize:12]];
         [self.descriptionLabel setTextAlignment:NSTextAlignmentLeft];
         [self.descriptionLabel setTextColor:[UIColor darkTextColor]];
-        [self.descriptionLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+//        [self.descriptionLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
         [self.urlLabel setFont:[UIFont systemFontOfSize:12]];
         [self.urlLabel setTextAlignment:NSTextAlignmentLeft];
         [self.urlLabel setTextColor:[UIColor darkTextColor]];
-        [self.urlLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+//        [self.urlLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
-        [self.countLabel setFont:[UIFont boldSystemFontOfSize:14]];
-        [self.countLabel setTextAlignment:NSTextAlignmentLeft];
+        [self.countLabel setFont:[UIFont boldSystemFontOfSize:13]];
+        [self.countLabel setTextAlignment:NSTextAlignmentCenter];
         [self.countLabel setTextColor:[UIColor darkTextColor]];
-        [self.countLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+//        [self.countLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        
+        [self.timeLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.timeLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.timeLabel setTextColor:[UIColor darkTextColor]];
+//        [self.timeLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
         // Add Labels to Content View
         [self.contentView addSubview:self.mainLabel];
         [self.contentView addSubview:self.descriptionLabel];
         [self.contentView addSubview:self.urlLabel];
         [self.contentView addSubview:self.countLabel];
+        [self.contentView addSubview:self.timeLabel];
     }
     return self;
 }
@@ -373,7 +383,7 @@ secondStateIconName:(NSString *)secondIconName
     if (percentage <= -kMCStop1 && [self validateState:MCSwipeTableViewCellState3])
         state = MCSwipeTableViewCellState3;
     
-    if (percentage <= -kMCStop2 && [self validateState:MCSwipeTableViewCellState4])
+    if (percentage <= kMCStop4)
         state = MCSwipeTableViewCellState4;
     
     return state;

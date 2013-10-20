@@ -21,10 +21,12 @@
     UIActivityIndicatorView *activityIndicator;
     bool loadMoreToggle;
     bool isScrolling;
+    CGFloat rowHeight;
 }
 
 @property(nonatomic,retain) NSTimer *timeoutTimer;
 @property(nonatomic,retain) NSDictionary *latestLinks;
+@property(nonatomic,retain) NSString *currentUrl;
 
 -(void)feemurTimeout;
 -(NSString *)timeSinceNow:(float)timestamp;

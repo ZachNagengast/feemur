@@ -61,6 +61,8 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode){
 
 //Data for the cell
 @property (nonatomic, strong) NSString *itemId;
+@property (strong, nonatomic) NSString *urlString;
+@property (strong, nonatomic) NSString *countTotal;
 
 // Color for background, when any state hasn't triggered yet
 @property (nonatomic, strong) UIColor *defaultColor;
@@ -68,6 +70,7 @@ typedef NS_ENUM(NSUInteger, MCSwipeTableViewCellMode){
 @property (strong, nonatomic) UILabel *countLabel;
 @property (strong, nonatomic) UILabel *urlLabel;
 @property (strong, nonatomic) UILabel *descriptionLabel;
+@property (strong, nonatomic) UILabel *timeLabel;
 
 // This is the general mode for all states
 // If a specific mode for a state isn't defined, this mode will be taken in action

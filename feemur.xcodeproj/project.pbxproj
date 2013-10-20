@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1817C979F4008C6C39 /* FeedViewController.m */; };
 		A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1B17C97A12008C6C39 /* HomeViewController.m */; };
-		A5439CC217C18342002EB62D /* FeemurAppIcon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC117C18342002EB62D /* FeemurAppIcon_retina.png */; };
-		A5439CC417C18346002EB62D /* FeemurAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5439CC317C18346002EB62D /* FeemurAppIcon.png */; };
 		A576090A17E2A7F4003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; };
 		A576090D17E2AA64003F4106 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090C17E2AA64003F4106 /* LoginViewController.m */; };
 		A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -77,6 +75,12 @@
 		A5BA3C5317E8F5F9005AB2F0 /* pocket-icon_saved.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BA3C4F17E8F5F9005AB2F0 /* pocket-icon_saved.png */; };
 		A5BA3C5417E8F5F9005AB2F0 /* pocket-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BA3C5017E8F5F9005AB2F0 /* pocket-icon@2x.png */; };
 		A5BA3C5517E8F5F9005AB2F0 /* pocket-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5BA3C5117E8F5F9005AB2F0 /* pocket-icon.png */; };
+		A5D1CEF718131C7E0033F552 /* FeemurAppIcon_retina7.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D1CEF418131C7E0033F552 /* FeemurAppIcon_retina7.png */; };
+		A5D1CEF818131C7E0033F552 /* FeemurAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D1CEF518131C7E0033F552 /* FeemurAppIcon.png */; };
+		A5D1CEF918131C7E0033F552 /* FeemurAppIcon_retina.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */; };
+		A5D1CEFC1813691E0033F552 /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D1CEFA1813691E0033F552 /* forward.png */; };
+		A5D1CEFD1813691E0033F552 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D1CEFB1813691E0033F552 /* back.png */; };
+		A5D1CF0018136D340033F552 /* LinkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D1CEFF18136D340033F552 /* LinkViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +100,6 @@
 		A51F3A1B17C97A12008C6C39 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		A51F3A1D17C97C6D008C6C39 /* FeemurHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeemurHandler.h; sourceTree = "<group>"; };
 		A51F3A1E17C97C6D008C6C39 /* FeemurHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeemurHandler.m; sourceTree = "<group>"; };
-		A5439CC117C18342002EB62D /* FeemurAppIcon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FeemurAppIcon_retina.png; sourceTree = "<group>"; };
-		A5439CC317C18346002EB62D /* FeemurAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FeemurAppIcon.png; sourceTree = "<group>"; };
 		A576090817E2A7F4003F4106 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		A576090B17E2AA64003F4106 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -181,6 +183,13 @@
 		A5BA3C4F17E8F5F9005AB2F0 /* pocket-icon_saved.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon_saved.png"; sourceTree = "<group>"; };
 		A5BA3C5017E8F5F9005AB2F0 /* pocket-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon@2x.png"; sourceTree = "<group>"; };
 		A5BA3C5117E8F5F9005AB2F0 /* pocket-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon.png"; sourceTree = "<group>"; };
+		A5D1CEF418131C7E0033F552 /* FeemurAppIcon_retina7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FeemurAppIcon_retina7.png; sourceTree = "<group>"; };
+		A5D1CEF518131C7E0033F552 /* FeemurAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FeemurAppIcon.png; sourceTree = "<group>"; };
+		A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FeemurAppIcon_retina.png; sourceTree = "<group>"; };
+		A5D1CEFA1813691E0033F552 /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forward.png; sourceTree = "<group>"; };
+		A5D1CEFB1813691E0033F552 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		A5D1CEFE18136D340033F552 /* LinkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkViewController.h; sourceTree = "<group>"; };
+		A5D1CEFF18136D340033F552 /* LinkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,8 +231,11 @@
 		A5B51CC517AA1AFD00334619 = {
 			isa = PBXGroup;
 			children = (
-				A5439CC317C18346002EB62D /* FeemurAppIcon.png */,
-				A5439CC117C18342002EB62D /* FeemurAppIcon_retina.png */,
+				A5D1CEF418131C7E0033F552 /* FeemurAppIcon_retina7.png */,
+				A5D1CEF518131C7E0033F552 /* FeemurAppIcon.png */,
+				A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */,
+				A5D1CEFA1813691E0033F552 /* forward.png */,
+				A5D1CEFB1813691E0033F552 /* back.png */,
 				A5B51D3217AF11FA00334619 /* AFNetworking */,
 				A5B51D2D17AD96A800334619 /* Security.framework */,
 				A5B51D1E17AD964800334619 /* SDK */,
@@ -276,6 +288,8 @@
 				A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */,
 				A51F3A1717C979F4008C6C39 /* FeedViewController.h */,
 				A51F3A1817C979F4008C6C39 /* FeedViewController.m */,
+				A5D1CEFE18136D340033F552 /* LinkViewController.h */,
+				A5D1CEFF18136D340033F552 /* LinkViewController.m */,
 				A51F3A1A17C97A12008C6C39 /* HomeViewController.h */,
 				A51F3A1B17C97A12008C6C39 /* HomeViewController.m */,
 				A576090B17E2AA64003F4106 /* LoginViewController.h */,
@@ -457,12 +471,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5BA3C5317E8F5F9005AB2F0 /* pocket-icon_saved.png in Resources */,
+				A5D1CEF918131C7E0033F552 /* FeemurAppIcon_retina.png in Resources */,
+				A5D1CEFD1813691E0033F552 /* back.png in Resources */,
 				A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */,
 				A5BA3C3F17E8E15D005AB2F0 /* check.png in Resources */,
 				A5B51CE417AA1AFD00334619 /* Default.png in Resources */,
 				A5B51CE617AA1AFD00334619 /* Default@2x.png in Resources */,
 				A5B51CE817AA1AFE00334619 /* Default-568h@2x.png in Resources */,
 				A5BA3C4417E8E15D005AB2F0 /* cross@2x.png in Resources */,
+				A5D1CEF718131C7E0033F552 /* FeemurAppIcon_retina7.png in Resources */,
 				A5BA3C4217E8E15D005AB2F0 /* clock@2x.png in Resources */,
 				A5B51CEB17AA1AFE00334619 /* MainStoryboard_iPhone.storyboard in Resources */,
 				A5BA3C4117E8E15D005AB2F0 /* clock.png in Resources */,
@@ -471,14 +488,14 @@
 				A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */,
 				A5B51CF317AA1AFE00334619 /* first.png in Resources */,
 				A5BA3C5517E8F5F9005AB2F0 /* pocket-icon.png in Resources */,
+				A5D1CEFC1813691E0033F552 /* forward.png in Resources */,
 				A5BA3C4517E8E15D005AB2F0 /* list.png in Resources */,
 				A5B51CF517AA1AFE00334619 /* first@2x.png in Resources */,
+				A5D1CEF818131C7E0033F552 /* FeemurAppIcon.png in Resources */,
 				A5B51CFA17AA1AFE00334619 /* second.png in Resources */,
 				A5B51CFC17AA1AFE00334619 /* second@2x.png in Resources */,
 				A5BA3C5217E8F5F9005AB2F0 /* pocket-icon_saved@2x.png in Resources */,
 				A5BA3C4617E8E15D005AB2F0 /* list@2x.png in Resources */,
-				A5439CC217C18342002EB62D /* FeemurAppIcon_retina.png in Resources */,
-				A5439CC417C18346002EB62D /* FeemurAppIcon.png in Resources */,
 				A5BA3C4017E8E15D005AB2F0 /* check@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +552,7 @@
 				A5B51D2A17AD964800334619 /* PocketAPILogin.m in Sources */,
 				A5B51D2B17AD964800334619 /* PocketAPIOperation.m in Sources */,
 				A5B51D2C17AD964800334619 /* SFHFKeychainUtils.m in Sources */,
+				A5D1CF0018136D340033F552 /* LinkViewController.m in Sources */,
 				A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */,
 				A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */,
 				A592E04517DA5C2900E41FA6 /* DataHandler.m in Sources */,

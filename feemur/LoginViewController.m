@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "FeemurHandler.h"
+#import "PocketHandler.h"
 
 @interface LoginViewController ()
 
@@ -33,6 +34,7 @@
 
 -(IBAction)loginUser:(id)sender
 {
+    PocketHandler *pocket = [[PocketHandler alloc]init];
     FeemurHandler *feemur = [[FeemurHandler alloc]init];
     [feemur login:[username text] withPassword:[password text]];
     [feemur getLinks];

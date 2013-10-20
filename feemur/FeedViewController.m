@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "PocketHandler.h"
 #import "MCSwipeTableViewCell.h"
+#import "LinkViewController.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
@@ -49,7 +50,7 @@
     feemur.linklimit = 30;
     //Login if no login data already
     if (!feemur.hasLoginData) {
-//        [self showLogin:nil];
+        [self showLogin:nil];
     }else{
         [feemur getLinks];
     }
@@ -189,15 +190,34 @@
     cell.shouldAnimatesIcons = NO;
     
     // Configure the cell...
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 #warning sort by date once using multiple platforms!
     
     //show the main title
+    [cell.mainLabel setLineBreakMode:NSLineBreakByWordWrapping];
     [cell.mainLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_title"]]];
+
     //show the details
-    [cell.descriptionLabel setText:[NSString stringWithFormat:@"Saved %@ times - %@ ago by %@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"]
-                                   , [self timeSinceNow:[[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"time_added"] floatValue]], [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"user_name"]]];
-    [cell.urlLabel setText:[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"]];
-    [cell.countLabel setText:[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"]];
+    [cell.descriptionLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"excerpt"]]];
+    [cell.urlLabel setText:[NSString stringWithFormat:@"%@ • by %@",[self shortenUrl:[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"]], [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"user_name"]]];
+    cell.urlString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"];
+    //format the count and time labels
+    NSString *countString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"];
+    cell.countTotal = countString;
+    if ([countString intValue] >= 10000 ) {
+        countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+    }
+    [cell.countLabel setText:countString];
+    [cell.timeLabel setText:[self timeSinceNow:[[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"time_added"] floatValue]]];
+    
+    //format the description label
+    CGFloat oldHeight = cell.mainLabel.frame.size.height;
+    CGSize maximumLabelSize = CGSizeMake(cell.mainLabel.frame.size.width, FLT_MAX);
+    CGSize expectedLabelSize = [cell.mainLabel.text sizeWithFont:cell.mainLabel.font constrainedToSize:maximumLabelSize lineBreakMode:cell.mainLabel.lineBreakMode];
+    CGRect newFrame = cell.mainLabel.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    rowHeight = newFrame.size.height+46;
+    [cell.descriptionLabel setCenter:CGPointMake(cell.descriptionLabel.frame.origin.x+cell.descriptionLabel.frame.size.width/2, rowHeight-15)];
     
     //Create very last cell for loading more data
 //    if (indexPath.row == [[latestLinks objectForKey:@"result"] count]-1) {
@@ -209,8 +229,29 @@
     
 }
 
+-(NSString *)shortenUrl:(NSString*)original{
+    NSRange startRange = [original rangeOfString:@"//"];
+    NSRange deleteRange = NSMakeRange(0, startRange.location+startRange.length);
+    original = [original stringByReplacingCharactersInRange:deleteRange withString:@""];
+    NSRange endRange = [original rangeOfString:@"/"];
+    //Make sure it doesnt blow up
+    if (endRange.location<=30){
+        deleteRange = NSMakeRange(endRange.location, original.length-endRange.location);
+        original = [original stringByReplacingCharactersInRange:deleteRange withString:@""];
+    }
+    return original;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80.0;
+    MCSwipeTableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    CGFloat oldHeight = cell.mainLabel.frame.size.height;
+    CGSize maximumLabelSize = CGSizeMake(cell.mainLabel.frame.size.width, FLT_MAX);
+    CGSize expectedLabelSize = [cell.mainLabel.text sizeWithFont:cell.mainLabel.font constrainedToSize:maximumLabelSize lineBreakMode:cell.mainLabel.lineBreakMode];
+    CGRect newFrame = cell.mainLabel.frame;
+    newFrame.size.height = expectedLabelSize.height;
+    cell.mainLabel.frame = newFrame;
+    rowHeight = newFrame.size.height+46;
+    return rowHeight;
 }
 
 -(IBAction)refreshFeed:(id)sender{
@@ -241,28 +282,28 @@
     float diff = ti - timestamp;
     //days
     if (diff<60*60*24*365) {
-        [time appendString:[NSString stringWithFormat:@"%d day", (int)floor(diff/(60*60*24))]];
+        [time appendString:[NSString stringWithFormat:@"%dd", (int)floor(diff/(60*60*24))]];
     }
     //hours
     if (diff<60*60*24) {
-        [time appendString:[NSString stringWithFormat:@"%d hour", (int)floor(diff/(60*60))]];
+        [time appendString:[NSString stringWithFormat:@"%dh", (int)floor(diff/(60*60))]];
     }
     //minutes
     if (diff<60*60) {
-        [time appendString:[NSString stringWithFormat:@"%d minute", (int)floor(diff/(60))]];
+        [time appendString:[NSString stringWithFormat:@"%dm", (int)floor(diff/(60))]];
     }
     //seconds
     if (diff<60) {
-        [time appendString:[NSString stringWithFormat:@"%d second", (int)floor(diff)]];
+        [time appendString:[NSString stringWithFormat:@"%ds", (int)floor(diff)]];
     }
     //years
     if (diff>=60*60*24*365) {
-        [time appendString:[NSString stringWithFormat:@"%d year", (int)floor(diff/(60*60*24*365))]];
+        [time appendString:[NSString stringWithFormat:@"%dy", (int)floor(diff/(60*60*24*365))]];
     }
     //check if its not singular (plural) - add 's' if so
-    if (![[time substringToIndex:2] isEqualToString:@"1 "]) {
-        [time appendString:@"s"];
-    }
+//    if (![[time substringToIndex:2] isEqualToString:@"1 "]) {
+//        [time appendString:@"s"];
+//    }
     return time;
 }
 
@@ -296,13 +337,29 @@
             cell.isSaved = false;
             [pocket deleteLink:cell.itemId forCell:cell];
             NSLog(@"Unsaved cell: %@", [self.tableView indexPathForCell:cell]);
+            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
+            NSString *countString = cell.countTotal;
+            if ([cell.countTotal intValue] >= 10000 ) {
+                countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+            }
+            [cell.countLabel setText:countString];
         }else{
             [self setCellSaved:cell];
             cell.isSaved = true;
-            [pocket saveLink:cell.urlLabel.text forCell:cell];
-            [cell.countLabel setText:[NSString stringWithFormat:@"%d",[cell.countLabel.text intValue]+1]];
+            [pocket saveLink:cell.urlString forCell:cell];
+            //update count
+            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
+            NSString *countString = cell.countTotal;
+            if ([cell.countTotal intValue] >= 10000 ) {
+                countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+            }
+            [cell.countLabel setText:countString];
             NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
         }
+    }
+    if (state == MCSwipeTableViewCellState4) {
+        self.currentUrl = cell.urlString;
+        [self performSegueWithIdentifier:@"detail" sender:self];
     }
 }
 
@@ -353,6 +410,9 @@
 //    MCTableViewController *tableViewController = [[MCTableViewController alloc] init];
 //    [self.navigationController pushViewController:tableViewController animated:YES];
     
+    MCSwipeTableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    self.currentUrl = cell.urlString;
+    [self performSegueWithIdentifier:@"detail" sender:self];
     
 //    pocket = [[PocketHandler alloc]init];
 //    NSDictionary *dict = latestLinks;
@@ -367,6 +427,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([[segue identifier] isEqualToString:@"detail"]) {
+        LinkViewController *detailViewController = [segue destinationViewController];
+        detailViewController.currentUrl = self.currentUrl;
+    }
+}
 
 
 //Detect when the user has reached the bottom
