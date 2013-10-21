@@ -10,6 +10,7 @@
 #import "API.h"
 #import "KeychainItemWrapper.h"
 #import "LoginViewController.h"
+#import "DTAlertView.h"
 
 #define FEEMUR_LIST_KEY @"feemurLinks"
 
@@ -31,11 +32,8 @@
                                    NSLog(@"Feemur logged in: %@",json);
                                    if ([json objectForKey:@"error"]) {
                                        //show error message
-                                       UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur" message:@"Login Failed"
-                                                                            delegate:nil
-                                                                            cancelButtonTitle:@"Retry"
-                                                                               otherButtonTitles:nil];
-                                       message.show;
+                                       DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Login Failed" delegate:nil cancelButtonTitle:@"Retry" positiveButtonTitle:nil];
+                                       [message show];
                                        loggedIn = false;
                                    }else{
                                    //login worked, get feemur links

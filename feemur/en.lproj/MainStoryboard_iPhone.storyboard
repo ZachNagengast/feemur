@@ -90,13 +90,15 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Feed" id="vrw-dV-UV3">
-                        <barButtonItem key="leftBarButtonItem" title="Login" id="HeQ-7e-0mP">
+                        <barButtonItem key="leftBarButtonItem" image="list.png" id="HeQ-7e-0mP">
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="showLogin:" destination="K3l-d9-drT" id="NB2-co-Het"/>
                                 <segue destination="7gN-d9-Zu2" kind="modal" id="xyv-Z3-JgJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="QCa-Sg-mTy">
+                            <color key="tintColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="refreshFeed:" destination="ede-jq-7Fm" id="8GB-Fq-IJS"/>
                             </connections>
@@ -344,6 +346,8 @@
         <image name="first" width="16" height="16"/>
         <image name="forward.png" width="14" height="17"/>
         <image name="list.png" width="20" height="18"/>
+        <image name="list.png" width="20" height="18"/>
+        <image name="pocket-icon.png" width="20" height="20"/>
         <image name="pocket-icon.png" width="20" height="20"/>
         <image name="second" width="16" height="16"/>
     </resources>

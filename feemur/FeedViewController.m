@@ -11,6 +11,8 @@
 #import "PocketHandler.h"
 #import "MCSwipeTableViewCell.h"
 #import "LinkViewController.h"
+#import "ProgressHUD.h"
+#import "DTAlertView.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
@@ -84,11 +86,7 @@
     }else if (timeout>= 60){
         NSLog(@"Feemur timed out or 0 links found");
         //show error message
-        UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur"
-                                                          message:@"Couldn't get the stuff"
-                                                         delegate:nil
-                                                cancelButtonTitle:@"Ok"
-                                                otherButtonTitles:nil];
+        DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Something went wrong." delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
         [message show];
         [timeoutTimer invalidate];
         timeoutTimer = nil;
@@ -105,13 +103,13 @@
 -(void)updateLinks{
     NSLog(@"Links found: %i", [[latestLinks objectForKey:@"result"] count]);
     [self.tableView reloadData];
-    
     [timeoutTimer invalidate];
     timeoutTimer = nil;
     timeout=0;
     //update ui
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
     self.navigationItem.rightBarButtonItem = barButton;
+    [ProgressHUD dismiss];
 }
 
 -(void)showLogin:(id)sender{
@@ -260,6 +258,7 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:activityIndicator];
     self.navigationItem.rightBarButtonItem = barButton;
     [activityIndicator startAnimating];
+    [ProgressHUD show:@"Please Wait..."];
     
     //get feemur links
     feemur.latestResponse = nil;
@@ -282,22 +281,27 @@
     float diff = ti - timestamp;
     //days
     if (diff<60*60*24*365) {
+        [time setString:@""];
         [time appendString:[NSString stringWithFormat:@"%dd", (int)floor(diff/(60*60*24))]];
     }
     //hours
     if (diff<60*60*24) {
+        [time setString:@""];
         [time appendString:[NSString stringWithFormat:@"%dh", (int)floor(diff/(60*60))]];
     }
     //minutes
     if (diff<60*60) {
+        [time setString:@""];
         [time appendString:[NSString stringWithFormat:@"%dm", (int)floor(diff/(60))]];
     }
     //seconds
     if (diff<60) {
+        [time setString:@""];
         [time appendString:[NSString stringWithFormat:@"%ds", (int)floor(diff)]];
     }
     //years
     if (diff>=60*60*24*365) {
+        [time setString:@""];
         [time appendString:[NSString stringWithFormat:@"%dy", (int)floor(diff/(60*60*24*365))]];
     }
     //check if its not singular (plural) - add 's' if so

@@ -14,6 +14,11 @@
 		A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A576090F17E2B7F4003F4106 /* FeemurHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1E17C97C6D008C6C39 /* FeemurHandler.m */; };
 		A592E04517DA5C2900E41FA6 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A592E04417DA5C2900E41FA6 /* DataHandler.m */; };
+		A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E151814BA7100C23847 /* ProgressHUD.bundle */; };
+		A5A99E191814BA7100C23847 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E171814BA7100C23847 /* ProgressHUD.m */; };
+		A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1C1814CF8900C23847 /* DTAlertView.m */; };
+		A5A99E201814CF8900C23847 /* DTProgressStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1E1814CF8900C23847 /* DTProgressStatus.m */; };
+		A5A99E221814D1DB00C23847 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A99E211814D1DB00C23847 /* QuartzCore.framework */; };
 		A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD117AA1AFD00334619 /* UIKit.framework */; };
 		A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
 		A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */; };
@@ -106,6 +111,14 @@
 		A576090C17E2AA64003F4106 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A592E04317DA5C2900E41FA6 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
 		A592E04417DA5C2900E41FA6 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
+		A5A99E151814BA7100C23847 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		A5A99E161814BA7100C23847 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		A5A99E171814BA7100C23847 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		A5A99E1B1814CF8900C23847 /* DTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTAlertView.h; sourceTree = "<group>"; };
+		A5A99E1C1814CF8900C23847 /* DTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTAlertView.m; sourceTree = "<group>"; };
+		A5A99E1D1814CF8900C23847 /* DTProgressStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProgressStatus.h; sourceTree = "<group>"; };
+		A5A99E1E1814CF8900C23847 /* DTProgressStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProgressStatus.m; sourceTree = "<group>"; };
+		A5A99E211814D1DB00C23847 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5B51CCE17AA1AFD00334619 /* feemur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feemur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B51CD117AA1AFD00334619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B51CD317AA1AFD00334619 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -197,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A99E221814D1DB00C23847 /* QuartzCore.framework in Frameworks */,
 				A5B51D2E17AD96A800334619 /* Security.framework in Frameworks */,
 				A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */,
 				A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */,
@@ -228,6 +242,27 @@
 			name = Old;
 			sourceTree = "<group>";
 		};
+		A5A99E141814BA7100C23847 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				A5A99E151814BA7100C23847 /* ProgressHUD.bundle */,
+				A5A99E161814BA7100C23847 /* ProgressHUD.h */,
+				A5A99E171814BA7100C23847 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		A5A99E1A1814CF8900C23847 /* DTAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				A5A99E1B1814CF8900C23847 /* DTAlertView.h */,
+				A5A99E1C1814CF8900C23847 /* DTAlertView.m */,
+				A5A99E1D1814CF8900C23847 /* DTProgressStatus.h */,
+				A5A99E1E1814CF8900C23847 /* DTProgressStatus.m */,
+			);
+			path = DTAlertView;
+			sourceTree = "<group>";
+		};
 		A5B51CC517AA1AFD00334619 = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +271,8 @@
 				A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */,
 				A5D1CEFA1813691E0033F552 /* forward.png */,
 				A5D1CEFB1813691E0033F552 /* back.png */,
+				A5A99E1A1814CF8900C23847 /* DTAlertView */,
+				A5A99E141814BA7100C23847 /* ProgressHUD */,
 				A5B51D3217AF11FA00334619 /* AFNetworking */,
 				A5B51D2D17AD96A800334619 /* Security.framework */,
 				A5B51D1E17AD964800334619 /* SDK */,
@@ -258,6 +295,7 @@
 		A5B51CD017AA1AFD00334619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5A99E211814D1DB00C23847 /* QuartzCore.framework */,
 				A5B51CD117AA1AFD00334619 /* UIKit.framework */,
 				A5B51CD317AA1AFD00334619 /* Foundation.framework */,
 				A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */,
@@ -486,6 +524,7 @@
 				A5BA3C5417E8F5F9005AB2F0 /* pocket-icon@2x.png in Resources */,
 				A5BA3C4317E8E15D005AB2F0 /* cross.png in Resources */,
 				A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */,
+				A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */,
 				A5B51CF317AA1AFE00334619 /* first.png in Resources */,
 				A5BA3C5517E8F5F9005AB2F0 /* pocket-icon.png in Resources */,
 				A5D1CEFC1813691E0033F552 /* forward.png in Resources */,
@@ -541,9 +580,11 @@
 				A5B51D5617B3428E00334619 /* AFURLConnectionOperation.m in Sources */,
 				A5B51D5717B3428E00334619 /* AFXMLRequestOperation.m in Sources */,
 				A5B51D5817B3428E00334619 /* UIImageView+AFNetworking.m in Sources */,
+				A5A99E191814BA7100C23847 /* ProgressHUD.m in Sources */,
 				A5B51D4F17B3427400334619 /* API.m in Sources */,
 				A5B51CDE17AA1AFD00334619 /* main.m in Sources */,
 				A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */,
+				A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */,
 				A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */,
 				A5BA3C4917E8E16B005AB2F0 /* MCSwipeTableViewCell.m in Sources */,
 				A5B51CF817AA1AFE00334619 /* SecondViewController.m in Sources */,
@@ -551,6 +592,7 @@
 				A5B51D2917AD964800334619 /* PocketAPI.m in Sources */,
 				A5B51D2A17AD964800334619 /* PocketAPILogin.m in Sources */,
 				A5B51D2B17AD964800334619 /* PocketAPIOperation.m in Sources */,
+				A5A99E201814CF8900C23847 /* DTProgressStatus.m in Sources */,
 				A5B51D2C17AD964800334619 /* SFHFKeychainUtils.m in Sources */,
 				A5D1CF0018136D340033F552 /* LinkViewController.m in Sources */,
 				A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */,
