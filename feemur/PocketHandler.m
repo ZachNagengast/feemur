@@ -9,6 +9,7 @@
 #import "PocketHandler.h"
 #import "PocketAPI.h"
 #import "MCSwipeTableViewCell.h"
+#import "DTAlertView.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 
@@ -75,12 +76,8 @@
         }else{
             NSLog(@"Saved link: %@", urlString);
             // the URL was saved successfully
-            UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur"
-                                                              message:[NSString stringWithFormat:@"Saved %@ to Pocket", urlString]
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"Ok"
-                                                    otherButtonTitles:nil];
-            message.show;
+            DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Saved %@ to Pocket", urlString] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+            [message show];
         }
     }];
     return;
@@ -108,12 +105,8 @@
                                      if (error) {
                                          NSLog(@"%@",error);
                                      }else{
-                                         UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Feemur"
-                                                                                           message:[NSString stringWithFormat:@"Deleted %@ from Pocket", cell.urlLabel.text]
-                                                                                          delegate:nil
-                                                                                 cancelButtonTitle:@"Ok"
-                                                                                 otherButtonTitles:nil];
-                                         message.show;
+                                         DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Deleted %@ from Pocket", cell.urlString] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+                                         [message show];
                                      }
                                      
                                      NSLog(@"Item deleted %@",response);
