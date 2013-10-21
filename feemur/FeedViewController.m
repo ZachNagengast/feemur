@@ -95,6 +95,7 @@
         //update ui
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
         self.navigationItem.rightBarButtonItem = barButton;
+        [ProgressHUD dismiss];
     }
     else {
         NSLog(@"Waiting..");

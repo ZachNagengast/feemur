@@ -19,6 +19,10 @@
 		A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1C1814CF8900C23847 /* DTAlertView.m */; };
 		A5A99E201814CF8900C23847 /* DTProgressStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1E1814CF8900C23847 /* DTProgressStatus.m */; };
 		A5A99E221814D1DB00C23847 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A99E211814D1DB00C23847 /* QuartzCore.framework */; };
+		A5A99E261814E1E200C23847 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E231814E1E200C23847 /* Default.png */; };
+		A5A99E271814E1E200C23847 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E241814E1E200C23847 /* Default@2x.png */; };
+		A5A99E281814E1E200C23847 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E251814E1E200C23847 /* Default~iphone.png */; };
+		A5A99E2A1814E29900C23847 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E291814E29900C23847 /* Images.xcassets */; };
 		A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD117AA1AFD00334619 /* UIKit.framework */; };
 		A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
 		A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */; };
@@ -119,6 +123,10 @@
 		A5A99E1D1814CF8900C23847 /* DTProgressStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTProgressStatus.h; sourceTree = "<group>"; };
 		A5A99E1E1814CF8900C23847 /* DTProgressStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTProgressStatus.m; sourceTree = "<group>"; };
 		A5A99E211814D1DB00C23847 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A5A99E231814E1E200C23847 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A5A99E241814E1E200C23847 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A5A99E251814E1E200C23847 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		A5A99E291814E29900C23847 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A5B51CCE17AA1AFD00334619 /* feemur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feemur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B51CD117AA1AFD00334619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B51CD317AA1AFD00334619 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -271,6 +279,9 @@
 				A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */,
 				A5D1CEFA1813691E0033F552 /* forward.png */,
 				A5D1CEFB1813691E0033F552 /* back.png */,
+				A5A99E231814E1E200C23847 /* Default.png */,
+				A5A99E241814E1E200C23847 /* Default@2x.png */,
+				A5A99E251814E1E200C23847 /* Default~iphone.png */,
 				A5A99E1A1814CF8900C23847 /* DTAlertView */,
 				A5A99E141814BA7100C23847 /* ProgressHUD */,
 				A5B51D3217AF11FA00334619 /* AFNetworking */,
@@ -337,6 +348,7 @@
 				A5B51CF417AA1AFE00334619 /* first@2x.png */,
 				A5B51CF917AA1AFE00334619 /* second.png */,
 				A5B51CFB17AA1AFE00334619 /* second@2x.png */,
+				A5A99E291814E29900C23847 /* Images.xcassets */,
 				A5B51CD817AA1AFD00334619 /* Supporting Files */,
 			);
 			path = feemur;
@@ -509,8 +521,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5BA3C5317E8F5F9005AB2F0 /* pocket-icon_saved.png in Resources */,
+				A5A99E2A1814E29900C23847 /* Images.xcassets in Resources */,
 				A5D1CEF918131C7E0033F552 /* FeemurAppIcon_retina.png in Resources */,
 				A5D1CEFD1813691E0033F552 /* back.png in Resources */,
+				A5A99E281814E1E200C23847 /* Default~iphone.png in Resources */,
 				A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */,
 				A5BA3C3F17E8E15D005AB2F0 /* check.png in Resources */,
 				A5B51CE417AA1AFD00334619 /* Default.png in Resources */,
@@ -527,12 +541,14 @@
 				A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */,
 				A5B51CF317AA1AFE00334619 /* first.png in Resources */,
 				A5BA3C5517E8F5F9005AB2F0 /* pocket-icon.png in Resources */,
+				A5A99E271814E1E200C23847 /* Default@2x.png in Resources */,
 				A5D1CEFC1813691E0033F552 /* forward.png in Resources */,
 				A5BA3C4517E8E15D005AB2F0 /* list.png in Resources */,
 				A5B51CF517AA1AFE00334619 /* first@2x.png in Resources */,
 				A5D1CEF818131C7E0033F552 /* FeemurAppIcon.png in Resources */,
 				A5B51CFA17AA1AFE00334619 /* second.png in Resources */,
 				A5B51CFC17AA1AFE00334619 /* second@2x.png in Resources */,
+				A5A99E261814E1E200C23847 /* Default.png in Resources */,
 				A5BA3C5217E8F5F9005AB2F0 /* pocket-icon_saved@2x.png in Resources */,
 				A5BA3C4617E8E15D005AB2F0 /* list@2x.png in Resources */,
 				A5BA3C4017E8E15D005AB2F0 /* check@2x.png in Resources */,
@@ -729,6 +745,8 @@
 		A5B51D1517AA1AFE00334619 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -745,6 +763,8 @@
 		A5B51D1617AA1AFE00334619 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
