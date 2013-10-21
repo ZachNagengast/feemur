@@ -13,7 +13,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+
     NSString *deviceType = [UIDevice currentDevice].model;
     
     if([deviceType isEqualToString:@"iPhone"])

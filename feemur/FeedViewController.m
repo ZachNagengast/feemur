@@ -40,7 +40,8 @@
     NSLog(@"Feed view loaded");
     
     self.title = @"Feed";
-    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
+//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
     
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];

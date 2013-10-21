@@ -121,17 +121,17 @@
                         <viewControllerLayoutGuide type="bottom" id="jsY-Wg-WQh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bAH-5K-zb9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7p-EO-Zbw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGF-rc-V0p">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="460" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="back.png" id="E8q-zZ-WQ7">
@@ -146,7 +146,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zA-Cv-VX8"/>
-                                    <barButtonItem image="pocket-icon.png" id="oXd-I6-QKo"/>
+                                    <barButtonItem image="pocket-icon.png" id="oXd-I6-QKo">
+                                        <color key="tintColor" red="0.84313732389999996" green="0.0" blue="0.070588238540000001" alpha="1" colorSpace="deviceRGB"/>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RYq-dW-QD5"/>
                                     <barButtonItem systemItem="action" id="fin-Ro-cmZ"/>
                                 </items>
@@ -169,7 +171,9 @@
                 <navigationController definesPresentationContext="YES" id="ZUh-o6-oAX" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Feed" image="list.png" id="scC-HU-k5L"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NzY-Df-O61">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="NzY-Df-O61">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
