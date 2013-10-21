@@ -66,7 +66,7 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
         
         [self.countLabel setFont:[UIFont boldSystemFontOfSize:13]];
         [self.countLabel setTextAlignment:NSTextAlignmentCenter];
-        [self.countLabel setTextColor:[UIColor darkTextColor]];
+        [self.countLabel setTextColor:[UIColor blueColor]];
 //        [self.countLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
         [self.timeLabel setFont:[UIFont systemFontOfSize:12]];

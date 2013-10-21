@@ -54,7 +54,7 @@
         <scene sceneID="lIB-LK-Mv2">
             <objects>
                 <tableViewController id="ede-jq-7Fm" customClass="FeedViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CBL-7q-u0F">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CBL-7q-u0F">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -351,8 +351,6 @@
         <image name="first" width="16" height="16"/>
         <image name="forward.png" width="14" height="17"/>
         <image name="list.png" width="20" height="18"/>
-        <image name="list.png" width="20" height="18"/>
-        <image name="pocket-icon.png" width="20" height="20"/>
         <image name="pocket-icon.png" width="20" height="20"/>
         <image name="second" width="16" height="16"/>
     </resources>

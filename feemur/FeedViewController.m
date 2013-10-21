@@ -491,7 +491,7 @@
                  fourthIconName:nil
                     fourthColor:nil];
     
-    [cell.countLabel setTextColor:[UIColor darkTextColor]];
+    [cell.countLabel setTextColor:[UIColor colorWithHue:210.0/360.0 saturation:1 brightness:.8 alpha:1]];
 }
 
 @end
