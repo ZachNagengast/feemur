@@ -58,10 +58,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" id="0XC-9N-Jtq">
-                            <rect key="frame" x="0.0" y="66" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gHx-TU-tDM" detailTextLabel="dLD-ZK-ad6" style="IBUITableViewCellStyleSubtitle" id="Q2L-Ik-8m3">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -355,6 +351,8 @@
         <image name="first" width="16" height="16"/>
         <image name="forward.png" width="14" height="17"/>
         <image name="list.png" width="20" height="18"/>
+        <image name="list.png" width="20" height="18"/>
+        <image name="pocket-icon.png" width="20" height="20"/>
         <image name="pocket-icon.png" width="20" height="20"/>
         <image name="second" width="16" height="16"/>
     </resources>
