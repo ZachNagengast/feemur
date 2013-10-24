@@ -14,6 +14,15 @@
 		A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A576090F17E2B7F4003F4106 /* FeemurHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1E17C97C6D008C6C39 /* FeemurHandler.m */; };
 		A592E04517DA5C2900E41FA6 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A592E04417DA5C2900E41FA6 /* DataHandler.m */; };
+		A59DC7121818CD4300DF9B39 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7111818CD4300DF9B39 /* MenuViewController.m */; };
+		A59DC7151818CE1000DF9B39 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7141818CE1000DF9B39 /* RootViewController.m */; };
+		A59DC7181818D0EF00DF9B39 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A59DC7161818D07A00DF9B39 /* CoreImage.framework */; };
+		A59DC7261818EC9D00DF9B39 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC71B1818EC9D00DF9B39 /* RECommonFunctions.m */; };
+		A59DC7271818EC9D00DF9B39 /* REFrostedContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC71D1818EC9D00DF9B39 /* REFrostedContainerViewController.m */; };
+		A59DC7281818EC9D00DF9B39 /* REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC71F1818EC9D00DF9B39 /* REFrostedViewController.m */; };
+		A59DC7291818EC9D00DF9B39 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7211818EC9D00DF9B39 /* UIImage+REFrostedViewController.m */; };
+		A59DC72A1818EC9D00DF9B39 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7231818EC9D00DF9B39 /* UIView+REFrostedViewController.m */; };
+		A59DC72B1818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7251818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m */; };
 		A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E151814BA7100C23847 /* ProgressHUD.bundle */; };
 		A5A99E191814BA7100C23847 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E171814BA7100C23847 /* ProgressHUD.m */; };
 		A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1C1814CF8900C23847 /* DTAlertView.m */; };
@@ -116,6 +125,23 @@
 		A576090C17E2AA64003F4106 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A592E04317DA5C2900E41FA6 /* DataHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataHandler.h; sourceTree = "<group>"; };
 		A592E04417DA5C2900E41FA6 /* DataHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataHandler.m; sourceTree = "<group>"; };
+		A59DC7101818CD4300DF9B39 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		A59DC7111818CD4300DF9B39 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		A59DC7131818CE1000DF9B39 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		A59DC7141818CE1000DF9B39 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		A59DC7161818D07A00DF9B39 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		A59DC71A1818EC9D00DF9B39 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		A59DC71B1818EC9D00DF9B39 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		A59DC71C1818EC9D00DF9B39 /* REFrostedContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedContainerViewController.h; sourceTree = "<group>"; };
+		A59DC71D1818EC9D00DF9B39 /* REFrostedContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedContainerViewController.m; sourceTree = "<group>"; };
+		A59DC71E1818EC9D00DF9B39 /* REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REFrostedViewController.h; sourceTree = "<group>"; };
+		A59DC71F1818EC9D00DF9B39 /* REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REFrostedViewController.m; sourceTree = "<group>"; };
+		A59DC7201818EC9D00DF9B39 /* UIImage+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+REFrostedViewController.h"; sourceTree = "<group>"; };
+		A59DC7211818EC9D00DF9B39 /* UIImage+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+REFrostedViewController.m"; sourceTree = "<group>"; };
+		A59DC7221818EC9D00DF9B39 /* UIView+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+REFrostedViewController.h"; sourceTree = "<group>"; };
+		A59DC7231818EC9D00DF9B39 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
+		A59DC7241818EC9D00DF9B39 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
+		A59DC7251818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
 		A5A99E151814BA7100C23847 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		A5A99E161814BA7100C23847 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		A5A99E171814BA7100C23847 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -220,6 +246,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59DC7181818D0EF00DF9B39 /* CoreImage.framework in Frameworks */,
 				A5A99E2C1817024100C23847 /* StoreKit.framework in Frameworks */,
 				A5A99E221814D1DB00C23847 /* QuartzCore.framework in Frameworks */,
 				A5B51D2E17AD96A800334619 /* Security.framework in Frameworks */,
@@ -251,6 +278,25 @@
 				A5B51CEF17AA1AFE00334619 /* FirstViewController.h */,
 			);
 			name = Old;
+			sourceTree = "<group>";
+		};
+		A59DC7191818EC9D00DF9B39 /* REFrostedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A59DC71A1818EC9D00DF9B39 /* RECommonFunctions.h */,
+				A59DC71B1818EC9D00DF9B39 /* RECommonFunctions.m */,
+				A59DC71C1818EC9D00DF9B39 /* REFrostedContainerViewController.h */,
+				A59DC71D1818EC9D00DF9B39 /* REFrostedContainerViewController.m */,
+				A59DC71E1818EC9D00DF9B39 /* REFrostedViewController.h */,
+				A59DC71F1818EC9D00DF9B39 /* REFrostedViewController.m */,
+				A59DC7201818EC9D00DF9B39 /* UIImage+REFrostedViewController.h */,
+				A59DC7211818EC9D00DF9B39 /* UIImage+REFrostedViewController.m */,
+				A59DC7221818EC9D00DF9B39 /* UIView+REFrostedViewController.h */,
+				A59DC7231818EC9D00DF9B39 /* UIView+REFrostedViewController.m */,
+				A59DC7241818EC9D00DF9B39 /* UIViewController+REFrostedViewController.h */,
+				A59DC7251818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m */,
+			);
+			path = REFrostedViewController;
 			sourceTree = "<group>";
 		};
 		A5A99E141814BA7100C23847 /* ProgressHUD */ = {
@@ -285,6 +331,7 @@
 				A5A99E231814E1E200C23847 /* Default.png */,
 				A5A99E241814E1E200C23847 /* Default@2x.png */,
 				A5A99E251814E1E200C23847 /* Default~iphone.png */,
+				A59DC7191818EC9D00DF9B39 /* REFrostedViewController */,
 				A5A99E1A1814CF8900C23847 /* DTAlertView */,
 				A5A99E141814BA7100C23847 /* ProgressHUD */,
 				A5B51D3217AF11FA00334619 /* AFNetworking */,
@@ -309,6 +356,7 @@
 		A5B51CD017AA1AFD00334619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A59DC7161818D07A00DF9B39 /* CoreImage.framework */,
 				A5A99E2B1817024000C23847 /* StoreKit.framework */,
 				A5A99E211814D1DB00C23847 /* QuartzCore.framework */,
 				A5B51CD117AA1AFD00334619 /* UIKit.framework */,
@@ -333,6 +381,8 @@
 				A592E04417DA5C2900E41FA6 /* DataHandler.m */,
 				A5B51CE017AA1AFD00334619 /* AppDelegate.h */,
 				A5B51CE117AA1AFD00334619 /* AppDelegate.m */,
+				A59DC7131818CE1000DF9B39 /* RootViewController.h */,
+				A59DC7141818CE1000DF9B39 /* RootViewController.m */,
 				A51F3A1D17C97C6D008C6C39 /* FeemurHandler.h */,
 				A51F3A1E17C97C6D008C6C39 /* FeemurHandler.m */,
 				A5B51D1B17AB74CD00334619 /* PocketHandler.h */,
@@ -341,6 +391,8 @@
 				A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */,
 				A51F3A1717C979F4008C6C39 /* FeedViewController.h */,
 				A51F3A1817C979F4008C6C39 /* FeedViewController.m */,
+				A59DC7101818CD4300DF9B39 /* MenuViewController.h */,
+				A59DC7111818CD4300DF9B39 /* MenuViewController.m */,
 				A5D1CEFE18136D340033F552 /* LinkViewController.h */,
 				A5D1CEFF18136D340033F552 /* LinkViewController.m */,
 				A51F3A1A17C97A12008C6C39 /* HomeViewController.h */,
@@ -500,6 +552,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Zauce Tech";
+				TargetAttributes = {
+					A5B51CCD17AA1AFD00334619 = {
+						DevelopmentTeam = JSGZDY54HP;
+					};
+				};
 			};
 			buildConfigurationList = A5B51CC917AA1AFD00334619 /* Build configuration list for PBXProject "feemur" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -594,6 +651,7 @@
 				A5B51D5017B3428E00334619 /* AFHTTPClient.m in Sources */,
 				A5B51D5117B3428E00334619 /* AFHTTPRequestOperation.m in Sources */,
 				A5B51D5217B3428E00334619 /* AFImageRequestOperation.m in Sources */,
+				A59DC7121818CD4300DF9B39 /* MenuViewController.m in Sources */,
 				A5B51D5317B3428E00334619 /* AFJSONRequestOperation.m in Sources */,
 				A5B51D5417B3428E00334619 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				A5B51D5517B3428E00334619 /* AFPropertyListRequestOperation.m in Sources */,
@@ -603,8 +661,11 @@
 				A5A99E191814BA7100C23847 /* ProgressHUD.m in Sources */,
 				A5B51D4F17B3427400334619 /* API.m in Sources */,
 				A5B51CDE17AA1AFD00334619 /* main.m in Sources */,
+				A59DC72A1818EC9D00DF9B39 /* UIView+REFrostedViewController.m in Sources */,
+				A59DC7151818CE1000DF9B39 /* RootViewController.m in Sources */,
 				A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */,
 				A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */,
+				A59DC7271818EC9D00DF9B39 /* REFrostedContainerViewController.m in Sources */,
 				A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */,
 				A5BA3C4917E8E16B005AB2F0 /* MCSwipeTableViewCell.m in Sources */,
 				A5B51CF817AA1AFE00334619 /* SecondViewController.m in Sources */,
@@ -618,8 +679,12 @@
 				A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */,
 				A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */,
 				A592E04517DA5C2900E41FA6 /* DataHandler.m in Sources */,
+				A59DC72B1818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m in Sources */,
+				A59DC7291818EC9D00DF9B39 /* UIImage+REFrostedViewController.m in Sources */,
 				A576090D17E2AA64003F4106 /* LoginViewController.m in Sources */,
+				A59DC7261818EC9D00DF9B39 /* RECommonFunctions.m in Sources */,
 				A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */,
+				A59DC7281818EC9D00DF9B39 /* REFrostedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,11 +816,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -769,11 +837,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

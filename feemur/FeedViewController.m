@@ -119,6 +119,11 @@
     [self.navigationController presentModalViewController:loginView animated:YES];
 }
 
+-(IBAction)showMenu:(id)sender{
+    NSLog(@"menu clicked");
+    [self.frostedViewController presentMenuViewController];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

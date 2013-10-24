@@ -10,6 +10,7 @@
 #import "DataHandler.h"
 #import "PocketHandler.h"
 #import "FeemurHandler.h"
+#import "REFrostedViewController.h"
 
 @interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
     DataHandler *data;
@@ -31,6 +32,7 @@
 -(void)feemurTimeout;
 -(NSString *)timeSinceNow:(float)timestamp;
 -(IBAction)showLogin:(id)sender;
+-(IBAction)showMenu:(id)sender;
 
 -(IBAction)refreshFeed:(id)sender;
 
