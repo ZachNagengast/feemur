@@ -113,8 +113,8 @@
         return nil;
     }
     
-    CGRect imageRect = { CGPointZero, self.size };
     UIImage *effectImage = self;
+    CGRect imageRect = { CGPointZero,  self.size};
     
     BOOL hasBlur = blurRadius > __FLT_EPSILON__;
     BOOL hasSaturationChange = fabs(saturationDeltaFactor - 1.) > __FLT_EPSILON__;

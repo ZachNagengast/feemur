@@ -14,6 +14,7 @@
 
 @interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
     DataHandler *data;
+    dispatch_queue_t queue;
     FeemurHandler *feemur;
     PocketHandler *pocket;
     NSDictionary *latestLinks;
@@ -33,6 +34,7 @@
 -(NSString *)timeSinceNow:(float)timestamp;
 -(IBAction)showLogin:(id)sender;
 -(IBAction)showMenu:(id)sender;
+-(IBAction)showTitleMenu:(id)sender;
 
 -(IBAction)refreshFeed:(id)sender;
 

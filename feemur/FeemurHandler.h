@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "DataHandler.h"
 #import "KeychainItemWrapper.h"
+#import "PocketHandler.h"
 
 @interface FeemurHandler : NSObject{
     BOOL loggedIn;
     NSDictionary *latestResponse;
     DataHandler *data;
+    PocketHandler *pocket;
     int linklimit;
     KeychainItemWrapper *keychainItem;
 }
@@ -23,8 +25,11 @@
 @property(nonatomic) BOOL loggedIn;
 
 -(void)getLinks;
+-(void)submitLinks;
 -(void)increaseLinkLimit;
 -(BOOL)hasLoginData;
 -(void)login:(NSString *)username withPassword:(NSString *)password;
+
++(FeemurHandler*)sharedInstance;
 
 @end

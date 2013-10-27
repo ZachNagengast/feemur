@@ -38,7 +38,7 @@
         [self updateLinks];
     }
     
-    pocket = [[PocketHandler alloc]init];
+    pocket = [PocketHandler sharedInstance];
     if ([pocket isLoggedIn] == NO) {
         [pocket login];
     }else{
@@ -131,8 +131,6 @@
                                    }
                                    
                                }];
-    
-    //    NSLog(@"%@",submittedLinks);
 }
 
 - (void)didReceiveMemoryWarning

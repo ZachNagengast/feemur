@@ -13,11 +13,15 @@
 #import "LinkViewController.h"
 #import "ProgressHUD.h"
 #import "DTAlertView.h"
+#import "REMenu.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
+#define SAVED_LIST_KEY @"savedLinks"
 
 @interface FeedViewController () <MCSwipeTableViewCellDelegate>
+
+@property (strong, readwrite, nonatomic) REMenu *menu;
 
 @end
 
@@ -38,7 +42,7 @@
     [super viewDidLoad];
     
     NSLog(@"Feed view loaded");
-    
+    queue = dispatch_queue_create("com.zaucetech.feemur",nil);
     self.title = @"Feed";
 //    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
@@ -48,22 +52,68 @@
     [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
     [self.tableView setBackgroundView:backgroundView];
     
-    pocket = [[PocketHandler alloc]init];
-    feemur = [[FeemurHandler alloc]init];
+    pocket = [PocketHandler sharedInstance];
+    feemur = [FeemurHandler sharedInstance];
+    data = [DataHandler sharedInstance];
     feemur.linklimit = 30;
     //Login if no login data already
+    if ([pocket isLoggedIn] == NO) {
+        [pocket login];
+    }else{
+        //get pocket links
+        pocket.latestResponse = nil;
+        [pocket getLinks];
+    }
     if (!feemur.hasLoginData) {
         [self showLogin:nil];
     }else{
-        [feemur getLinks];
+        [self refreshFeed:nil];
     }
     
     timeout = 0;
-    
-    [self refreshFeed:nil];
 
     self.clearsSelectionOnViewWillAppear = YES;
- 
+    
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Home"
+                                                    subtitle:@"Return to Home Screen"
+                                                       image:[UIImage imageNamed:@"Icon_Home"]
+                                            highlightedImage:nil
+                                                      action:^(REMenuItem *item) {
+                                                          NSLog(@"Item: %@", item);
+                                                      }];
+    
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore"
+                                                       subtitle:@"Explore 47 additional options"
+                                                          image:[UIImage imageNamed:@"Icon_Explore"]
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             NSLog(@"Item: %@", item);
+                                                         }];
+    
+    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"Activity"
+                                                        subtitle:@"Perform 3 additional activities"
+                                                           image:[UIImage imageNamed:@"Icon_Activity"]
+                                                highlightedImage:nil
+                                                          action:^(REMenuItem *item) {
+                                                              NSLog(@"Item: %@", item);
+                                                          }];
+    
+    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile"
+                                                          image:[UIImage imageNamed:@"Icon_Profile"]
+                                               highlightedImage:nil
+                                                         action:^(REMenuItem *item) {
+                                                             NSLog(@"Item: %@", item);
+                                                         }];
+    
+    self.menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, activityItem, profileItem]];
+}
+
+-(void)showTitleMenu:(id)sender{
+    if (self.menu.isOpen) {
+        [self.menu close];
+    }else{
+    [self.menu showFromNavigationController:self.navigationController];
+    }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -104,14 +154,11 @@
 
 -(void)updateLinks{
     NSLog(@"Links found: %i", [[latestLinks objectForKey:@"result"] count]);
-    [self.tableView reloadData];
-    [timeoutTimer invalidate];
-    timeoutTimer = nil;
-    timeout=0;
     //update ui
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
     self.navigationItem.rightBarButtonItem = barButton;
     [ProgressHUD dismiss];
+    [self.tableView reloadData];
 }
 
 -(void)showLogin:(id)sender{
@@ -122,6 +169,7 @@
 -(IBAction)showMenu:(id)sender{
     NSLog(@"menu clicked");
     [self.frostedViewController presentMenuViewController];
+    self.navigationController.title = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -162,30 +210,6 @@
     //find if saved and update the ui
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     cell.itemId = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_id"];
-    if (pocket.isLoggedIn && [defaults objectForKey:POCKET_LIST_KEY]) {
-        int currentId = [cell.itemId intValue];
-        
-        NSDictionary *pocketDict = [[defaults objectForKey:POCKET_LIST_KEY] objectForKey:@"list"];
-        NSArray *keys = [pocketDict allKeys];
-        //  check if the current is in the users pocket already
-        for (int i=0; i< keys.count; i++) {
-            id keyAtIndex = [keys objectAtIndex:i];
-            id object = [pocketDict objectForKey:keyAtIndex];
-            int pocketId = [[object valueForKey:@"resolved_id"] intValue];
-            if (currentId == pocketId) {
-                cell.isSaved = true;
-            }
-        }
-    }else{
-        cell.isSaved = false;
-    }
-    
-    // We need to provide the icon names and the desired colors
-    if (cell.isSaved) {
-        [self setCellSaved:cell];
-    }else{
-        [self setCellUnsaved:cell];
-    }
     
     // We need to set a background to the content view of the cell
     [cell.contentView setBackgroundColor:[UIColor whiteColor]];
@@ -200,14 +224,30 @@
     
     //show the main title
     [cell.mainLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [cell.mainLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_title"]]];
+    if ([NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_title"]].length >1) {
+        [cell.mainLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_title"]]];
+    }else{
+        [cell.mainLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"given_title"]]];
+    }
 
     //show the details
+    cell.urlString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"];
+    if (cell.urlString.length<=1) {
+        cell.urlString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"given_url"];
+    }
     [cell.descriptionLabel setText:[NSString stringWithFormat:@"%@", [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"excerpt"]]];
     [cell.urlLabel setText:[NSString stringWithFormat:@"%@ • by %@",[self shortenUrl:[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"]], [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"user_name"]]];
-    cell.urlString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"resolved_url"];
     //format the count and time labels
-    NSString *countString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"];
+   
+    // We need to provide the icon names and the desired colors
+    if ([[[defaults objectForKey:SAVED_LIST_KEY] objectForKey:cell.itemId] intValue]== 1) {
+        [self setCellSaved:cell];
+        cell.isSaved = true;
+    }else{
+        [self setCellUnsaved:cell];
+        cell.isSaved = false;
+    }
+     NSString *countString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"];
     cell.countTotal = countString;
     if ([countString intValue] >= 10000 ) {
         countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
@@ -224,6 +264,8 @@
     rowHeight = newFrame.size.height+46;
     [cell.descriptionLabel setCenter:CGPointMake(cell.descriptionLabel.frame.origin.x+cell.descriptionLabel.frame.size.width/2, rowHeight-15)];
     
+    
+    
     //Create very last cell for loading more data
 //    if (indexPath.row == [[latestLinks objectForKey:@"result"] count]-1) {
 //        [cell.textLabel setText:@"Load more"];
@@ -235,14 +277,16 @@
 }
 
 -(NSString *)shortenUrl:(NSString*)original{
-    NSRange startRange = [original rangeOfString:@"//"];
-    NSRange deleteRange = NSMakeRange(0, startRange.location+startRange.length);
-    original = [original stringByReplacingCharactersInRange:deleteRange withString:@""];
-    NSRange endRange = [original rangeOfString:@"/"];
-    //Make sure it doesnt blow up
-    if (endRange.location<=30){
-        deleteRange = NSMakeRange(endRange.location, original.length-endRange.location);
+    if (original.length>2) {
+        NSRange startRange = [original rangeOfString:@"//"];
+        NSRange deleteRange = NSMakeRange(0, startRange.location+startRange.length);
         original = [original stringByReplacingCharactersInRange:deleteRange withString:@""];
+        NSRange endRange = [original rangeOfString:@"/"];
+        //Make sure it doesnt blow up
+        if (endRange.location<=30){
+            deleteRange = NSMakeRange(endRange.location, original.length-endRange.location);
+            original = [original stringByReplacingCharactersInRange:deleteRange withString:@""];
+        }
     }
     return original;
 }
@@ -269,12 +313,21 @@
     
     //get feemur links
     feemur.latestResponse = nil;
-    [feemur getLinks];
-    timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:.1
-                                                    target:self
-                                                  selector:@selector(feemurTimeout)
-                                                  userInfo:nil
-                                                   repeats:YES];
+    dispatch_async(queue, ^{
+        //get feemur links
+        [feemur getLinks];
+        if ([pocket isLoggedIn] == NO) {
+            [pocket login];
+        }else{
+            //get pocket links
+            pocket.latestResponse = nil;
+            [pocket getLinks];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self updateLinks];
+            NSLog(@"dispatch done");
+        });
+    });
 }
 
 -(void)loadMoreData{
@@ -341,6 +394,7 @@
 - (void)swipeTableViewCell:(MCSwipeTableViewCell *)cell didEndSwipingSwipingWithState:(MCSwipeTableViewCellState)state mode:(MCSwipeTableViewCellMode)mode {
     
     //User saved to pocket
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 #warning check if user is logged in before trying to saved
     if (state == MCSwipeTableViewCellState1) {
         if (cell.isSaved) {
@@ -348,12 +402,14 @@
             cell.isSaved = false;
             [pocket deleteLink:cell.itemId forCell:cell];
             NSLog(@"Unsaved cell: %@", [self.tableView indexPathForCell:cell]);
-            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
+//            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
             NSString *countString = cell.countTotal;
             if ([cell.countTotal intValue] >= 10000 ) {
                 countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
             }
             [cell.countLabel setText:countString];
+            //set it to unsaved in the list & database
+            [data removeFromSaved:cell.itemId];
         }else{
             [self setCellSaved:cell];
             cell.isSaved = true;
@@ -361,11 +417,14 @@
             //update count
             cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
             NSString *countString = cell.countTotal;
+#warning eventually take care of larger counts
             if ([cell.countTotal intValue] >= 10000 ) {
                 countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
             }
             [cell.countLabel setText:countString];
             NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
+            [data addToSaved:cell.itemId];
+            [feemur submitLinks];
         }
     }
     if (state == MCSwipeTableViewCellState4) {
@@ -457,14 +516,15 @@
     
     CGFloat distanceFromBottom = scrollView.contentSize.height - contentYoffset;
     
-    if(distanceFromBottom < height)
-    {
-        if (loadMoreToggle==TRUE) {
-            NSLog(@"end of the table");
-            [self loadMoreData];
-            loadMoreToggle = FALSE;
-        }
-    }
+#warning load more than 30 links here
+//    if(distanceFromBottom < height)
+//    {
+//        if (loadMoreToggle==TRUE) {
+//            NSLog(@"end of the table");
+//            [self loadMoreData];
+//            loadMoreToggle = FALSE;
+//        }
+//    }
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

@@ -27,7 +27,7 @@
     self.tableView.opaque = NO;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 90.0f)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 182.0f)];
 //        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
 //        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 //        imageView.image = [UIImage imageNamed:@"pocket-icon_saved.png"];
@@ -39,11 +39,12 @@
 //        imageView.layer.shouldRasterize = YES;
 //        imageView.clipsToBounds = YES;
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 60, 0, 24)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 152, 0, 24)];
         label.text = [NSString stringWithFormat:@"%@",pkt_api.username];
         label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+//        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+        label.textColor = [UIColor whiteColor];
         [label sizeToFit];
         label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         
@@ -52,7 +53,7 @@
         view;
     });
     self.tableView.tableFooterView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 180.0f)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 18.0f)];
         view;
     });
 }
@@ -63,7 +64,9 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+    cell.textLabel.textColor = [UIColor whiteColor];
+//    [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
+    
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
 }
 

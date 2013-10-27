@@ -23,6 +23,10 @@
 		A59DC7291818EC9D00DF9B39 /* UIImage+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7211818EC9D00DF9B39 /* UIImage+REFrostedViewController.m */; };
 		A59DC72A1818EC9D00DF9B39 /* UIView+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7231818EC9D00DF9B39 /* UIView+REFrostedViewController.m */; };
 		A59DC72B1818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC7251818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m */; };
+		A59DC738181C91AD00DF9B39 /* REMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC730181C91AD00DF9B39 /* REMenu.m */; };
+		A59DC739181C91AD00DF9B39 /* REMenuContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC732181C91AD00DF9B39 /* REMenuContainerView.m */; };
+		A59DC73A181C91AD00DF9B39 /* REMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC734181C91AD00DF9B39 /* REMenuItem.m */; };
+		A59DC73B181C91AD00DF9B39 /* REMenuItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = A59DC736181C91AD00DF9B39 /* REMenuItemView.m */; };
 		A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E151814BA7100C23847 /* ProgressHUD.bundle */; };
 		A5A99E191814BA7100C23847 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E171814BA7100C23847 /* ProgressHUD.m */; };
 		A5A99E1F1814CF8900C23847 /* DTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A99E1C1814CF8900C23847 /* DTAlertView.m */; };
@@ -142,6 +146,14 @@
 		A59DC7231818EC9D00DF9B39 /* UIView+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+REFrostedViewController.m"; sourceTree = "<group>"; };
 		A59DC7241818EC9D00DF9B39 /* UIViewController+REFrostedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+REFrostedViewController.h"; sourceTree = "<group>"; };
 		A59DC7251818EC9D00DF9B39 /* UIViewController+REFrostedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+REFrostedViewController.m"; sourceTree = "<group>"; };
+		A59DC72F181C91AD00DF9B39 /* REMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenu.h; sourceTree = "<group>"; };
+		A59DC730181C91AD00DF9B39 /* REMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenu.m; sourceTree = "<group>"; };
+		A59DC731181C91AD00DF9B39 /* REMenuContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuContainerView.h; sourceTree = "<group>"; };
+		A59DC732181C91AD00DF9B39 /* REMenuContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuContainerView.m; sourceTree = "<group>"; };
+		A59DC733181C91AD00DF9B39 /* REMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItem.h; sourceTree = "<group>"; };
+		A59DC734181C91AD00DF9B39 /* REMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItem.m; sourceTree = "<group>"; };
+		A59DC735181C91AD00DF9B39 /* REMenuItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = REMenuItemView.h; sourceTree = "<group>"; };
+		A59DC736181C91AD00DF9B39 /* REMenuItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = REMenuItemView.m; sourceTree = "<group>"; };
 		A5A99E151814BA7100C23847 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		A5A99E161814BA7100C23847 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		A5A99E171814BA7100C23847 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -299,6 +311,21 @@
 			path = REFrostedViewController;
 			sourceTree = "<group>";
 		};
+		A59DC72C181C91AD00DF9B39 /* REMenu */ = {
+			isa = PBXGroup;
+			children = (
+				A59DC72F181C91AD00DF9B39 /* REMenu.h */,
+				A59DC730181C91AD00DF9B39 /* REMenu.m */,
+				A59DC731181C91AD00DF9B39 /* REMenuContainerView.h */,
+				A59DC732181C91AD00DF9B39 /* REMenuContainerView.m */,
+				A59DC733181C91AD00DF9B39 /* REMenuItem.h */,
+				A59DC734181C91AD00DF9B39 /* REMenuItem.m */,
+				A59DC735181C91AD00DF9B39 /* REMenuItemView.h */,
+				A59DC736181C91AD00DF9B39 /* REMenuItemView.m */,
+			);
+			path = REMenu;
+			sourceTree = "<group>";
+		};
 		A5A99E141814BA7100C23847 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +358,7 @@
 				A5A99E231814E1E200C23847 /* Default.png */,
 				A5A99E241814E1E200C23847 /* Default@2x.png */,
 				A5A99E251814E1E200C23847 /* Default~iphone.png */,
+				A59DC72C181C91AD00DF9B39 /* REMenu */,
 				A59DC7191818EC9D00DF9B39 /* REFrostedViewController */,
 				A5A99E1A1814CF8900C23847 /* DTAlertView */,
 				A5A99E141814BA7100C23847 /* ProgressHUD */,
@@ -654,6 +682,8 @@
 				A59DC7121818CD4300DF9B39 /* MenuViewController.m in Sources */,
 				A5B51D5317B3428E00334619 /* AFJSONRequestOperation.m in Sources */,
 				A5B51D5417B3428E00334619 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				A59DC738181C91AD00DF9B39 /* REMenu.m in Sources */,
+				A59DC73B181C91AD00DF9B39 /* REMenuItemView.m in Sources */,
 				A5B51D5517B3428E00334619 /* AFPropertyListRequestOperation.m in Sources */,
 				A5B51D5617B3428E00334619 /* AFURLConnectionOperation.m in Sources */,
 				A5B51D5717B3428E00334619 /* AFXMLRequestOperation.m in Sources */,
@@ -672,6 +702,7 @@
 				A5B51D1D17AB74CD00334619 /* PocketHandler.m in Sources */,
 				A5B51D2917AD964800334619 /* PocketAPI.m in Sources */,
 				A5B51D2A17AD964800334619 /* PocketAPILogin.m in Sources */,
+				A59DC73A181C91AD00DF9B39 /* REMenuItem.m in Sources */,
 				A5B51D2B17AD964800334619 /* PocketAPIOperation.m in Sources */,
 				A5A99E201814CF8900C23847 /* DTProgressStatus.m in Sources */,
 				A5B51D2C17AD964800334619 /* SFHFKeychainUtils.m in Sources */,
@@ -683,6 +714,7 @@
 				A59DC7291818EC9D00DF9B39 /* UIImage+REFrostedViewController.m in Sources */,
 				A576090D17E2AA64003F4106 /* LoginViewController.m in Sources */,
 				A59DC7261818EC9D00DF9B39 /* RECommonFunctions.m in Sources */,
+				A59DC739181C91AD00DF9B39 /* REMenuContainerView.m in Sources */,
 				A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */,
 				A59DC7281818EC9D00DF9B39 /* REFrostedViewController.m in Sources */,
 			);

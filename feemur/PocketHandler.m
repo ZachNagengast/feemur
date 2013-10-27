@@ -12,9 +12,26 @@
 #import "DTAlertView.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
+#define FEEMUR_LIST_KEY @"feemurLinks"
+#define SAVED_LIST_KEY @"savedLinks"
 
 @implementation PocketHandler
 @synthesize latestResponse, urlList,titleList,dateList;
+
+#pragma mark - Singleton methods
+/**
+ * Singleton methods
+ */
++(PocketHandler*)sharedInstance
+{
+    static PocketHandler *sharedInstance = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    
+    return sharedInstance;
+}
 
 -(void)login{
     [[PocketAPI sharedAPI] loginWithHandler: ^(PocketAPI *API, NSError *error){
@@ -39,7 +56,7 @@
 -(void)getLinks{
     NSLog(@"retrieving links from pocket");
     if (!data) {
-        data = [[DataHandler alloc]init];
+        data = [DataHandler sharedInstance];
     }
     pkt_API = [PocketAPI sharedAPI];
     NSString *apiMethod = @"get";
@@ -62,6 +79,28 @@
                                      //Save the links locally
                                      [data storeLinks:latestResponse forName:POCKET_LIST_KEY];
                                      NSLog(@"Pocket response retrieved");
+                                     
+                                     //keep track of the links people have saved already
+                                     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+                                     NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
+                                         NSDictionary *pocketDict = [response valueForKey:@"list"];
+                                         NSArray *keys = [pocketDict allKeys];
+                                         //  check if the current is in the users pocket already
+                                         for (int i=0; i< keys.count; i++) {
+                                             id keyAtIndex = [keys objectAtIndex:i];
+                                             id object = [pocketDict objectForKey:keyAtIndex];
+                                             NSString *pocketId = [object valueForKey:@"resolved_id"];
+                                             [data addToSaved:pocketId];
+                                        }
+                                     //remove links that were previously removed outside of app
+                                     keys = [[defaults objectForKey:SAVED_LIST_KEY] allKeys];
+                                     for (int i=0; i < keys.count; i++) {
+                                         id keyAtIndex = [keys objectAtIndex:i];
+                                         if (![pocketDict objectForKey:keyAtIndex]) {
+                                             [data removeFromSaved:keyAtIndex];
+                                         }
+                                     }
+#warning update the ui here
                                  }];
     return;
 }
@@ -76,7 +115,7 @@
         }else{
             NSLog(@"Saved link: %@", urlString);
             // the URL was saved successfully
-            DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Saved %@ to Pocket", urlString] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+            DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Saved \"%@\" to Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
             [message show];
         }
     }];
@@ -105,7 +144,7 @@
                                      if (error) {
                                          NSLog(@"%@",error);
                                      }else{
-                                         DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Deleted %@ from Pocket", cell.urlString] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+                                         DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Deleted \"%@\" from Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
                                          [message show];
                                      }
                                      
