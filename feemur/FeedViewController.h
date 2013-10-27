@@ -10,7 +10,7 @@
 #import "DataHandler.h"
 #import "PocketHandler.h"
 #import "FeemurHandler.h"
-#import "REFrostedViewController.h"
+#import "RESideMenu.h"
 
 @interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
     DataHandler *data;

@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "REFrostedViewController.h"
+#import "RESideMenu.h"
 
-@interface MenuViewController : UITableViewController
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, RESideMenuDelegate>
+
+@property (strong, readwrite, nonatomic) UITableView *tableView;
 
 @end

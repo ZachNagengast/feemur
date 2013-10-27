@@ -1,6 +1,6 @@
 //
-// UIViewController+REFrostedViewController.m
-// REFrostedViewController
+// UIViewController+RESideMenu.m
+// RESideMenu
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
 //
@@ -23,8 +23,8 @@
 // THE SOFTWARE.
 //
 
-#import "UIViewController+REFrostedViewController.h"
-#import "REFrostedViewController.h"
+#import "UIViewController+RESideMenu.h"
+#import "RESideMenu.h"
 
 @implementation UIViewController (REFrostedViewController)
 
@@ -43,12 +43,12 @@
     [controller removeFromParentViewController];
 }
 
-- (REFrostedViewController *)frostedViewController
+- (RESideMenu *)sideMenuViewController
 {
     UIViewController *iter = self.parentViewController;
     while (iter) {
-        if ([iter isKindOfClass:[REFrostedViewController class]]) {
-            return (REFrostedViewController *)iter;
+        if ([iter isKindOfClass:[RESideMenu class]]) {
+            return (RESideMenu *)iter;
         } else if (iter.parentViewController && iter.parentViewController != iter) {
             iter = iter.parentViewController;
         } else {

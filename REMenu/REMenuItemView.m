@@ -46,7 +46,7 @@
         _backgroundView = ({
             UIView *view = [[UIView alloc] initWithFrame:self.bounds];
             view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-            if (menu.liveBlur && REUIKitIsFlatMode())
+//            if (menu.liveBlur && !REUIKitIsFlatMode())
                 view.alpha = 0.5f;
             view;
         });

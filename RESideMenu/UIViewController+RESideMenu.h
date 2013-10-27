@@ -1,6 +1,6 @@
 //
-// UIView+REFrostedViewController.h
-// REFrostedViewController
+// UIViewController+RESideMenu.h
+// RESideMenu
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
 //
@@ -24,10 +24,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 
-@interface UIView (REFrostedViewController)
+@class RESideMenu;
 
-- (UIImage *)re_screenshot;
+@interface UIViewController (RESideMenu)
+
+@property (strong, readonly, nonatomic) RESideMenu *sideMenuViewController;
+
+- (void)re_displayController:(UIViewController *)controller frame:(CGRect)frame;
+- (void)re_hideController:(UIViewController *)controller;
 
 @end

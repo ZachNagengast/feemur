@@ -52,6 +52,7 @@
 - (id)init
 {
     if ((self = [super init])) {
+        self.liveBlur = YES;
         self.imageAlignment = REMenuImageAlignmentLeft;
         self.closeOnSelection = YES;
         self.itemHeight = 48.0;
@@ -63,11 +64,11 @@
         self.font = [UIFont boldSystemFontOfSize:21.0];
         self.subtitleFont = [UIFont systemFontOfSize:14.0];
         
-        self.backgroundColor = [UIColor colorWithRed:53/255.0 green:53/255.0 blue:52/255.0 alpha:1.0];
+        self.backgroundColor = [UIColor colorWithRed:15/255.0 green:118/255.0 blue:223/255.0 alpha:.7];
         self.separatorColor = [UIColor colorWithPatternImage:self.separatorImage];
-        self.textColor = [UIColor colorWithRed:128/255.0 green:126/255.0 blue:124/255.0 alpha:1.0];
-        self.textShadowColor = [UIColor blackColor];
-        self.textShadowOffset = CGSizeMake(0, -1.0);
+        self.textColor = [UIColor colorWithRed:225/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
+//        self.textShadowColor = [UIColor blackColor];
+//        self.textShadowOffset = CGSizeMake(0, -1.0);
         self.textAlignment = NSTextAlignmentCenter;
         
         self.highlightedBackgroundColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
@@ -76,9 +77,9 @@
         self.highlightedTextShadowColor = [UIColor blackColor];
         self.highlightedTextShadowOffset = CGSizeMake(0, -1.0);
         
-        self.subtitleTextColor = [UIColor colorWithWhite:0.425 alpha:1.000];
-        self.subtitleTextShadowColor = [UIColor blackColor];
-        self.subtitleTextShadowOffset = CGSizeMake(0, -1.0);
+        self.subtitleTextColor = [UIColor colorWithWhite:1.0 alpha:1.000];
+//        self.subtitleTextShadowColor = [UIColor blackColor];
+//        self.subtitleTextShadowOffset = CGSizeMake(0, -1.0);
         self.subtitleHighlightedTextColor = [UIColor colorWithRed:0.389 green:0.384 blue:0.379 alpha:1.000];
         self.subtitleHighlightedTextShadowColor = [UIColor blackColor];
         self.subtitleHighlightedTextShadowOffset = CGSizeMake(0, -1.0);
@@ -123,7 +124,7 @@
     
     self.menuView = ({
         UIView *view = [[UIView alloc] init];
-        if (!self.liveBlur || !REUIKitIsFlatMode()) {
+        if (!self.liveBlur || REUIKitIsFlatMode()) {
             view.backgroundColor = self.backgroundColor;
         }
         view.layer.cornerRadius = self.cornerRadius;
@@ -136,7 +137,7 @@
         view;
     });
     
-    if (REUIKitIsFlatMode()) {
+    if (!REUIKitIsFlatMode()) {
         self.toolbar = ({
             UIToolbar *toolbar = [[UIToolbar alloc] init];
             toolbar.barStyle = self.liveBlurBackgroundStyle;
@@ -150,7 +151,7 @@
     self.menuWrapperView = ({
         UIView *view = [[UIView alloc] init];
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        if (!self.liveBlur || !REUIKitIsFlatMode()) {
+        if (!self.liveBlur || REUIKitIsFlatMode()) {
             view.layer.shadowColor = self.shadowColor.CGColor;
             view.layer.shadowOffset = self.shadowOffset;
             view.layer.shadowOpacity = self.shadowOpacity;
@@ -211,7 +212,7 @@
     //
     self.menuWrapperView.frame = CGRectMake(0, -self.combinedHeight - navigationBarOffset, rect.size.width, self.combinedHeight + navigationBarOffset);
     self.menuView.frame = self.menuWrapperView.bounds;
-    if (REUIKitIsFlatMode() && self.liveBlur) {
+    if (!REUIKitIsFlatMode() && self.liveBlur) {
         self.toolbar.frame = self.menuWrapperView.bounds;
     }
     self.containerView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height);
@@ -219,7 +220,7 @@
     
     // Add subviews
     //
-    if (REUIKitIsFlatMode() && self.liveBlur) {
+    if (!REUIKitIsFlatMode() && self.liveBlur) {
         [self.menuWrapperView addSubview:self.toolbar];
     }
     [self.menuWrapperView addSubview:self.menuView];
@@ -314,13 +315,13 @@
 
 - (UIImage *)separatorImage
 {
-    UIGraphicsBeginImageContext(CGSizeMake(1, 4.0));
+    UIGraphicsBeginImageContext(CGSizeMake(1, 1.0));
     CGContextRef context = UIGraphicsGetCurrentContext();
     UIGraphicsPushContext(context);
-    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0].CGColor);
-    CGContextFillRect(context, CGRectMake(0, 0, 1.0, 2.0));
-    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:79/255.0 green:79/255.0 blue:77/255.0 alpha:1.0].CGColor);
-    CGContextFillRect(context, CGRectMake(0, 3.0, 1.0, 2.0));
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor);
+    CGContextFillRect(context, CGRectMake(0, 0, 1.0, 1.0));
+//    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor);
+//    CGContextFillRect(context, CGRectMake(0, 3.0, 1.0, 2.0));
     UIGraphicsPopContext();
     UIImage *outputImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();

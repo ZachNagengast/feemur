@@ -38,7 +38,10 @@
 
 -(void)addToSaved:(NSString *)newId{
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
+    NSMutableDictionary *savedDict = [NSMutableDictionary dictionary];
+    if ([defaults objectForKey:SAVED_LIST_KEY]) {
+        savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
+    }
     NSDictionary *newDict =[NSDictionary dictionaryWithObjectsAndKeys:@"1", newId, nil];
     if ([savedDict objectForKey:newId] == nil) {
         [savedDict addEntriesFromDictionary:newDict];

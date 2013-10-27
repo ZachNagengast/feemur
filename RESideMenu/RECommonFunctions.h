@@ -1,6 +1,6 @@
 //
-// REFrostedContainerViewController.h
-// REFrostedViewController
+// RECommonFunctions.h
+// RESideMenu
 //
 // Copyright (c) 2013 Roman Efimov (https://github.com/romaonthego)
 //
@@ -23,19 +23,25 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@class REFrostedViewController;
+#ifndef REUIKitIsFlatModeFunction
+#define REUIKitIsFlatModeFunction
+BOOL REUIKitIsFlatMode();
+#endif
 
-@interface REFrostedContainerViewController : UIViewController
+#ifndef kCFCoreFoundationVersionNumber_iOS_6_1
+#define kCFCoreFoundationVersionNumber_iOS_6_1 793.00
+#endif
 
-@property (strong, readwrite, nonatomic) UIImage *screenshotImage;
-@property (weak, readwrite, nonatomic) REFrostedViewController *frostedViewController;
-@property (assign, readwrite, nonatomic) BOOL animateApperance;
-@property (strong, readonly, nonatomic) UIView *containerView;
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+#define IF_IOS7_OR_GREATER(...) \
+if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1) \
+{ \
+__VA_ARGS__ \
+}
+#else
+#define IF_IOS7_OR_GREATER(...)
+#endif
 
-- (void)panGestureRecognized:(UIPanGestureRecognizer *)recognizer;
-- (void)hide;
-- (void)refreshBackgroundImage;
-
-@end
+BOOL REDeviceIsUIKit7() __attribute__ ((deprecated));

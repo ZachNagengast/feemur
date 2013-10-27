@@ -43,7 +43,6 @@
     
     NSLog(@"Feed view loaded");
     queue = dispatch_queue_create("com.zaucetech.feemur",nil);
-    self.title = @"Feed";
 //    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
@@ -56,6 +55,7 @@
     feemur = [FeemurHandler sharedInstance];
     data = [DataHandler sharedInstance];
     feemur.linklimit = 30;
+    feemur.loggedIn = YES;
     //Login if no login data already
     if ([pocket isLoggedIn] == NO) {
         [pocket login];
@@ -67,45 +67,45 @@
     if (!feemur.hasLoginData) {
         [self showLogin:nil];
     }else{
-        [self refreshFeed:nil];
+        [feemur getLinks];
     }
     
     timeout = 0;
-
-    self.clearsSelectionOnViewWillAppear = YES;
     
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Home"
-                                                    subtitle:@"Return to Home Screen"
-                                                       image:[UIImage imageNamed:@"Icon_Home"]
+    [self refreshFeed:nil];
+    
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"All Time"
+                                                    subtitle:@""
+                                                       image:nil
                                             highlightedImage:nil
                                                       action:^(REMenuItem *item) {
                                                           NSLog(@"Item: %@", item);
                                                       }];
     
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore"
-                                                       subtitle:@"Explore 47 additional options"
-                                                          image:[UIImage imageNamed:@"Icon_Explore"]
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"This Month"
+                                                          image:nil
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
                                                          }];
     
-    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"Activity"
-                                                        subtitle:@"Perform 3 additional activities"
-                                                           image:[UIImage imageNamed:@"Icon_Activity"]
+    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"This Week"
+                                                           image:nil
                                                 highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
                                                           }];
     
-    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile"
-                                                          image:[UIImage imageNamed:@"Icon_Profile"]
+    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Today"
+                                                          image:nil
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
                                                          }];
     
     self.menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, activityItem, profileItem]];
+    self.menu.liveBlur = YES;
+    self.menu.liveBlurBackgroundStyle = REMenuLiveBackgroundStyleDark;
 }
 
 -(void)showTitleMenu:(id)sender{
@@ -130,8 +130,20 @@
     timeout++;
     latestLinks = feemur.latestResponse;
     int linkCount = [latestLinks count];
+    if (!feemur.loggedIn) {
+        [timeoutTimer invalidate];
+        timeoutTimer = nil;
+        timeout=0;
+        [ProgressHUD dismiss];
+        [self showLogin:nil];
+    }
+    
     if (latestLinks && linkCount>=1){
         //handle the new links
+        [timeoutTimer invalidate];
+        timeoutTimer = nil;
+        timeout=0;
+        [ProgressHUD dismiss];
         [self updateLinks];
         
     }else if (timeout>= 60){
@@ -168,8 +180,7 @@
 
 -(IBAction)showMenu:(id)sender{
     NSLog(@"menu clicked");
-    [self.frostedViewController presentMenuViewController];
-    self.navigationController.title = @"";
+    [self.sideMenuViewController presentMenuViewController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -313,21 +324,38 @@
     
     //get feemur links
     feemur.latestResponse = nil;
-    dispatch_async(queue, ^{
-        //get feemur links
-        [feemur getLinks];
-        if ([pocket isLoggedIn] == NO) {
-            [pocket login];
-        }else{
-            //get pocket links
-            pocket.latestResponse = nil;
-            [pocket getLinks];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self updateLinks];
-            NSLog(@"dispatch done");
-        });
-    });
+    [feemur getLinks];
+    if ([pocket isLoggedIn] == NO) {
+        [pocket login];
+    }else{
+        //get pocket links
+        pocket.latestResponse = nil;
+        [pocket getLinks];
+    }
+    timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:.1
+                                                    target:self
+                                                  selector:@selector(feemurTimeout)
+                                                  userInfo:nil
+                                                   repeats:YES];
+
+    
+//    //get feemur links
+//    feemur.latestResponse = nil;
+//    dispatch_async(queue, ^{
+//        //get feemur links
+//        [feemur getLinks];
+//        if ([pocket isLoggedIn] == NO) {
+//            [pocket login];
+//        }else{
+//            //get pocket links
+//            pocket.latestResponse = nil;
+//            [pocket getLinks];
+//        }
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self updateLinks];
+//            NSLog(@"dispatch done");
+//        });
+//    });
 }
 
 -(void)loadMoreData{

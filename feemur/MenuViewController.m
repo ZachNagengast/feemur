@@ -8,8 +8,8 @@
 
 #import "MenuViewController.h"
 #import "FeedViewController.h"
-#import "UIViewController+REFrostedViewController.h"
 #import "PocketAPI.h"
+#import "UIViewController+RESideMenu.h"
 
 @interface MenuViewController ()
 
@@ -21,97 +21,44 @@
 {
     [super viewDidLoad];
     PocketAPI *pkt_api = [PocketAPI sharedAPI];
-    self.tableView.separatorColor = [UIColor colorWithRed:150/255.0f green:161/255.0f blue:177/255.0f alpha:1.0f];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.tableHeaderView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 182.0f)];
-//        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
-//        imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-//        imageView.image = [UIImage imageNamed:@"pocket-icon_saved.png"];
-//        imageView.layer.masksToBounds = YES;
-//        imageView.layer.cornerRadius = 50.0;
-//        imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-//        imageView.layer.borderWidth = 3.0f;
-//        imageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-//        imageView.layer.shouldRasterize = YES;
-//        imageView.clipsToBounds = YES;
+    self.tableView = ({
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 53 * 7) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.opaque = NO;
+        tableView.backgroundColor = [UIColor clearColor];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 152, 0, 24)];
-        label.text = [NSString stringWithFormat:@"%@",pkt_api.username];
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
-        label.backgroundColor = [UIColor clearColor];
-//        label.textColor = [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-        label.textColor = [UIColor whiteColor];
-        [label sizeToFit];
-        label.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        
-//        [view addSubview:imageView];
-        [view addSubview:label];
-        view;
+        tableView.backgroundView = nil;
+        tableView.backgroundColor = [UIColor clearColor];
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        tableView.bounces = NO;
+        tableView.scrollsToTop = NO;
+        tableView;
     });
-    self.tableView.tableFooterView = ({
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 18.0f)];
-        view;
-    });
+    [self.view addSubview:self.tableView];
 }
 
 #pragma mark -
 #pragma mark UITableView Delegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-//    [UIColor colorWithRed:62/255.0f green:68/255.0f blue:75/255.0f alpha:1.0f];
-    
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:17];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-        return nil;
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
-    view.backgroundColor = [UIColor colorWithRed:167/255.0f green:167/255.0f blue:167/255.0f alpha:0.6f];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 8, 0, 0)];
-    label.text = @"Friends Online";
-    label.font = [UIFont systemFontOfSize:15];
-    label.textColor = [UIColor whiteColor];
-    label.backgroundColor = [UIColor clearColor];
-    [label sizeToFit];
-    [view addSubview:label];
-    
-    return view;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)sectionIndex
-{
-    if (sectionIndex == 0)
-        return 0;
-    
-    return 34;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UINavigationController *navigationController = (UINavigationController *)self.frostedViewController.contentViewController;
+    UINavigationController *navigationController = (UINavigationController *)self.sideMenuViewController.contentViewController;
     
-#warning cell functions
-//    if (indexPath.section == 0 && indexPath.row == 0) {
-//        DEMOHomeViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-//        navigationController.viewControllers = @[homeViewController];
-//    } else {
-//        DEMOSecondViewController *secondViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"secondController"];
-//        navigationController.viewControllers = @[secondViewController];
-//    }
-    
-    [self.frostedViewController hideMenuViewController];
+    switch (indexPath.row) {
+        case 0:
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"firstController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 1:
+//            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"secondController"]];
+//            [self.sideMenuViewController hideMenuViewController];
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark -
@@ -129,7 +76,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex
 {
-    return 3;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -140,17 +87,48 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
+        cell.selectedBackgroundView = [[UIView alloc] init];
     }
-    
-    if (indexPath.section == 0) {
-        NSArray *titles = @[@"Feed", @"Profile", @"Settings"];
-        cell.textLabel.text = titles[indexPath.row];
-    } else {
-        NSArray *titles = @[@"John Appleseed", @"John Doe", @"Test User"];
-        cell.textLabel.text = titles[indexPath.row];
-    }
+    PocketAPI *pkt_api = [PocketAPI sharedAPI];
+    NSString *username = pkt_api.username;
+    NSArray *titles = @[@"Home", @"Profile", @"Settings", @"", @"Log Out",];
+    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"", @"IconEmpty"];
+    cell.textLabel.text = titles[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     
     return cell;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark -
+#pragma mark RESideMenu Delegate
+
+- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willShowMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didShowMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"willHideMenuViewController");
+}
+
+- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
+{
+    NSLog(@"didHideMenuViewController");
 }
 
 

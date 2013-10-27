@@ -45,8 +45,8 @@
                                    NSLog(@"Feemur logged in: %@",json);
                                    if ([json objectForKey:@"error"]) {
                                        //show error message
-                                       DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Login Failed" delegate:nil cancelButtonTitle:@"Retry" positiveButtonTitle:nil];
-                                       [message show];
+//                                       DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Login Failed" delegate:nil cancelButtonTitle:@"Retry" positiveButtonTitle:nil];
+//                                       [message show];
                                        loggedIn = false;
                                    }else{
                                    //login worked, get feemur links
