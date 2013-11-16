@@ -47,32 +47,35 @@
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
     
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"EmptyList.png"]];
     [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
     [self.tableView setBackgroundView:backgroundView];
     
+//    //Login if no login data already
+//    if ([pocket isLoggedIn] == NO) {
+//        [pocket login];
+//    }else{
+//        //get pocket links
+//        pocket.latestResponse = nil;
+//    }
     pocket = [PocketHandler sharedInstance];
     feemur = [FeemurHandler sharedInstance];
     data = [DataHandler sharedInstance];
-    feemur.linklimit = 30;
-    feemur.loggedIn = YES;
-    //Login if no login data already
-    if ([pocket isLoggedIn] == NO) {
-        [pocket login];
-    }else{
-        //get pocket links
-        pocket.latestResponse = nil;
-        [pocket getLinks];
-    }
-    if (!feemur.hasLoginData) {
+    feemur.loggedIn = FALSE; //always login on first load
+    if (!feemur.hasLoginData){
         [self showLogin:nil];
     }else{
-        [feemur getLinks];
+        feemur.linklimit = 30;
+        // initialize list with old links
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
+            latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
+            [self refreshFeed:nil];
+        }
     }
     
     timeout = 0;
     
-    [self refreshFeed:nil];
     
     REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"All Time"
                                                     subtitle:@""
@@ -116,26 +119,40 @@
     }
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    // initialize list with old links
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
-        latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
-        [self updateLinks];
-    }
-}
+//-(void)viewDidAppear:(BOOL)animated{
+//    //make sure user is logged in
+//    pocket = [PocketHandler sharedInstance];
+//    feemur = [FeemurHandler sharedInstance];
+//    data = [DataHandler sharedInstance];
+//    if (!feemur.hasLoginData) [self showLogin:nil];
+//    
+//    feemur.linklimit = 30;
+//    // initialize list with old links
+//    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+//    if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
+//        latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
+//        [self updateLinks];
+//    }
+//}
 
 -(void)feemurTimeout
 {
     timeout++;
     latestLinks = feemur.latestResponse;
+    latestPocketLinks = pocket.latestResponse;
     int linkCount = [latestLinks count];
-    if (!feemur.loggedIn) {
+    if (!feemur.hasLoginData) {
         [timeoutTimer invalidate];
         timeoutTimer = nil;
         timeout=0;
         [ProgressHUD dismiss];
         [self showLogin:nil];
+    }
+    if ((latestPocketLinks && needsPocket) || (!pocket.isLoggedIn && needsPocket)){
+        //get feemur links
+        needsPocket = NO;
+        feemur.latestResponse = nil;
+        [feemur getLinks];
     }
     
     if (latestLinks && linkCount>=1){
@@ -144,12 +161,15 @@
         timeoutTimer = nil;
         timeout=0;
         [ProgressHUD dismiss];
+        [ProgressHUD showSuccess:@"Success"];
         [self updateLinks];
         
-    }else if (timeout>= 60){
+    }
+    else if (timeout>= 300){
         NSLog(@"Feemur timed out or 0 links found");
         //show error message
-        DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Something went wrong." delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+        DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:@"Unable to refresh feed." delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+        NSLog(@"%@",pocket.isLoggedIn?@"pocket is loggedin":@"pocket not loggedin");
         [message show];
         [timeoutTimer invalidate];
         timeoutTimer = nil;
@@ -207,6 +227,14 @@
 {
     static NSString *CellIdentifier = @"Cell";
     NSDictionary *dict = latestLinks;
+    //make sure it is never a null list
+//    if (!latestLinks) {
+//        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+//        if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
+//            latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
+//            [self updateLinks];
+//        }
+//    }
     
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -322,16 +350,15 @@
     [activityIndicator startAnimating];
     [ProgressHUD show:@"Please Wait..."];
     
-    //get feemur links
-    feemur.latestResponse = nil;
-    [feemur getLinks];
     if ([pocket isLoggedIn] == NO) {
-        [pocket login];
+        feemur.loggedIn = NO;
     }else{
-        //get pocket links
+        //get pocket links and submit feemur links
         pocket.latestResponse = nil;
+        feemur.latestResponse = nil;
         [pocket getLinks];
     }
+    needsPocket = YES;
     timeoutTimer = [NSTimer scheduledTimerWithTimeInterval:.1
                                                     target:self
                                                   selector:@selector(feemurTimeout)
@@ -442,8 +469,10 @@
             [self setCellSaved:cell];
             cell.isSaved = true;
             [pocket saveLink:cell.urlString forCell:cell];
-            //update count
-            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
+            //update count only if it hasnt been saved before
+            if (![data wasSaved:cell.itemId]) {
+                cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
+            }
             NSString *countString = cell.countTotal;
 #warning eventually take care of larger counts
             if ([cell.countTotal intValue] >= 10000 ) {

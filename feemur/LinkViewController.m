@@ -8,6 +8,7 @@
 
 #import "LinkViewController.h"
 #import "FeedViewController.h"
+#import "GADInterstitial.h"
 
 @interface LinkViewController ()
 
@@ -28,14 +29,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //load ad
+    interstitial_ = [[GADInterstitial alloc] init];
+    [interstitial_ setDelegate:self];
+    interstitial_.adUnitID = @"a1527d9e9f1c696";
+    GADRequest *request = [GADRequest request];
+    [interstitial_ loadRequest:request];
+    request.testDevices = [NSArray arrayWithObjects:@"35fc1a6db48b646709d7dcb0184b015b", nil];
+    
     NSString *fullURL = self.currentUrl;
     NSURL *url = [NSURL URLWithString:fullURL];
-    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *requestObj = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                       timeoutInterval:60];
+    
+    [[NSURLConnection alloc] initWithRequest:requestObj delegate:self];
     [webView loadRequest:requestObj];
     webView.delegate = self;
 //    NSLog(@"%@",self.currentUrl);
 	// Do any additional setup after loading the view.
 }
+
+-(void)interstitialDidReceiveAd:(GADInterstitial *)ad{
+    [interstitial_ presentFromRootViewController:self];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    _totalFileSize = response.expectedContentLength;
+    responseData = [[NSMutableData alloc] init];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    _receivedDataBytes += [data length];
+    progress.progress = _receivedDataBytes / (float)_totalFileSize;
+    [responseData appendData:data];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"finished loading");
+}
+
+
 
 - (void)webViewDidFinishLoad:(UIWebView *)webview {
     if ([[webview stringByEvaluatingJavaScriptFromString:@"document.readyState"] isEqualToString:@"complete"]) {
@@ -43,6 +79,7 @@
         [self.navigationController.navigationBar.topItem setTitle:title];
     }
 }
+
 
 
 - (void)didReceiveMemoryWarning

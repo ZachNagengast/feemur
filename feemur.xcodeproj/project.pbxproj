@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A511C4581832C0E2002E9072 /* EmptyList.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4571832C0E2002E9072 /* EmptyList.png */; };
+		A511C45C1832C35F002E9072 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C45B1832C35F002E9072 /* down.png */; };
 		A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1817C979F4008C6C39 /* FeedViewController.m */; };
 		A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1B17C97A12008C6C39 /* HomeViewController.m */; };
+		A535F88E182748850069D7ED /* EmptyPockets1.png in Resources */ = {isa = PBXBuildFile; fileRef = A535F88D182748850069D7ED /* EmptyPockets1.png */; };
 		A576090A17E2A7F4003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; };
 		A576090D17E2AA64003F4106 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090C17E2AA64003F4106 /* LoginViewController.m */; };
 		A576090E17E2AD69003F4106 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -44,15 +47,17 @@
 		A5A99E271814E1E200C23847 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E241814E1E200C23847 /* Default@2x.png */; };
 		A5A99E281814E1E200C23847 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A99E251814E1E200C23847 /* Default~iphone.png */; };
 		A5A99E2C1817024100C23847 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A99E2B1817024000C23847 /* StoreKit.framework */; };
+		A5AF05FF182DD5C8002AC141 /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF05FD182DD5C8002AC141 /* libGoogleAdMobAds.a */; };
+		A5AF0602182DD77B002AC141 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0601182DD77B002AC141 /* MessageUI.framework */; };
+		A5AF0604182DD787002AC141 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0603182DD787002AC141 /* SystemConfiguration.framework */; };
+		A5AF0606182DD797002AC141 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0605182DD797002AC141 /* AdSupport.framework */; };
+		A5AF0608182DD7A4002AC141 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0607182DD7A4002AC141 /* AudioToolbox.framework */; };
 		A5B51CD217AA1AFD00334619 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD117AA1AFD00334619 /* UIKit.framework */; };
 		A5B51CD417AA1AFD00334619 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD317AA1AFD00334619 /* Foundation.framework */; };
 		A5B51CD617AA1AFD00334619 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B51CD517AA1AFD00334619 /* CoreGraphics.framework */; };
 		A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CDA17AA1AFD00334619 /* InfoPlist.strings */; };
 		A5B51CDE17AA1AFD00334619 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CDD17AA1AFD00334619 /* main.m */; };
 		A5B51CE217AA1AFD00334619 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CE117AA1AFD00334619 /* AppDelegate.m */; };
-		A5B51CE417AA1AFD00334619 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE317AA1AFD00334619 /* Default.png */; };
-		A5B51CE617AA1AFD00334619 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE517AA1AFD00334619 /* Default@2x.png */; };
-		A5B51CE817AA1AFE00334619 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */; };
 		A5B51CEB17AA1AFE00334619 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CE917AA1AFE00334619 /* MainStoryboard_iPhone.storyboard */; };
 		A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5B51CEC17AA1AFE00334619 /* MainStoryboard_iPad.storyboard */; };
 		A5B51CF117AA1AFE00334619 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B51CF017AA1AFE00334619 /* FirstViewController.m */; };
@@ -124,12 +129,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A511C4571832C0E2002E9072 /* EmptyList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyList.png; sourceTree = "<group>"; };
+		A511C45B1832C35F002E9072 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
 		A51F3A1717C979F4008C6C39 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		A51F3A1817C979F4008C6C39 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		A51F3A1A17C97A12008C6C39 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		A51F3A1B17C97A12008C6C39 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		A51F3A1D17C97C6D008C6C39 /* FeemurHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeemurHandler.h; sourceTree = "<group>"; };
 		A51F3A1E17C97C6D008C6C39 /* FeemurHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeemurHandler.m; sourceTree = "<group>"; };
+		A535F8891827351D0069D7ED /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+		A535F88D182748850069D7ED /* EmptyPockets1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyPockets1.png; sourceTree = "<group>"; };
 		A576090817E2A7F4003F4106 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		A576090917E2A7F4003F4106 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		A576090B17E2AA64003F4106 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
@@ -178,6 +187,20 @@
 		A5A99E241814E1E200C23847 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A5A99E251814E1E200C23847 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
 		A5A99E2B1817024000C23847 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A5AF05F3182DD5C8002AC141 /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		A5AF05F4182DD5C8002AC141 /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		A5AF05F5182DD5C8002AC141 /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		A5AF05F6182DD5C8002AC141 /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		A5AF05F7182DD5C8002AC141 /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		A5AF05F8182DD5C8002AC141 /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		A5AF05F9182DD5C8002AC141 /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		A5AF05FA182DD5C8002AC141 /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		A5AF05FB182DD5C8002AC141 /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		A5AF05FD182DD5C8002AC141 /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		A5AF0601182DD77B002AC141 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		A5AF0603182DD787002AC141 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		A5AF0605182DD797002AC141 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		A5AF0607182DD7A4002AC141 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		A5B51CCE17AA1AFD00334619 /* feemur.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = feemur.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5B51CD117AA1AFD00334619 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A5B51CD317AA1AFD00334619 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,9 +211,6 @@
 		A5B51CDF17AA1AFD00334619 /* feemur-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "feemur-Prefix.pch"; sourceTree = "<group>"; };
 		A5B51CE017AA1AFD00334619 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A5B51CE117AA1AFD00334619 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A5B51CE317AA1AFD00334619 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A5B51CE517AA1AFD00334619 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A5B51CEA17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		A5B51CED17AA1AFE00334619 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		A5B51CEF17AA1AFE00334619 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
@@ -269,7 +289,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5AF0608182DD7A4002AC141 /* AudioToolbox.framework in Frameworks */,
+				A5AF0606182DD797002AC141 /* AdSupport.framework in Frameworks */,
+				A5AF0604182DD787002AC141 /* SystemConfiguration.framework in Frameworks */,
+				A5AF0602182DD77B002AC141 /* MessageUI.framework in Frameworks */,
 				A59DC7181818D0EF00DF9B39 /* CoreImage.framework in Frameworks */,
+				A5AF05FF182DD5C8002AC141 /* libGoogleAdMobAds.a in Frameworks */,
 				A5A99E2C1817024100C23847 /* StoreKit.framework in Frameworks */,
 				A5A99E221814D1DB00C23847 /* QuartzCore.framework in Frameworks */,
 				A5B51D2E17AD96A800334619 /* Security.framework in Frameworks */,
@@ -352,6 +377,23 @@
 			path = DTAlertView;
 			sourceTree = "<group>";
 		};
+		A5AF0600182DD70C002AC141 /* GAD */ = {
+			isa = PBXGroup;
+			children = (
+				A5AF05F3182DD5C8002AC141 /* GADAdMobExtras.h */,
+				A5AF05F4182DD5C8002AC141 /* GADAdNetworkExtras.h */,
+				A5AF05F5182DD5C8002AC141 /* GADAdSize.h */,
+				A5AF05F6182DD5C8002AC141 /* GADBannerView.h */,
+				A5AF05F7182DD5C8002AC141 /* GADBannerViewDelegate.h */,
+				A5AF05F8182DD5C8002AC141 /* GADInterstitial.h */,
+				A5AF05F9182DD5C8002AC141 /* GADInterstitialDelegate.h */,
+				A5AF05FA182DD5C8002AC141 /* GADRequestError.h */,
+				A5AF05FB182DD5C8002AC141 /* GADRequest.h */,
+				A5AF05FD182DD5C8002AC141 /* libGoogleAdMobAds.a */,
+			);
+			name = GAD;
+			sourceTree = "<group>";
+		};
 		A5B51CC517AA1AFD00334619 = {
 			isa = PBXGroup;
 			children = (
@@ -360,9 +402,13 @@
 				A5D1CEF618131C7E0033F552 /* FeemurAppIcon_retina.png */,
 				A5D1CEFA1813691E0033F552 /* forward.png */,
 				A5D1CEFB1813691E0033F552 /* back.png */,
+				A511C45B1832C35F002E9072 /* down.png */,
 				A5A99E231814E1E200C23847 /* Default.png */,
 				A5A99E241814E1E200C23847 /* Default@2x.png */,
 				A5A99E251814E1E200C23847 /* Default~iphone.png */,
+				A511C4571832C0E2002E9072 /* EmptyList.png */,
+				A535F88D182748850069D7ED /* EmptyPockets1.png */,
+				A5AF0600182DD70C002AC141 /* GAD */,
 				A59DC74C181CAFC600DF9B39 /* RESideMenu */,
 				A59DC72C181C91AD00DF9B39 /* REMenu */,
 				A5A99E1A1814CF8900C23847 /* DTAlertView */,
@@ -389,6 +435,11 @@
 		A5B51CD017AA1AFD00334619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5AF0607182DD7A4002AC141 /* AudioToolbox.framework */,
+				A5AF0605182DD797002AC141 /* AdSupport.framework */,
+				A5AF0603182DD787002AC141 /* SystemConfiguration.framework */,
+				A5AF0601182DD77B002AC141 /* MessageUI.framework */,
+				A535F8891827351D0069D7ED /* libcommonCrypto.dylib */,
 				A59DC7161818D07A00DF9B39 /* CoreImage.framework */,
 				A5A99E2B1817024000C23847 /* StoreKit.framework */,
 				A5A99E211814D1DB00C23847 /* QuartzCore.framework */,
@@ -450,9 +501,6 @@
 				A5B51CDA17AA1AFD00334619 /* InfoPlist.strings */,
 				A5B51CDD17AA1AFD00334619 /* main.m */,
 				A5B51CDF17AA1AFD00334619 /* feemur-Prefix.pch */,
-				A5B51CE317AA1AFD00334619 /* Default.png */,
-				A5B51CE517AA1AFD00334619 /* Default@2x.png */,
-				A5B51CE717AA1AFD00334619 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -632,10 +680,7 @@
 				A5A99E281814E1E200C23847 /* Default~iphone.png in Resources */,
 				A5B51CDC17AA1AFD00334619 /* InfoPlist.strings in Resources */,
 				A5BA3C3F17E8E15D005AB2F0 /* check.png in Resources */,
-				A5B51CE417AA1AFD00334619 /* Default.png in Resources */,
 				A59DC75D181CB70C00DF9B39 /* Images.xcassets in Resources */,
-				A5B51CE617AA1AFD00334619 /* Default@2x.png in Resources */,
-				A5B51CE817AA1AFE00334619 /* Default-568h@2x.png in Resources */,
 				A5BA3C4417E8E15D005AB2F0 /* cross@2x.png in Resources */,
 				A59DC746181CA4E400DF9B39 /* Icon_Explore.png in Resources */,
 				A5D1CEF718131C7E0033F552 /* FeemurAppIcon_retina7.png in Resources */,
@@ -645,10 +690,12 @@
 				A5BA3C4117E8E15D005AB2F0 /* clock.png in Resources */,
 				A59DC748181CA4E400DF9B39 /* Icon_Home.png in Resources */,
 				A5BA3C5417E8F5F9005AB2F0 /* pocket-icon@2x.png in Resources */,
+				A511C4581832C0E2002E9072 /* EmptyList.png in Resources */,
 				A5BA3C4317E8E15D005AB2F0 /* cross.png in Resources */,
 				A59DC745181CA4E400DF9B39 /* Icon_Activity@2x.png in Resources */,
 				A5B51CEE17AA1AFE00334619 /* MainStoryboard_iPad.storyboard in Resources */,
 				A5A99E181814BA7100C23847 /* ProgressHUD.bundle in Resources */,
+				A511C45C1832C35F002E9072 /* down.png in Resources */,
 				A59DC757181CB20100DF9B39 /* background.jpg in Resources */,
 				A5B51CF317AA1AFE00334619 /* first.png in Resources */,
 				A59DC74B181CA4E400DF9B39 /* Icon_Profile@2x.png in Resources */,
@@ -664,6 +711,7 @@
 				A5B51CFC17AA1AFE00334619 /* second@2x.png in Resources */,
 				A5A99E261814E1E200C23847 /* Default.png in Resources */,
 				A5BA3C5217E8F5F9005AB2F0 /* pocket-icon_saved@2x.png in Resources */,
+				A535F88E182748850069D7ED /* EmptyPockets1.png in Resources */,
 				A5BA3C4617E8E15D005AB2F0 /* list@2x.png in Resources */,
 				A5BA3C4017E8E15D005AB2F0 /* check@2x.png in Resources */,
 			);
@@ -868,8 +916,7 @@
 		A5B51D1517AA1AFE00334619 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -878,6 +925,12 @@
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -889,8 +942,7 @@
 		A5B51D1617AA1AFE00334619 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -899,6 +951,12 @@
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur,
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

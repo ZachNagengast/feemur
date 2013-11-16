@@ -70,6 +70,8 @@
 
 -(void)setConsumerKey:(NSString *)consumerKey;
 
+-(void)logout;
+
 -(NSUInteger)appID;
 
 -(NSString *)pkt_getToken;

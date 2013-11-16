@@ -14,6 +14,7 @@
 -(void)storeLinks:(NSDictionary *)linkDictionary forName:(NSString *) listName;
 -(void)addToSaved:(NSString *)newId;
 -(void)removeFromSaved:(NSString *)newId;
+-(BOOL)wasSaved:(NSString *)newId;
 
 +(DataHandler*)sharedInstance;
 

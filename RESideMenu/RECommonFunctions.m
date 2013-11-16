@@ -45,5 +45,5 @@ BOOL REUIKitIsFlatMode()
             }
         }
     });
-    return isUIKitFlatMode;
+    return NO;
 }

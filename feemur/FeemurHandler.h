@@ -29,6 +29,8 @@
 -(void)increaseLinkLimit;
 -(BOOL)hasLoginData;
 -(void)login:(NSString *)username withPassword:(NSString *)password;
+-(void)registerUser:(NSString *)username withPassword:(NSString *)password;
+-(void)logout;
 
 +(FeemurHandler*)sharedInstance;
 

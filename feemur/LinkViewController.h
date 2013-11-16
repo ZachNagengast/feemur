@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
+#import "GADInterstitial.h"
 
-@interface LinkViewController : UIViewController
-
+@interface LinkViewController : UIViewController <GADInterstitialDelegate, UIWebViewDelegate, NSURLConnectionDelegate>{
+    // Declare one as an instance variable
+    GADInterstitial *interstitial_;
+    IBOutlet UIProgressView *progress;
+    NSMutableData *responseData;
+    long _totalFileSize;
+    long _receivedDataBytes;
+}
+@property (nonatomic,retain) IBOutlet UIProgressView *progress;
 @property (nonatomic,retain) IBOutlet UIWebView *webView;
 @property (nonatomic,retain) NSString *currentUrl;
 

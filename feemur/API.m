@@ -11,7 +11,7 @@
 
 //the web location of the service
 #define kAPIHost @"http://www.feemur.com"
-#define kAPIPath @"api1/"
+#define kAPIPath @"api/v1/"
 
 @implementation API
 

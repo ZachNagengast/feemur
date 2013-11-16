@@ -10,6 +10,8 @@
 #import "FeedViewController.h"
 #import "PocketAPI.h"
 #import "UIViewController+RESideMenu.h"
+#import "PocketHandler.h"
+#import "FeemurHandler.h"
 
 @interface MenuViewController ()
 
@@ -49,12 +51,22 @@
     
     switch (indexPath.row) {
         case 0:
-            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"firstController"]];
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"homeController"]];
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 1:
-//            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"secondController"]];
-//            [self.sideMenuViewController hideMenuViewController];
+            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"profileController"]];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 2:
+            NSLog(@"logging out");
+            [[FeemurHandler sharedInstance] logout];
+            [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 3:
+            
+            break;
+        case 4:
             break;
         default:
             break;
@@ -95,8 +107,10 @@
     }
     PocketAPI *pkt_api = [PocketAPI sharedAPI];
     NSString *username = pkt_api.username;
-    NSArray *titles = @[@"Home", @"Profile", @"Settings", @"", @"Log Out",];
-    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"", @"IconEmpty"];
+    NSArray *titles = @[@"Home", @"Accounts", @"Log Out", @"", @""];
+    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"", @""];
+//    NSArray *titles = @[@"Home", @"Profile", @"Settings", @"Calendar", @"Log Out",];
+//    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"IconCalendar", @"IconEmpty"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     

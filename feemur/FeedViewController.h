@@ -18,17 +18,21 @@
     FeemurHandler *feemur;
     PocketHandler *pocket;
     NSDictionary *latestLinks;
+    NSDictionary *latestPocketLinks;
     NSTimer *timeoutTimer;
     int timeout;
     UIActivityIndicatorView *activityIndicator;
+    bool needsPocket;
     bool loadMoreToggle;
     bool isScrolling;
     CGFloat rowHeight;
+    IBOutlet UIButton *titleLabel;
 }
 
 @property(nonatomic,retain) NSTimer *timeoutTimer;
 @property(nonatomic,retain) NSDictionary *latestLinks;
 @property(nonatomic,retain) NSString *currentUrl;
+@property(nonatomic,retain) IBOutlet UIButton *titleLabel;
 
 -(void)feemurTimeout;
 -(NSString *)timeSinceNow:(float)timestamp;

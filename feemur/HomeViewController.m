@@ -74,7 +74,13 @@
 {
     timeout++;
     latestLinks = pocket.latestResponse;
-    int linkCount = [[[latestLinks objectForKey:@"list"] allKeys] count];
+    int linkCount;
+    if ([[latestLinks objectForKey:@"list"] count]) {
+    
+    linkCount = [[[latestLinks objectForKey:@"list"] allKeys] count];
+    }else{
+        linkCount = 0;
+    }
     if (latestLinks && linkCount>=1){
         //handle the new links
         [self updateLinks];
@@ -150,7 +156,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
+    if ([[latestLinks objectForKey:@"list"] count]) {
+      
     return [[[latestLinks objectForKey:@"list"] allKeys] count];
+        
+    }
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -163,6 +174,8 @@
     
     // Configure the cell...
     NSDictionary *dict = [latestLinks objectForKey:@"list"];
+    if ([dict count]>0) {
+    
     NSArray *keys = [dict allKeys];
 #warning sort by date once using multiple platforms!
     //  sort them by sort_id
@@ -173,6 +186,8 @@
         [cell.textLabel setText:[NSString stringWithFormat:@"%@", [object valueForKey:@"resolved_title"]]];
         [cell.detailTextLabel setText:[NSString stringWithFormat:@"%@", [object valueForKey:@"resolved_url"]]];
         }
+    }
+        
     }
     return cell;
 }

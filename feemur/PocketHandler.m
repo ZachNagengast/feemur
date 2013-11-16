@@ -78,12 +78,12 @@
                                      latestResponse = response;
                                      //Save the links locally
                                      [data storeLinks:latestResponse forName:POCKET_LIST_KEY];
-                                     NSLog(@"Pocket response retrieved");
                                      
                                      //keep track of the links people have saved already
                                      NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
                                      NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
                                          NSDictionary *pocketDict = [response valueForKey:@"list"];
+                                     if ([pocketDict count]>0) {
                                          NSArray *keys = [pocketDict allKeys];
                                          //  check if the current is in the users pocket already
                                          for (int i=0; i< keys.count; i++) {
@@ -91,15 +91,18 @@
                                              id object = [pocketDict objectForKey:keyAtIndex];
                                              NSString *pocketId = [object valueForKey:@"resolved_id"];
                                              [data addToSaved:pocketId];
-                                        }
-                                     //remove links that were previously removed outside of app
-                                     keys = [[defaults objectForKey:SAVED_LIST_KEY] allKeys];
-                                     for (int i=0; i < keys.count; i++) {
-                                         id keyAtIndex = [keys objectAtIndex:i];
-                                         if (![pocketDict objectForKey:keyAtIndex]) {
-                                             [data removeFromSaved:keyAtIndex];
+                                         }
+                                         NSLog(@"Pocket response retrieved: %d", keys.count);
+                                         //remove links that were previously removed outside of app
+                                         keys = [[defaults objectForKey:SAVED_LIST_KEY] allKeys];
+                                         for (int i=0; i < keys.count; i++) {
+                                             id keyAtIndex = [keys objectAtIndex:i];
+                                             if (![pocketDict objectForKey:keyAtIndex]) {
+                                                 [data removeFromSaved:keyAtIndex];
+                                             }
                                          }
                                      }
+                                     
 #warning update the ui here
                                  }];
     return;
@@ -177,6 +180,10 @@
 
 -(BOOL)isLoggedIn{
     return [[PocketAPI sharedAPI] isLoggedIn];
+}
+
+-(void)logout{
+    [[PocketAPI sharedAPI] logout];
 }
 
 @end

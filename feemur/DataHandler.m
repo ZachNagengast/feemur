@@ -25,6 +25,8 @@
     return sharedInstance;
 }
 
+
+
 -(void)removeFromSaved:(NSString *)newId{
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
@@ -63,6 +65,16 @@
     [defaults setObject:linkDictionary forKey:listName];
     // do not forget to save changes
     [defaults synchronize];
+}
+
+-(BOOL)wasSaved:(NSString *)newId{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
+    if ([savedDict objectForKey:newId] != nil) {
+        return TRUE;
+    }else{
+        return FALSE;
+    }
 }
 
 @end

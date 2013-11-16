@@ -53,6 +53,8 @@
 {
     if ((self = [super init])) {
         self.liveBlur = YES;
+        self.liveBlurTintColor = [UIColor clearColor];
+        self.liveBlurBackgroundStyle = REMenuLiveBackgroundStyleLight;
         self.imageAlignment = REMenuImageAlignmentLeft;
         self.closeOnSelection = YES;
         self.itemHeight = 48.0;
@@ -64,18 +66,18 @@
         self.font = [UIFont boldSystemFontOfSize:21.0];
         self.subtitleFont = [UIFont systemFontOfSize:14.0];
         
-        self.backgroundColor = [UIColor colorWithRed:15/255.0 green:118/255.0 blue:223/255.0 alpha:.7];
-        self.separatorColor = [UIColor colorWithPatternImage:self.separatorImage];
-        self.textColor = [UIColor colorWithRed:225/255.0 green:255/255.0 blue:255/255.0 alpha:1.0];
+//        self.backgroundColor = [UIColor colorWithRed:15/255.0 green:118/255.0 blue:223/255.0 alpha:.7];
+//        self.separatorColor = [UIColor colorWithPatternImage:self.separatorImage];
+        self.textColor = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:225/255.0 alpha:.75];
 //        self.textShadowColor = [UIColor blackColor];
 //        self.textShadowOffset = CGSizeMake(0, -1.0);
         self.textAlignment = NSTextAlignmentCenter;
         
-        self.highlightedBackgroundColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
-        self.highlightedSeparatorColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
-        self.highlightedTextColor = [UIColor colorWithRed:128/255.0 green:126/255.0 blue:124/255.0 alpha:1.0];
-        self.highlightedTextShadowColor = [UIColor blackColor];
-        self.highlightedTextShadowOffset = CGSizeMake(0, -1.0);
+//        self.highlightedBackgroundColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
+//        self.highlightedSeparatorColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
+//        self.highlightedTextColor = [UIColor colorWithRed:128/255.0 green:126/255.0 blue:124/255.0 alpha:1.0];
+//        self.highlightedTextShadowColor = [UIColor blackColor];
+//        self.highlightedTextShadowOffset = CGSizeMake(0, -1.0);
         
         self.subtitleTextColor = [UIColor colorWithWhite:1.0 alpha:1.000];
 //        self.subtitleTextShadowColor = [UIColor blackColor];
@@ -85,11 +87,11 @@
         self.subtitleHighlightedTextShadowOffset = CGSizeMake(0, -1.0);
         self.subtitleTextAlignment = NSTextAlignmentCenter;
         
-        self.borderWidth = 1.0;
-        self.borderColor =  [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
+//        self.borderWidth = 1.0;
+//        self.borderColor =  [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
         self.animationDuration = 0.3;
         self.bounce = YES;
-        self.bounceAnimationDuration = 0.2;
+        self.bounceAnimationDuration = 0.1;
         
         self.appearsBehindNavigationBar = YES;
     }
@@ -116,7 +118,7 @@
         view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         
         if (self.backgroundView) {
-            self.backgroundView.alpha = 0;
+            self.backgroundView.alpha = 0.75;
             [view addSubview:self.backgroundView];
         }
         view;
@@ -140,6 +142,7 @@
     if (!REUIKitIsFlatMode()) {
         self.toolbar = ({
             UIToolbar *toolbar = [[UIToolbar alloc] init];
+            [toolbar setAlpha:.99];
             toolbar.barStyle = self.liveBlurBackgroundStyle;
             if ([toolbar respondsToSelector:@selector(setBarTintColor:)])
                 [toolbar performSelector:@selector(setBarTintColor:) withObject:self.liveBlurTintColor];
@@ -185,10 +188,20 @@
         UIView *separatorView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                          index * self.itemHeight + index * self.separatorHeight + 40.0 + navigationBarOffset,
                                                                          rect.size.width,
-                                                                         self.separatorHeight)];
+                                                                         self.separatorHeight+50)];
         separatorView.backgroundColor = self.separatorColor;
+//        separatorView.backgroundColor = [UIColor clearColor];
         separatorView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-        [self.menuView addSubview:separatorView];
+//        [self.menuView addSubview:separatorView];
+        
+        //live blur
+//        UIView *myView = [[UIView alloc] initWithFrame:self.menuView.bounds];
+//        myView.backgroundColor = [UIColor clearColor];
+//        UIToolbar* bgToolbar = [[UIToolbar alloc] initWithFrame:myView.frame];
+//        bgToolbar.barStyle = UIBarStyleDefault;
+//        [myView.superview insertSubview:bgToolbar belowSubview:separatorView];
+////        [self.menuView addSubview:myView];
+//        [self.menuView addSubview:separatorView];
         
         REMenuItemView *itemView = [[REMenuItemView alloc] initWithFrame:CGRectMake(0,
                                                                                     index * self.itemHeight + (index + 1.0) * self.separatorHeight + 40.0 + navigationBarOffset,

@@ -34,6 +34,7 @@
 -(void)login;
 -(BOOL)isLoggedIn;
 -(NSString*)pocketUsername;
+-(void)logout;
 
 +(PocketHandler*)sharedInstance;
 
