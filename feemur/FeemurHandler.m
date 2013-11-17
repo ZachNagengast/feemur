@@ -93,7 +93,8 @@
     }
     
     NSLog(@"Submitting links to feemur server: %d", [[[submittedLinks objectForKey:@"list"] allKeys] count]);
-    [[API sharedInstance] commandWithParams:submittedLinks
+        if ([[[submittedLinks objectForKey:@"list"] allKeys] count]>0) {
+            [[API sharedInstance] commandWithParams:submittedLinks
                                onCompletion:^(NSDictionary *json) {
                                    //completion
                                    if (![json objectForKey:@"error"]) {
@@ -109,7 +110,11 @@
                                    }
                                    
                                }];
-        
+        }else{
+            //feemur user has 0 links to submit
+            [self retrieveLinks];
+        }
+
     }else{
         //new pocket user (has 0 links to submit)
         [self retrieveLinks];

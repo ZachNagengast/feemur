@@ -56,7 +56,7 @@
     if ([savedDict objectForKey:newId] == nil) {
         [savedDict addEntriesFromDictionary:newDict];
     }else{
-        [savedDict setValue:@"1" forKey:newId];
+        [savedDict setValue:@"2" forKey:newId];
     }
     newDict = [savedDict copy];
     [defaults setObject:newDict forKey:SAVED_LIST_KEY];

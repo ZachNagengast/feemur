@@ -285,7 +285,7 @@
     //format the count and time labels
    
     // We need to provide the icon names and the desired colors
-    if ([[[defaults objectForKey:SAVED_LIST_KEY] objectForKey:cell.itemId] intValue]== 1) {
+    if ([[[defaults objectForKey:SAVED_LIST_KEY] objectForKey:cell.itemId] intValue]>= 1) {
         [self setCellSaved:cell];
         cell.isSaved = true;
     }else{
@@ -470,7 +470,7 @@
             }
             [cell.countLabel setText:countString];
             //set it to unsaved in the list & database
-            [data removeFromSaved:cell.itemId];
+//            [data removeFromSaved:cell.itemId];
         }else{
             [self setCellSaved:cell];
             cell.isSaved = true;
@@ -486,7 +486,7 @@
             }
             [cell.countLabel setText:countString];
             NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
-            [data addToSaved:cell.itemId];
+//            [data addToSaved:cell.itemId];
 //            [feemur submitLinks];
         }
     }
