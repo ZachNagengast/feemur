@@ -94,6 +94,36 @@
     
 }
 
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //Get the name of the current pressed button
+    FeedViewController *feedView = self.feed;
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if  ([buttonTitle isEqualToString:@"Pocket"]) {
+        [feedView saveToggle:feedView.selectedCell];
+    }
+    if ([buttonTitle isEqualToString:@"Copy Link"]) {
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        [pb setString:self.selectedCell.urlString];
+        NSLog(@"Pasteboard: %@",pb.string);
+    }
+    if ([buttonTitle isEqualToString:@"Share"]) {
+        NSString *shareText = @"Via Feemur App";
+        NSURL *shareURL = [NSURL URLWithString:self.selectedCell.urlString];
+        
+        UIActivity *activity = [[UIActivity alloc] init];
+        
+        NSArray *activityItems = @[shareURL, shareText];
+        NSArray *applicationActivities = @[activity];
+        NSArray *excludeActivities = @[];
+        
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
+        activityController.excludedActivityTypes = excludeActivities;
+        
+        [self presentViewController:activityController animated:YES completion:^{
+            NSLog(@"Activity complete");
+        }];
+    }
+}
 
 
 - (void)didReceiveMemoryWarning

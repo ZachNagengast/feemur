@@ -43,11 +43,15 @@
 @property(nonatomic,retain) NSString *currentUrl;
 @property(nonatomic,retain) IBOutlet UIButton *titleLabel;
 
+@property(nonatomic,retain) MCSwipeTableViewCell *selectedCell;
+
 -(void)feemurTimeout;
 -(NSString *)timeSinceNow:(float)timestamp;
 -(IBAction)showLogin:(id)sender;
 -(IBAction)showMenu:(id)sender;
 -(IBAction)showTitleMenu:(id)sender;
+-(void)saveToggle:(MCSwipeTableViewCell*)cell;
+
 
 -(IBAction)refreshFeed:(id)sender;
 

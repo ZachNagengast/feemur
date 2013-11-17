@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "PocketAPI.h"
+#import "ICETutorialController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) ICETutorialController *viewController;
 
 @end

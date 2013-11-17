@@ -139,6 +139,7 @@
     [defaults setObject:item.title forKey:FEED_PREFS_KEY];
     [defaults synchronize];
     [titleLabel setTitle:[NSString stringWithFormat:@"Feed : %@",[defaults valueForKey:FEED_PREFS_KEY]] forState:UIControlStateNormal];
+//    [self refreshFeed:nil];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -216,7 +217,7 @@
         [ProgressHUD dismiss];
     }
     else {
-        NSLog(@"Waiting..");
+//        NSLog(@"Waiting..");
     }
 }
 
@@ -615,6 +616,7 @@
     
     MCSwipeTableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     self.currentUrl = cell.urlString;
+    self.selectedCell = cell;
     [self performSegueWithIdentifier:@"detail" sender:self];
     
 //    pocket = [[PocketHandler alloc]init];
@@ -635,6 +637,8 @@
     if ([[segue identifier] isEqualToString:@"detail"]) {
         LinkViewController *detailViewController = [segue destinationViewController];
         detailViewController.currentUrl = self.currentUrl;
+        detailViewController.selectedCell = self.selectedCell;
+        detailViewController.feed = self;
         if (addCount<=3) {
             addCount= addCount +1;
             detailViewController.addCount = addCount;
@@ -673,27 +677,27 @@
 
 //UI methods
 - (void)setCellSaved:(MCSwipeTableViewCell *)cell{
-    [cell setFirstStateIconName:@"pocket-icon_saved@2x.png"
+    [cell setFirstStateIconName:@"pocket-icon_saved.png"
                      firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
-            secondStateIconName:@"pocket-icon@2x.png"
+            secondStateIconName:@"pocket-icon.png"
                     secondColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
-                  thirdIconName:nil
-                     thirdColor:nil
-                 fourthIconName:nil
-                    fourthColor:nil];
+                  thirdIconName:@"more-icon.png"
+                     thirdColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                 fourthIconName:@"more-icon.png"
+                    fourthColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
     //change label color
     [cell.countLabel setTextColor:[UIColor redColor]];
 }
 
 - (void)setCellUnsaved:(MCSwipeTableViewCell *)cell{
-    [cell setFirstStateIconName:@"pocket-icon@2x.png"
+    [cell setFirstStateIconName:@"pocket-icon.png"
                      firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
-            secondStateIconName:@"pocket-icon_saved@2x.png"
+            secondStateIconName:@"pocket-icon_saved.png"
                     secondColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
-                  thirdIconName:nil
-                     thirdColor:nil
-                 fourthIconName:nil
-                    fourthColor:nil];
+                  thirdIconName:@"more-icon.png"
+                     thirdColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                 fourthIconName:@"more-icon.png"
+                    fourthColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
     
     [cell.countLabel setTextColor:[UIColor darkTextColor]];
 }

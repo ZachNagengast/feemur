@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
 #import "GADInterstitial.h"
+#import "MCSwipeTableViewCell.h"
 
 @interface LinkViewController : UIViewController <GADInterstitialDelegate, UIWebViewDelegate, NSURLConnectionDelegate, UIActionSheetDelegate>{
     // Declare one as an instance variable
@@ -22,6 +23,8 @@
 @property (nonatomic,retain) IBOutlet UIWebView *webView;
 @property (nonatomic,retain) NSString *currentUrl;
 @property (nonatomic) int addCount;
+@property (nonatomic,retain) MCSwipeTableViewCell *selectedCell;
+@property (nonatomic,retain) FeedViewController *feed;
 
 -(IBAction)showActionSheet:(id)sender;
 

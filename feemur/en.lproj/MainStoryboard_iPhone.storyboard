@@ -228,7 +228,7 @@
         <!--Root View Controller-->
         <scene sceneID="O5v-vg-7jW">
             <objects>
-                <viewController id="xIC-HV-4x4" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rootViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xIC-HV-4x4" customClass="RootViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YST-pf-ARg"/>
                         <viewControllerLayoutGuide type="bottom" id="rhM-nm-2Vj"/>
@@ -426,7 +426,7 @@
     <resources>
         <image name="back.png" width="14" height="17"/>
         <image name="down.png" width="18" height="13"/>
-        <image name="first" width="683" height="520"/>
+        <image name="first" width="320" height="200"/>
         <image name="forward.png" width="14" height="17"/>
         <image name="list.png" width="20" height="18"/>
         <image name="pocket-icon.png" width="20" height="20"/>

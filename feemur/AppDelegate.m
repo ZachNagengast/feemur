@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ICETutorialController.h"
 
 @implementation AppDelegate
 
@@ -30,6 +31,82 @@
     
     NSLog(@"Device: %@", deviceType);
     
+    //Show welcome only once
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (! [defaults boolForKey:@"notFirstRun"]) {
+        // display alert...
+        [defaults setBool:YES forKey:@"notFirstRun"];
+        [defaults synchronize];
+   
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    // Init the pages texts, and pictures.
+    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithSubTitle:@"A network for Pocket users"
+                                                            description:@"View and share\n interesting articles, videos or web pages "
+                                                            pictureName:@"Slide1.png"];
+    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithSubTitle:@""
+                                                            description:@"See interesting articles\n Pocket users have saved\n for later"
+                                                            pictureName:@"Slide_two.jpg"];
+    ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithSubTitle:@""
+                                                            description:@"One screen. All the most\n relevant new media. "
+                                                            pictureName:@"monumentWbdropin4.png"];
+    ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithSubTitle:@""
+                                                            description:@"A swipe away from\n your Pocket."
+                                                            pictureName:@"monumentWCdropin4.png"];
+    ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithSubTitle:@""
+                                                            description:@"You're ready to go!"
+                                                            pictureName:@"monumentWdropin5.png"];
+    
+    // Set the common style for SubTitles and Description (can be overrided on each page)
+    ICETutorialLabelStyle *subStyle = [[ICETutorialLabelStyle alloc] init];
+    [subStyle setFont:TUTORIAL_SUB_TITLE_FONT];
+    [subStyle setTextColor:TUTORIAL_LABEL_TEXT_COLOR];
+    [subStyle setLinesNumber:TUTORIAL_SUB_TITLE_LINES_NUMBER];
+    [subStyle setOffset:TUTORIAL_SUB_TITLE_OFFSET];
+    
+    ICETutorialLabelStyle *descStyle = [[ICETutorialLabelStyle alloc] init];
+    [descStyle setFont:TUTORIAL_DESC_FONT];
+    [descStyle setTextColor:TUTORIAL_LABEL_TEXT_COLOR];
+    [descStyle setLinesNumber:TUTORIAL_DESC_LINES_NUMBER];
+    [descStyle setOffset:TUTORIAL_DESC_OFFSET];
+    
+    // Load into an array.
+    NSArray *tutorialLayers = @[layer1,layer2,layer3,layer4,layer5];
+    
+    // Override point for customization after application launch.
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        self.viewController = [[ICETutorialController alloc] initWithNibName:@"ICETutorialController_iPhone"
+                                                                      bundle:nil
+                                                                    andPages:tutorialLayers];
+    } 
+    
+    // Set the common styles, and start scrolling (auto scroll, and looping enabled by default)
+    [self.viewController setCommonPageSubTitleStyle:subStyle];
+    [self.viewController setCommonPageDescriptionStyle:descStyle];
+    
+    // Set button 1 (start button) action.
+    [self.viewController setButton1Block:^(UIButton *button){
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"rootViewController"];
+        [self.window makeKeyAndVisible];
+    }];
+    
+    // Set button 2 action, stop the scrolling.
+    __unsafe_unretained typeof(self) weakSelf = self;
+    [self.viewController setButton2Block:^(UIButton *button){
+        NSLog(@"Button 2 pressed.");
+        NSLog(@"Auto-scrolling stopped.");
+        
+        [weakSelf.viewController stopScrolling];
+    }];
+    
+    // Run it.
+    [self.viewController startScrolling];
+    
+    
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+}
     return YES;
 }
 

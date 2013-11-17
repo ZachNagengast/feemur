@@ -363,8 +363,8 @@ secondStateIconName:(NSString *)secondIconName
         color = _secondColor;
 //    else if (percentage < -kMCStop1 && percentage > -kMCStop2)
 //        color = _thirdColor;
-//    else if (percentage <= -kMCStop2)
-//        color = _fourthColor;
+    else if (percentage <= -kMCStop2)
+        color = _fourthColor;
 //    else
 //        color = self.defaultColor ? self.defaultColor : [UIColor clearColor];
     
