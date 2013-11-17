@@ -16,6 +16,7 @@
 #define FEEMUR_LIST_KEY @"feemurLinks"
 #define POCKET_LIST_KEY @"pocketLinks"
 #define SAVED_LIST_KEY @"savedLinks"
+#define FEED_PREFS_KEY @"feedKey"
 
 @implementation FeemurHandler
 @synthesize latestResponse, linklimit, loggedIn;
@@ -184,10 +185,29 @@
     if (!linklimit) {
         linklimit = 30;
     }
+    //sort by time range of user
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    float timediff=[[NSDate date] timeIntervalSince1970];
+    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"All Time"]) {
+        timediff = [[NSDate date] timeIntervalSince1970];
+    }
+    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"This Month"]) {
+        timediff = 2629740;
+    }
+    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"This Week"]) {
+        timediff = 604800;
+    }
+    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"Today"]) {
+        timediff = 86400;
+    }
+    NSTimeInterval ti = [[NSDate date] timeIntervalSince1970];
+    NSString *diff = [NSString stringWithFormat:@"%f", roundf(ti - timediff)];
+    //submit query
     NSString *limitstring = [NSString stringWithFormat:@"%d",linklimit];
     [[API sharedInstance] commandWithParams:[NSMutableDictionary dictionaryWithObjectsAndKeys:
                                              @"retrievelinks",@"command",
                                              limitstring, @"limit",
+                                             diff, @"since",
                                              nil]
                                onCompletion:^(NSDictionary *json) {
                                    //completion

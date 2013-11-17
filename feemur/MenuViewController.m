@@ -55,13 +55,11 @@
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 1:
-            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"profileController"]];
-            [self.sideMenuViewController hideMenuViewController];
-            break;
-        case 2:
             NSLog(@"logging out");
             [[FeemurHandler sharedInstance] logout];
             [self.sideMenuViewController hideMenuViewController];
+            break;
+        case 2:
             break;
         case 3:
             
@@ -70,6 +68,9 @@
             break;
         default:
             break;
+            
+//            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"profileController"]];
+//            [self.sideMenuViewController hideMenuViewController];
     }
 }
 
@@ -107,9 +108,9 @@
     }
     PocketAPI *pkt_api = [PocketAPI sharedAPI];
     NSString *username = pkt_api.username;
-    NSArray *titles = @[@"Home", @"Accounts", @"Log Out", @"", @""];
-    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"", @""];
-//    NSArray *titles = @[@"Home", @"Profile", @"Settings", @"Calendar", @"Log Out",];
+    NSArray *titles = @[@"Home", @"Log Out", @"Bonus", @"", @""];
+    NSArray *images = @[@"IconHome", @"IconSettings", @"IconEmpty", @"", @""];
+//    NSArray *titles = @[@"Home", @"Account", @"Settings", @"Calendar", @"Log Out",];
 //    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"IconCalendar", @"IconEmpty"];
     cell.textLabel.text = titles[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];

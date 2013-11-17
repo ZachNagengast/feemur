@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A511C4581832C0E2002E9072 /* EmptyList.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4571832C0E2002E9072 /* EmptyList.png */; };
 		A511C45C1832C35F002E9072 /* down.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C45B1832C35F002E9072 /* down.png */; };
+		A511C46A1838A207002E9072 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4691838A207002E9072 /* selected.png */; };
 		A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1817C979F4008C6C39 /* FeedViewController.m */; };
 		A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1B17C97A12008C6C39 /* HomeViewController.m */; };
 		A535F88E182748850069D7ED /* EmptyPockets1.png in Resources */ = {isa = PBXBuildFile; fileRef = A535F88D182748850069D7ED /* EmptyPockets1.png */; };
@@ -131,6 +132,7 @@
 /* Begin PBXFileReference section */
 		A511C4571832C0E2002E9072 /* EmptyList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmptyList.png; sourceTree = "<group>"; };
 		A511C45B1832C35F002E9072 /* down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down.png; sourceTree = "<group>"; };
+		A511C4691838A207002E9072 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		A51F3A1717C979F4008C6C39 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		A51F3A1817C979F4008C6C39 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		A51F3A1A17C97A12008C6C39 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				A5A99E251814E1E200C23847 /* Default~iphone.png */,
 				A511C4571832C0E2002E9072 /* EmptyList.png */,
 				A535F88D182748850069D7ED /* EmptyPockets1.png */,
+				A511C4691838A207002E9072 /* selected.png */,
 				A5AF0600182DD70C002AC141 /* GAD */,
 				A59DC74C181CAFC600DF9B39 /* RESideMenu */,
 				A59DC72C181C91AD00DF9B39 /* REMenu */,
@@ -714,6 +717,7 @@
 				A535F88E182748850069D7ED /* EmptyPockets1.png in Resources */,
 				A5BA3C4617E8E15D005AB2F0 /* list@2x.png in Resources */,
 				A5BA3C4017E8E15D005AB2F0 /* check@2x.png in Resources */,
+				A511C46A1838A207002E9072 /* selected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import "DataHandler.h"
 #import "KeychainItemWrapper.h"
 #import "PocketHandler.h"
+#import "MCSwipeTableViewCell.h"
 
 @interface FeemurHandler : NSObject{
     BOOL loggedIn;

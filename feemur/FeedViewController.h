@@ -11,6 +11,8 @@
 #import "PocketHandler.h"
 #import "FeemurHandler.h"
 #import "RESideMenu.h"
+#import "MCSwipeTableViewCell.h"
+#import "REMenu.h"
 
 @interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>{
     DataHandler *data;
@@ -28,6 +30,12 @@
     CGFloat rowHeight;
     IBOutlet UIButton *titleLabel;
     int addCount;
+    MCSwipeTableViewCell *selectedCell;
+    REMenuItem *allItem;
+    REMenuItem *monthItem;
+    REMenuItem *weekItem;
+    REMenuItem *todayItem;
+    NSUserDefaults *defaults;
 }
 
 @property(nonatomic,retain) NSTimer *timeoutTimer;

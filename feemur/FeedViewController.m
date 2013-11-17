@@ -18,6 +18,7 @@
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
 #define SAVED_LIST_KEY @"savedLinks"
+#define FEED_PREFS_KEY @"feedKey"
 
 @interface FeedViewController () <MCSwipeTableViewCellDelegate>
 
@@ -26,7 +27,7 @@
 @end
 
 @implementation FeedViewController
-@synthesize latestLinks, timeoutTimer;
+@synthesize latestLinks, timeoutTimer, titleLabel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,12 +63,12 @@
     feemur = [FeemurHandler sharedInstance];
     data = [DataHandler sharedInstance];
     feemur.loggedIn = FALSE; //always login on first load
+    defaults = [NSUserDefaults standardUserDefaults];
     if (!feemur.hasLoginData){
         [self showLogin:nil];
     }else{
         feemur.linklimit = 30;
         // initialize list with old links
-        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
         if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
             latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
             [self refreshFeed:nil];
@@ -76,39 +77,68 @@
     
     timeout = 0;
     
-    
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"All Time"
+    allItem = [[REMenuItem alloc] initWithTitle:@"All Time"
                                                     subtitle:@""
                                                        image:nil
-                                            highlightedImage:nil
+                                            highlightedImage:[UIImage imageNamed:@"selected"]
                                                       action:^(REMenuItem *item) {
                                                           NSLog(@"Item: %@", item);
+                                                          [self updateMenu:item];
                                                       }];
     
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"This Month"
+    monthItem = [[REMenuItem alloc] initWithTitle:@"This Month"
                                                           image:nil
-                                               highlightedImage:nil
+                                               highlightedImage:[UIImage imageNamed:@"selected"]
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
+                                                             [self updateMenu:item];
                                                          }];
     
-    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"This Week"
+    weekItem = [[REMenuItem alloc] initWithTitle:@"This Week"
                                                            image:nil
-                                                highlightedImage:nil
+                                                highlightedImage:[UIImage imageNamed:@"selected"]
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
+                                                              [self updateMenu:item];
                                                           }];
     
-    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Today"
+    todayItem = [[REMenuItem alloc] initWithTitle:@"Today"
                                                           image:nil
-                                               highlightedImage:nil
+                                               highlightedImage:[UIImage imageNamed:@"selected"]
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
+                                                             [self updateMenu:item];
                                                          }];
     
-    self.menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, activityItem, profileItem]];
+    self.menu = [[REMenu alloc] initWithItems:@[allItem, monthItem, weekItem, todayItem]];
     self.menu.liveBlur = YES;
     self.menu.liveBlurBackgroundStyle = REMenuLiveBackgroundStyleDark;
+    if (![defaults objectForKey:FEED_PREFS_KEY]) {
+        [self updateMenu:allItem];
+    }else{
+        NSLog(@"%@", [defaults valueForKey:FEED_PREFS_KEY]);
+        NSArray *itemArray = @[allItem, monthItem, weekItem, todayItem];
+        REMenuItem *item;
+        for (int i=0; i<itemArray.count; i++) {
+            item= itemArray[i];
+            NSLog(@"%@",item.title);
+            if ([item.title isEqualToString:[defaults valueForKey:FEED_PREFS_KEY]]) {
+                [self updateMenu:item];
+            }
+        }
+    }
+    
+}
+
+-(void)updateMenu:(REMenuItem*)item{
+    allItem.image = nil;
+    monthItem.image = nil;
+    weekItem.image = nil;
+    todayItem.image = nil;
+    item.image =[UIImage imageNamed:@"selected"];
+    [defaults setObject:item.title forKey:FEED_PREFS_KEY];
+    [defaults synchronize];
+    [titleLabel setTitle:[NSString stringWithFormat:@"Feed : %@",[defaults valueForKey:FEED_PREFS_KEY]] forState:UIControlStateNormal];
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -458,39 +488,10 @@
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
 #warning check if user is logged in before trying to saved
     if (state == MCSwipeTableViewCellState1) {
-        if (cell.isSaved) {
-            [self setCellUnsaved:cell];
-            cell.isSaved = false;
-            [pocket deleteLink:cell.itemId forCell:cell];
-            NSLog(@"Unsaved cell: %@", [self.tableView indexPathForCell:cell]);
-//            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
-            NSString *countString = cell.countTotal;
-            if ([cell.countTotal intValue] >= 10000 ) {
-                countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
-            }
-            [cell.countLabel setText:countString];
-            //set it to unsaved in the list & database
-//            [data removeFromSaved:cell.itemId];
-        }else{
-            [self setCellSaved:cell];
-            cell.isSaved = true;
-            [pocket saveLink:cell.urlString forCell:cell];
-            //update count only if it hasnt been saved before
-            if (![data wasSaved:cell.itemId]) {
-                cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
-            }
-            NSString *countString = cell.countTotal;
-#warning eventually take care of larger counts
-            if ([cell.countTotal intValue] >= 10000 ) {
-                countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
-            }
-            [cell.countLabel setText:countString];
-            NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
-//            [data addToSaved:cell.itemId];
-//            [feemur submitLinks];
-        }
+        [self saveToggle:cell];
     }
     if (state == MCSwipeTableViewCellState4) {
+        selectedCell = cell;
         UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:nil
                                       delegate:self
@@ -498,6 +499,70 @@
                                       destructiveButtonTitle:@"Pocket"
                                       otherButtonTitles: @"Copy Link", @"Share", nil];
         [actionSheet showInView:self.view];
+    }
+}
+
+-(void)saveToggle:(MCSwipeTableViewCell*)cell{
+    if (cell.isSaved) {
+        [self setCellUnsaved:cell];
+        cell.isSaved = false;
+        [pocket deleteLink:cell.itemId forCell:cell];
+        NSLog(@"Unsaved cell: %@", [self.tableView indexPathForCell:cell]);
+        //            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
+        NSString *countString = cell.countTotal;
+        if ([cell.countTotal intValue] >= 10000 ) {
+            countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+        }
+        [cell.countLabel setText:countString];
+        //set it to unsaved in the list & database
+        //            [data removeFromSaved:cell.itemId];
+    }else{
+        [self setCellSaved:cell];
+        cell.isSaved = true;
+        [pocket saveLink:cell.urlString forCell:cell];
+        //update count only if it hasnt been saved before
+        if (![data wasSaved:cell.itemId]) {
+            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
+        }
+        NSString *countString = cell.countTotal;
+#warning eventually take care of larger counts
+        if ([cell.countTotal intValue] >= 10000 ) {
+            countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+        }
+        [cell.countLabel setText:countString];
+        NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
+        //            [data addToSaved:cell.itemId];
+        //            [feemur submitLinks];
+    }
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    //Get the name of the current pressed button
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if  ([buttonTitle isEqualToString:@"Pocket"]) {
+        [self saveToggle:selectedCell];
+    }
+    if ([buttonTitle isEqualToString:@"Copy Link"]) {
+        UIPasteboard *pb = [UIPasteboard generalPasteboard];
+        [pb setString:selectedCell.urlString];
+        NSLog(@"Pasteboard: %@",pb.string);
+    }
+    if ([buttonTitle isEqualToString:@"Share"]) {
+        NSString *shareText = @"Via Feemur App";
+        NSURL *shareURL = [NSURL URLWithString:selectedCell.urlString];
+        
+        UIActivity *activity = [[UIActivity alloc] init];
+        
+        NSArray *activityItems = @[shareURL, shareText];
+        NSArray *applicationActivities = @[activity];
+        NSArray *excludeActivities = @[];
+        
+        UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:applicationActivities];
+        activityController.excludedActivityTypes = excludeActivities;
+        
+        [self presentViewController:activityController animated:YES completion:^{
+            NSLog(@"Activity complete");
+        }];
     }
 }
 
