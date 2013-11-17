@@ -216,14 +216,16 @@ secondStateIconName:(NSString *)secondIconName
     if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged) {
         _isDragging = YES;
         
+        CGPoint center = {self.contentView.center.x + translation.x, self.contentView.center.y};
+        [self.contentView setCenter:center];
         //Limit the cell
-        if (self.contentView.center.x >= self.contentView.frame.size.width - self.contentView.frame.size.width*kMCStop1 || self.contentView.center.x < self.contentView.frame.size.width/2 *kMCStop2) {
-            CGPoint center = {self.contentView.center.x , self.contentView.center.y};
-            [self.contentView setCenter:center];
-        }else{
-            CGPoint center = {self.contentView.center.x + translation.x, self.contentView.center.y};
-            [self.contentView setCenter:center];
-        }
+//        if (self.contentView.center.x >= self.contentView.frame.size.width - self.contentView.frame.size.width*kMCStop1 || self.contentView.center.x < self.contentView.frame.size.width/2 *kMCStop2) {
+//            CGPoint center = {self.contentView.center.x , self.contentView.center.y};
+//            [self.contentView setCenter:center];
+//        }else{
+//            CGPoint center = {self.contentView.center.x + translation.x, self.contentView.center.y};
+//            [self.contentView setCenter:center];
+//        }
         
         [self animateWithOffset:CGRectGetMinX(self.contentView.frame)];
         [gesture setTranslation:CGPointZero inView:self];

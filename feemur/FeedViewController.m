@@ -243,7 +243,7 @@
 //    }
     
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
+
     if (!cell)
     {
         cell = [[MCSwipeTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -260,7 +260,7 @@
     [cell.contentView setBackgroundColor:[UIColor whiteColor]];
     
     // Setting the type of the cell
-    [cell setMode:MCSwipeTableViewCellModeNone];
+    [cell setMode:MCSwipeTableViewCellModeSwitch];
     cell.shouldAnimatesIcons = NO;
     
     // Configure the cell...
@@ -491,8 +491,8 @@
         }
     }
     if (state == MCSwipeTableViewCellState4) {
-        self.currentUrl = cell.urlString;
-        [self performSegueWithIdentifier:@"detail" sender:self];
+//        self.currentUrl = cell.urlString;
+//        [self performSegueWithIdentifier:@"detail" sender:self];
     }
 }
 

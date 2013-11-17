@@ -156,7 +156,7 @@
     pocket = [PocketHandler sharedInstance];
     [pocket logout];
     data = [DataHandler sharedInstance];
-    [data resetDefaults];
+//    [data resetDefaults];
 }
 
 -(BOOL)hasLoginData{
