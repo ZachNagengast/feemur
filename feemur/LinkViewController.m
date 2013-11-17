@@ -34,9 +34,12 @@
     interstitial_ = [[GADInterstitial alloc] init];
     [interstitial_ setDelegate:self];
     interstitial_.adUnitID = @"a1527d9e9f1c696";
-    GADRequest *request = [GADRequest request];
-    [interstitial_ loadRequest:request];
-    request.testDevices = [NSArray arrayWithObjects:@"35fc1a6db48b646709d7dcb0184b015b", nil];
+    if (self.addCount >=3) {//determines how often to load an ad
+        self.addCount = 0;
+        GADRequest *request = [GADRequest request];
+        [interstitial_ loadRequest:request];
+        request.testDevices = [NSArray arrayWithObjects:@"35fc1a6db48b646709d7dcb0184b015b", nil];
+    }
     
     NSString *fullURL = self.currentUrl;
     NSURL *url = [NSURL URLWithString:fullURL];

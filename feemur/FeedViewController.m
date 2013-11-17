@@ -570,6 +570,12 @@
     if ([[segue identifier] isEqualToString:@"detail"]) {
         LinkViewController *detailViewController = [segue destinationViewController];
         detailViewController.currentUrl = self.currentUrl;
+        if (addCount<=3) {
+            addCount= addCount +1;
+            detailViewController.addCount = addCount;
+        }else{
+            addCount = 0;
+        }
     }
 }
 

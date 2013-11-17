@@ -21,6 +21,7 @@
 @property (nonatomic,retain) IBOutlet UIProgressView *progress;
 @property (nonatomic,retain) IBOutlet UIWebView *webView;
 @property (nonatomic,retain) NSString *currentUrl;
+@property (nonatomic) int addCount;
 
 -(IBAction)showActionSheet:(id)sender;
 

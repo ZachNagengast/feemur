@@ -27,6 +27,7 @@
     bool isScrolling;
     CGFloat rowHeight;
     IBOutlet UIButton *titleLabel;
+    int addCount;
 }
 
 @property(nonatomic,retain) NSTimer *timeoutTimer;
