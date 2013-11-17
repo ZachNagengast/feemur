@@ -394,11 +394,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "feemur/FeedViewController.m"
-            timestampString = "406334754.282808"
+            timestampString = "406347754.682368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
+            startingLineNumber = "616"
+            endingLineNumber = "616"
             landmarkName = "@implementation FeedViewController"
             landmarkType = "3">
          </BreakpointContent>

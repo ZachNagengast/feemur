@@ -80,6 +80,16 @@
     }
 }
 
+-(IBAction)showActionSheet:(id)sender{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"Pocket"
+                                  otherButtonTitles: @"Copy Link", @"Share", nil];
+    [actionSheet showInView:self.view];
+}
+
 
 
 - (void)didReceiveMemoryWarning

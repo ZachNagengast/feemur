@@ -12,7 +12,7 @@
 #import "FeemurHandler.h"
 #import "RESideMenu.h"
 
-@interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface FeedViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate>{
     DataHandler *data;
     dispatch_queue_t queue;
     FeemurHandler *feemur;

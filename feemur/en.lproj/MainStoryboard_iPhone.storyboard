@@ -201,7 +201,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zA-Cv-VX8"/>
                                     <barButtonItem title="Ad Free" id="oXd-I6-QKo"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RYq-dW-QD5"/>
-                                    <barButtonItem systemItem="action" id="fin-Ro-cmZ"/>
+                                    <barButtonItem systemItem="action" id="fin-Ro-cmZ">
+                                        <connections>
+                                            <action selector="showActionSheet:" destination="Kbq-Jk-QR5" id="U2p-3r-LaT"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="iFe-CO-3eL">

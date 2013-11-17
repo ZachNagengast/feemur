@@ -10,7 +10,7 @@
 #import "FeedViewController.h"
 #import "GADInterstitial.h"
 
-@interface LinkViewController : UIViewController <GADInterstitialDelegate, UIWebViewDelegate, NSURLConnectionDelegate>{
+@interface LinkViewController : UIViewController <GADInterstitialDelegate, UIWebViewDelegate, NSURLConnectionDelegate, UIActionSheetDelegate>{
     // Declare one as an instance variable
     GADInterstitial *interstitial_;
     IBOutlet UIProgressView *progress;
@@ -21,5 +21,8 @@
 @property (nonatomic,retain) IBOutlet UIProgressView *progress;
 @property (nonatomic,retain) IBOutlet UIWebView *webView;
 @property (nonatomic,retain) NSString *currentUrl;
+
+-(IBAction)showActionSheet:(id)sender;
+
 
 @end

@@ -491,8 +491,13 @@
         }
     }
     if (state == MCSwipeTableViewCellState4) {
-//        self.currentUrl = cell.urlString;
-//        [self performSegueWithIdentifier:@"detail" sender:self];
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:nil
+                                      delegate:self
+                                      cancelButtonTitle:@"Cancel"
+                                      destructiveButtonTitle:@"Pocket"
+                                      otherButtonTitles: @"Copy Link", @"Share", nil];
+        [actionSheet showInView:self.view];
     }
 }
 
