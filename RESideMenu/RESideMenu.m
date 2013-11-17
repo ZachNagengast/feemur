@@ -63,7 +63,7 @@
     self.wantsFullScreenLayout = YES;
 #pragma clang diagnostic pop
     _animationDuration = 0.35f;
-    _panGestureEnabled = YES;
+    _panGestureEnabled = NO;
   
     _scaleContentView      = YES;
     _contentViewScaleValue = 0.7f;
