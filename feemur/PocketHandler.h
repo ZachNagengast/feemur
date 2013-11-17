@@ -21,12 +21,14 @@
     NSMutableArray *titleList;
     NSMutableArray *dateList;
     DataHandler *data;
+    int totalPocketLinks;
 }
 
 @property(nonatomic,retain) NSDictionary *latestResponse;
 @property(nonatomic,retain) NSMutableArray *urlList;
 @property(nonatomic,retain) NSMutableArray *titleList;
 @property(nonatomic,retain) NSMutableArray *dateList;
+@property(nonatomic) int totalPocketLinks;
 
 -(void)getLinks;
 -(void)saveLink:(NSString*)urlString forCell:(MCSwipeTableViewCell *)cell;

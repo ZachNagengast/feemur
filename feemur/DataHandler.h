@@ -15,6 +15,7 @@
 -(void)addToSaved:(NSString *)newId;
 -(void)removeFromSaved:(NSString *)newId;
 -(BOOL)wasSaved:(NSString *)newId;
+-(void)resetDefaults;
 
 +(DataHandler*)sharedInstance;
 

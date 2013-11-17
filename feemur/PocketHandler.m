@@ -93,6 +93,7 @@
                                              [data addToSaved:pocketId];
                                          }
                                          NSLog(@"Pocket response retrieved: %d", keys.count);
+                                         totalPocketLinks = keys.count;
                                          //remove links that were previously removed outside of app
                                          keys = [[defaults objectForKey:SAVED_LIST_KEY] allKeys];
                                          for (int i=0; i < keys.count; i++) {

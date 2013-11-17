@@ -111,6 +111,12 @@
     self.menu.liveBlurBackgroundStyle = REMenuLiveBackgroundStyleDark;
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    //update ui
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
+    self.navigationItem.rightBarButtonItem = barButton;
+}
+
 -(void)showTitleMenu:(id)sender{
     if (self.menu.isOpen) {
         [self.menu close];
@@ -481,7 +487,7 @@
             [cell.countLabel setText:countString];
             NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
             [data addToSaved:cell.itemId];
-            [feemur submitLinks];
+//            [feemur submitLinks];
         }
     }
     if (state == MCSwipeTableViewCellState4) {

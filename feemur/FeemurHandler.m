@@ -82,7 +82,7 @@
         //dont send the images (takes too much bandwidth)
         [object removeObjectForKey:@"images"];
 //        NSString *pocketId = [object valueForKey:@"resolved_id"];
-        if ([[savedDict valueForKey:keyAtIndex]  isEqualToString:@"1"] && ([[object objectForKey:@"sort_id"]intValue]<=30)) {
+        if ([[savedDict valueForKey:keyAtIndex] isEqualToString:@"1"] && ([[object objectForKey:@"sort_id"]intValue]<=30)) {
             NSDictionary *addDict = [NSDictionary dictionaryWithObject:object forKey:keyAtIndex];
             [newDict addEntriesFromDictionary:addDict];
         }
@@ -155,6 +155,8 @@
     [keychainItem resetKeychainItem];
     pocket = [PocketHandler sharedInstance];
     [pocket logout];
+    data = [DataHandler sharedInstance];
+    [data resetDefaults];
 }
 
 -(BOOL)hasLoginData{

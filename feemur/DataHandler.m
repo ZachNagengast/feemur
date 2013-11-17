@@ -25,6 +25,12 @@
     return sharedInstance;
 }
 
+-(void)resetDefaults{
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    [defaults removeObjectForKey:SAVED_LIST_KEY];
+    [defaults removeObjectForKey:FEEMUR_LIST_KEY];
+    [defaults removeObjectForKey:POCKET_LIST_KEY];
+}
 
 
 -(void)removeFromSaved:(NSString *)newId{
@@ -32,6 +38,7 @@
     NSMutableDictionary *savedDict = [[defaults objectForKey:SAVED_LIST_KEY] mutableCopy];
     if ([savedDict objectForKey:newId] != nil) {
         [savedDict setValue:@"0" forKey:newId];
+        NSLog(@"Removed from saved");
     }
     NSDictionary *newDict = [savedDict copy];
     [defaults setObject:newDict forKey:SAVED_LIST_KEY];
@@ -39,6 +46,7 @@
 }
 
 -(void)addToSaved:(NSString *)newId{
+    NSLog(@"Added to saved");
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *savedDict = [NSMutableDictionary dictionary];
     if ([defaults objectForKey:SAVED_LIST_KEY]) {
