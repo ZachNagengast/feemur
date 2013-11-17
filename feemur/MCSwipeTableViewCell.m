@@ -47,19 +47,19 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
         self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(-16.0, 24.0+8, 78, size.height - 16.0)];
 
         // Configure Labels
-        [self.mainLabel setFont:[UIFont systemFontOfSize:18]];
+        [self.mainLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18]];
         [self.mainLabel setTextAlignment:NSTextAlignmentLeft];
         [self.mainLabel setTextColor:[UIColor darkTextColor]];
         [self.mainLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.mainLabel setNumberOfLines:0];
         [self.mainLabel setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         
-        [self.descriptionLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.descriptionLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
         [self.descriptionLabel setTextAlignment:NSTextAlignmentLeft];
         [self.descriptionLabel setTextColor:[UIColor darkTextColor]];
 //        [self.descriptionLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
-        [self.urlLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.urlLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
         [self.urlLabel setTextAlignment:NSTextAlignmentLeft];
         [self.urlLabel setTextColor:[UIColor darkTextColor]];
 //        [self.urlLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
