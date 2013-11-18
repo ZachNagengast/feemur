@@ -33,10 +33,9 @@
     
     //Show welcome only once
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if (! [defaults boolForKey:@"notFirstRun"]) {
+    if ( ![defaults boolForKey:@"notFirstRun"]) {
         // display alert...
-        [defaults setBool:YES forKey:@"notFirstRun"];
-        [defaults synchronize];
+        
    
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -56,7 +55,7 @@
                                                             pictureName:@"monumentWCdropin4.png"];
     ICETutorialPage *layer5 = [[ICETutorialPage alloc] initWithSubTitle:@""
                                                             description:@"You're ready to go!"
-                                                            pictureName:@"monumentWdropin5.png"];
+                                                            pictureName:@"Slide1.png"];
     
     // Set the common style for SubTitles and Description (can be overrided on each page)
     ICETutorialLabelStyle *subStyle = [[ICETutorialLabelStyle alloc] init];
@@ -87,6 +86,8 @@
     
     // Set button 1 (start button) action.
     [self.viewController setButton1Block:^(UIButton *button){
+        [defaults setBool:YES forKey:@"notFirstRun"];
+        [defaults synchronize];
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"rootViewController"];
         [self.window makeKeyAndVisible];
     }];
@@ -101,7 +102,7 @@
     }];
     
     // Run it.
-    [self.viewController startScrolling];
+//    [self.viewController startScrolling];
     
     
     self.window.rootViewController = self.viewController;

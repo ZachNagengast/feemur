@@ -48,9 +48,20 @@
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
     
-    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"EmptyList.png"]];
-    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
-    [self.tableView setBackgroundView:backgroundView];
+    
+//    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"EmptyList.png"]];
+//    [backgroundView setBackgroundColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+//    [self.tableView setBackgroundView:backgroundView];
+    
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    
+    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@""];
+    
+    [refresh addTarget:self action:@selector(refreshFeed:)
+      forControlEvents:UIControlEventValueChanged];
+     [refresh setTintColor:[UIColor whiteColor]];
+    self.refreshControl = refresh;
+
     
 //    //Login if no login data already
 //    if ([pocket isLoggedIn] == NO) {
@@ -84,6 +95,7 @@
                                                       action:^(REMenuItem *item) {
                                                           NSLog(@"Item: %@", item);
                                                           [self updateMenu:item];
+                                                          [self refreshFeed:nil];
                                                       }];
     
     monthItem = [[REMenuItem alloc] initWithTitle:@"This Month"
@@ -92,6 +104,7 @@
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
                                                              [self updateMenu:item];
+                                                             [self refreshFeed:nil];
                                                          }];
     
     weekItem = [[REMenuItem alloc] initWithTitle:@"This Week"
@@ -100,6 +113,7 @@
                                                           action:^(REMenuItem *item) {
                                                               NSLog(@"Item: %@", item);
                                                               [self updateMenu:item];
+                                                              [self refreshFeed:nil];
                                                           }];
     
     todayItem = [[REMenuItem alloc] initWithTitle:@"Today"
@@ -108,6 +122,7 @@
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
                                                              [self updateMenu:item];
+                                                             [self refreshFeed:nil];
                                                          }];
     
     self.menu = [[REMenu alloc] initWithItems:@[allItem, monthItem, weekItem, todayItem]];
@@ -142,7 +157,8 @@
 //    [self refreshFeed:nil];
 }
 
--(void)viewDidAppear:(BOOL)animated{
+-(void)didDidAppear:(BOOL)animated{
+ 
     //update ui
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
     self.navigationItem.rightBarButtonItem = barButton;
@@ -182,7 +198,7 @@
         [timeoutTimer invalidate];
         timeoutTimer = nil;
         timeout=0;
-        [ProgressHUD dismiss];
+//        [ProgressHUD dismiss];
         [self showLogin:nil];
     }
     if ((latestPocketLinks && needsPocket) || (!pocket.isLoggedIn && needsPocket)){
@@ -197,8 +213,9 @@
         [timeoutTimer invalidate];
         timeoutTimer = nil;
         timeout=0;
-        [ProgressHUD dismiss];
-        [ProgressHUD showSuccess:@"Success"];
+//        [ProgressHUD dismiss];
+//        [ProgressHUD showSuccess:@"Success"];
+        [self stopRefresh];
         [self updateLinks];
         
     }
@@ -214,10 +231,11 @@
         //update ui
         UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
         self.navigationItem.rightBarButtonItem = barButton;
-        [ProgressHUD dismiss];
+//        [ProgressHUD dismiss];
+        [self stopRefresh];
     }
     else {
-//        NSLog(@"Waiting..");
+//        NSLog(@"Waiting.."); 
     }
 }
 
@@ -226,7 +244,10 @@
     //update ui
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
     self.navigationItem.rightBarButtonItem = barButton;
-    [ProgressHUD dismiss];
+
+    [timeoutTimer invalidate];
+    timeoutTimer = nil;
+    timeout=0;
     [self.tableView reloadData];
 }
 
@@ -243,6 +264,9 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    [timeoutTimer invalidate];
+    timeoutTimer = nil;
+    timeout=0;
     // Dispose of any resources that can be recreated.
 }
 
@@ -265,13 +289,12 @@
     static NSString *CellIdentifier = @"Cell";
     NSDictionary *dict = latestLinks;
     //make sure it is never a null list
-//    if (!latestLinks) {
-//        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
-//        if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
-//            latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
-//            [self updateLinks];
-//        }
-//    }
+    if (!latestLinks) {
+        NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+        if ([defaults objectForKey:FEEMUR_LIST_KEY]) {
+            latestLinks = [defaults objectForKey:FEEMUR_LIST_KEY];
+        }
+    }
     
     MCSwipeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
@@ -385,7 +408,8 @@
     UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:activityIndicator];
     self.navigationItem.rightBarButtonItem = barButton;
     [activityIndicator startAnimating];
-    [ProgressHUD show:@"Please Wait..."];
+    
+//    [ProgressHUD show:@"Please Wait..."];
     
     if ([pocket isLoggedIn] == NO) {
         feemur.loggedIn = NO;
@@ -547,6 +571,7 @@
         UIPasteboard *pb = [UIPasteboard generalPasteboard];
         [pb setString:selectedCell.urlString];
         NSLog(@"Pasteboard: %@",pb.string);
+        [ProgressHUD showSuccess:@"Copied Link"];
     }
     if ([buttonTitle isEqualToString:@"Share"]) {
         NSString *shareText = @"Via Feemur App";
@@ -675,29 +700,34 @@
     loadMoreToggle = TRUE;
 }
 
+- (void)stopRefresh
+{
+    [self.refreshControl endRefreshing];
+}
+
 //UI methods
 - (void)setCellSaved:(MCSwipeTableViewCell *)cell{
     [cell setFirstStateIconName:@"pocket-icon_saved.png"
-                     firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                     firstColor:[UIColor whiteColor]
             secondStateIconName:@"pocket-icon.png"
-                    secondColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                    secondColor:[UIColor whiteColor]
                   thirdIconName:@"more-icon.png"
-                     thirdColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                     thirdColor:[UIColor whiteColor]
                  fourthIconName:@"more-icon.png"
-                    fourthColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+                    fourthColor:[UIColor whiteColor]];
     //change label color
     [cell.countLabel setTextColor:[UIColor redColor]];
 }
 
 - (void)setCellUnsaved:(MCSwipeTableViewCell *)cell{
     [cell setFirstStateIconName:@"pocket-icon.png"
-                     firstColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                     firstColor:[UIColor whiteColor]
             secondStateIconName:@"pocket-icon_saved.png"
-                    secondColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                    secondColor:[UIColor whiteColor]
                   thirdIconName:@"more-icon.png"
-                     thirdColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]
+                     thirdColor:[UIColor whiteColor]
                  fourthIconName:@"more-icon.png"
-                    fourthColor:[UIColor colorWithRed:227.0 / 255.0 green:227.0 / 255.0 blue:227.0 / 255.0 alpha:1.0]];
+                    fourthColor:[UIColor whiteColor]];
     
     [cell.countLabel setTextColor:[UIColor darkTextColor]];
 }

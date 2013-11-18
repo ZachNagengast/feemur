@@ -12,6 +12,8 @@
 #import "UIViewController+RESideMenu.h"
 #import "PocketHandler.h"
 #import "FeemurHandler.h"
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 @interface MenuViewController ()
 
@@ -60,9 +62,21 @@
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 2:
+            if ([MFMailComposeViewController canSendMail]) {
+                
+                MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+                mailViewController.mailComposeDelegate = self;
+                [mailViewController setToRecipients:[NSArray arrayWithObject:@"feemurapp@gmail.com"]];
+                [mailViewController setSubject:@"Let us know what you think"];
+                
+                [self presentModalViewController:mailViewController animated:YES];
+                
+            }
+            else {
+                
+            }
             break;
         case 3:
-            
             break;
         case 4:
             break;
@@ -72,6 +86,11 @@
 //            navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"profileController"]];
 //            [self.sideMenuViewController hideMenuViewController];
     }
+}
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self dismissModalViewControllerAnimated:YES];
+
 }
 
 #pragma mark -
@@ -106,10 +125,10 @@
         cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
-    PocketAPI *pkt_api = [PocketAPI sharedAPI];
-    NSString *username = pkt_api.username;
-    NSArray *titles = @[@"Home", @"Log Out", @"Bonus", @"", @""];
-    NSArray *images = @[@"IconHome", @"IconSettings", @"IconEmpty", @"", @""];
+//    PocketAPI *pkt_api = [PocketAPI sharedAPI];
+//    NSString *username = pkt_api.username;
+    NSArray *titles = @[@"Home", @"Log Out", @"Feedback", @"", @""];
+    NSArray *images = @[@"IconHome", @"IconSettings", @"IconProfile", @"", @""];
 //    NSArray *titles = @[@"Home", @"Account", @"Settings", @"Calendar", @"Log Out",];
 //    NSArray *images = @[@"IconHome", @"IconProfile", @"IconSettings", @"IconCalendar", @"IconEmpty"];
     cell.textLabel.text = titles[indexPath.row];

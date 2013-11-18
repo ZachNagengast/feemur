@@ -9,13 +9,14 @@
 #import "LinkViewController.h"
 #import "FeedViewController.h"
 #import "GADInterstitial.h"
+#import "ProgressHUD.h"
 
 @interface LinkViewController ()
 
 @end
 
 @implementation LinkViewController
-@synthesize webView;
+@synthesize webView, back, forward;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,6 +82,16 @@
         NSString* title = [webview stringByEvaluatingJavaScriptFromString: @"document.title"];
         [self.navigationController.navigationBar.topItem setTitle:title];
     }
+    if ([webview canGoBack]) {
+        [back setEnabled:TRUE];
+    }else{
+        [back setEnabled:FALSE];
+    }
+    if ([webview canGoForward]) {
+        [forward setEnabled:TRUE];
+    }else{
+        [forward setEnabled:FALSE];
+    }
 }
 
 -(IBAction)showActionSheet:(id)sender{
@@ -105,6 +116,7 @@
         UIPasteboard *pb = [UIPasteboard generalPasteboard];
         [pb setString:self.selectedCell.urlString];
         NSLog(@"Pasteboard: %@",pb.string);
+        [ProgressHUD showSuccess:@"Copied Link"];
     }
     if ([buttonTitle isEqualToString:@"Share"]) {
         NSString *shareText = @"Via Feemur App";

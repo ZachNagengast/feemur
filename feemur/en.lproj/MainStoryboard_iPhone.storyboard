@@ -75,17 +75,31 @@
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="CBL-7q-u0F">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="lmo-Ue-5yW">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                         </imageView>
-                        <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="djJ-4t-wSA">
-                            <rect key="frame" x="0.0" y="68" width="320" height="2"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="g18-D1-YDr">
+                            <rect key="frame" x="0.0" y="68" width="320" height="56"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
-                        </imageView>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6ft-oE-gM5">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                                </imageView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnl-jI-Cuz">
+                                    <rect key="frame" x="83" y="26" width="154" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Invite Cool People">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gHx-TU-tDM" detailTextLabel="dLD-ZK-ad6" style="IBUITableViewCellStyleSubtitle" id="Q2L-Ik-8m3">
                                 <rect key="frame" x="0.0" y="24" width="320" height="44"/>
@@ -183,23 +197,23 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGF-rc-V0p">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cGF-rc-V0p">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="back.png" id="E8q-zZ-WQ7">
+                                    <barButtonItem tag="1" enabled="NO" image="back.png" id="E8q-zZ-WQ7">
                                         <connections>
                                             <action selector="goBack" destination="h7p-EO-Zbw" id="fIe-xm-V8h"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4Rs-hO-uDw"/>
-                                    <barButtonItem image="forward.png" id="b2x-zh-kzu">
+                                    <barButtonItem tag="1" enabled="NO" image="forward.png" id="b2x-zh-kzu">
                                         <connections>
                                             <action selector="goForward" destination="h7p-EO-Zbw" id="Ooi-9w-g4i"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="2zA-Cv-VX8"/>
-                                    <barButtonItem title="Ad Free" id="oXd-I6-QKo"/>
+                                    <barButtonItem id="oXd-I6-QKo"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="RYq-dW-QD5"/>
                                     <barButtonItem systemItem="action" id="fin-Ro-cmZ">
                                         <connections>
@@ -214,9 +228,14 @@
                             </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jsY-Wg-WQh" firstAttribute="top" secondItem="cGF-rc-V0p" secondAttribute="bottom" id="eFl-7Y-anM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Loading..." id="lXK-1H-U6f"/>
                     <connections>
+                        <outlet property="back" destination="E8q-zZ-WQ7" id="m8E-uL-DAq"/>
+                        <outlet property="forward" destination="b2x-zh-kzu" id="uGZ-nO-bhe"/>
                         <outlet property="progress" destination="iFe-CO-3eL" id="zdf-ip-8ZS"/>
                         <outlet property="webView" destination="h7p-EO-Zbw" id="KMk-qb-Poa"/>
                     </connections>
@@ -309,7 +328,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3mR-5m-hft">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3mR-5m-hft">
                                 <rect key="frame" x="20" y="34" width="280" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" enablesReturnKeyAutomatically="YES"/>
@@ -320,13 +339,12 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0v-yL-35z">
-                                <rect key="frame" x="95" y="176" width="130" height="18"/>
+                                <rect key="frame" x="164" y="150" width="130" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="130" id="g5l-A4-9Mk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Register">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <state key="normal" title="Join">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -334,7 +352,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dln-og-SAa">
-                                <rect key="frame" x="99" y="134" width="123" height="18"/>
+                                <rect key="frame" x="33" y="150" width="123" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="zii-3q-MU5"/>
                                 </constraints>
@@ -347,7 +365,7 @@
                                     <action selector="loginUser:" destination="7gN-d9-Zu2" eventType="touchUpInside" id="Pz6-Ne-Ls5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZW-1j-N7Q">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZW-1j-N7Q">
                                 <rect key="frame" x="141" y="220" width="39" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Close">
@@ -429,7 +447,7 @@
         <image name="first" width="320" height="200"/>
         <image name="forward.png" width="14" height="17"/>
         <image name="list.png" width="20" height="18"/>
-        <image name="pocket-icon.png" width="20" height="20"/>
+        <image name="pocket-icon.png" width="40" height="40"/>
         <image name="second" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

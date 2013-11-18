@@ -15,6 +15,8 @@
     // Declare one as an instance variable
     GADInterstitial *interstitial_;
     IBOutlet UIProgressView *progress;
+    IBOutlet UIBarButtonItem *back;
+    IBOutlet UIBarButtonItem *forward;
     NSMutableData *responseData;
     long _totalFileSize;
     long _receivedDataBytes;
@@ -25,6 +27,8 @@
 @property (nonatomic) int addCount;
 @property (nonatomic,retain) MCSwipeTableViewCell *selectedCell;
 @property (nonatomic,retain) FeedViewController *feed;
+@property (nonatomic,retain) IBOutlet UIBarButtonItem *back;
+@property (nonatomic,retain) IBOutlet UIBarButtonItem *forward;
 
 -(IBAction)showActionSheet:(id)sender;
 

@@ -26,8 +26,8 @@
                bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self){
-        _autoScrollEnabled = YES;
-        _autoScrollLooping = YES;
+        _autoScrollEnabled = NO;
+        _autoScrollLooping = NO;
         _autoScrollDurationOnPage = TUTORIAL_DEFAULT_DURATION_ON_PAGE;
     }
     return self;

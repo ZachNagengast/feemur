@@ -189,9 +189,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSTimeInterval ti = [[NSDate date] timeIntervalSince1970];
     float timediff=[[NSDate date] timeIntervalSince1970];
-//    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"All Time"]) {
-//        timediff = [[NSDate date] timeIntervalSince1970];
-//    }
+    if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"All Time"]) {
+        timediff = [[NSDate date] timeIntervalSince1970];
+    }
     if ([[defaults objectForKey:FEED_PREFS_KEY] isEqualToString:@"This Month"]) {
         timediff = 2629740;
     }

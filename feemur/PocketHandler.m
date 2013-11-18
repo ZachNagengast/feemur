@@ -10,6 +10,7 @@
 #import "PocketAPI.h"
 #import "MCSwipeTableViewCell.h"
 #import "DTAlertView.h"
+#import "ProgressHUD.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
@@ -119,8 +120,9 @@
         }else{
             NSLog(@"Saved link: %@", urlString);
             // the URL was saved successfully
-            DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Saved \"%@\" to Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
-            [message show];
+//            DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Saved \"%@\" to Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+//            [message show];
+            [ProgressHUD showSuccess:@"Saved to Pocket"];
         }
     }];
     return;
@@ -148,8 +150,10 @@
                                      if (error) {
                                          NSLog(@"%@",error);
                                      }else{
-                                         DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Deleted \"%@\" from Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
-                                         [message show];
+//                                         DTAlertView *message = [DTAlertView alertViewWithTitle:@"Feemur" message:[NSString stringWithFormat:@"Deleted \"%@\" from Pocket", cell.mainLabel.text] delegate:nil cancelButtonTitle:@"Close" positiveButtonTitle:nil];
+//                                         [message show];
+                                         
+                                         [ProgressHUD showSuccess:@"Deleted from Pocket"];
                                      }
                                      
                                      NSLog(@"Item deleted %@",response);
