@@ -14,6 +14,7 @@
 #import "ProgressHUD.h"
 #import "DTAlertView.h"
 #import "REMenu.h"
+#import "GAI.h"
 
 #define POCKET_LIST_KEY @"pocketLinks"
 #define FEEMUR_LIST_KEY @"feemurLinks"
@@ -27,7 +28,7 @@
 @end
 
 @implementation FeedViewController
-@synthesize latestLinks, timeoutTimer, titleLabel;
+@synthesize latestLinks, timeoutTimer, titleLabel, selectedCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -44,6 +45,12 @@
     
     NSLog(@"Feed view loaded");
     queue = dispatch_queue_create("com.zaucetech.feemur",nil);
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // Sending the same screen view hit using [GAIDictionaryBuilder createAppView]
+    [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"Feed Screen"
+                                                      forKey:kGAIScreenName] build]];
+
 //    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
@@ -93,7 +100,6 @@
                                                        image:nil
                                             highlightedImage:[UIImage imageNamed:@"selected"]
                                                       action:^(REMenuItem *item) {
-                                                          NSLog(@"Item: %@", item);
                                                           [self updateMenu:item];
                                                           [self refreshFeed:nil];
                                                       }];
@@ -102,7 +108,6 @@
                                                           image:nil
                                                highlightedImage:[UIImage imageNamed:@"selected"]
                                                          action:^(REMenuItem *item) {
-                                                             NSLog(@"Item: %@", item);
                                                              [self updateMenu:item];
                                                              [self refreshFeed:nil];
                                                          }];
@@ -111,7 +116,6 @@
                                                            image:nil
                                                 highlightedImage:[UIImage imageNamed:@"selected"]
                                                           action:^(REMenuItem *item) {
-                                                              NSLog(@"Item: %@", item);
                                                               [self updateMenu:item];
                                                               [self refreshFeed:nil];
                                                           }];
@@ -120,7 +124,6 @@
                                                           image:nil
                                                highlightedImage:[UIImage imageNamed:@"selected"]
                                                          action:^(REMenuItem *item) {
-                                                             NSLog(@"Item: %@", item);
                                                              [self updateMenu:item];
                                                              [self refreshFeed:nil];
                                                          }];
@@ -444,6 +447,15 @@
 //            NSLog(@"dispatch done");
 //        });
 //    });
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    
+    // This event will also be sent with &cd=Home%20Screen.
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"UX"
+                                                          action:@"touch"
+                                                           label:@"Resfreshed"
+                                                           value:nil] build]];
+    
 }
 
 -(void)loadMoreData{

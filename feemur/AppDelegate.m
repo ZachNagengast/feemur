@@ -8,12 +8,26 @@
 
 #import "AppDelegate.h"
 #import "ICETutorialController.h"
+#import "GAI.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-32529139-3"];
+
 
     NSString *deviceType = [UIDevice currentDevice].model;
     
@@ -41,14 +55,14 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Init the pages texts, and pictures.
-    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithSubTitle:@"A network for Pocket users"
-                                                            description:@"View and share\n interesting articles, videos or web pages "
+    ICETutorialPage *layer1 = [[ICETutorialPage alloc] initWithSubTitle:@"What the world is saving for later"
+                                                            description:@"View and share interesting\n articles, videos or web pages "
                                                             pictureName:@"Slide1.png"];
-    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithSubTitle:@""
-                                                            description:@"See interesting articles\n Pocket users have saved\n for later"
+    ICETutorialPage *layer2 = [[ICETutorialPage alloc] initWithSubTitle:@"A network for Pocket users"
+                                                            description:@"See the most popular articles\n saved for later"
                                                             pictureName:@"Slide_two.jpg"];
     ICETutorialPage *layer3 = [[ICETutorialPage alloc] initWithSubTitle:@""
-                                                            description:@"One screen. All the most\n relevant new media. "
+                                                            description:@"The hottest emerging\n content at your fingertips. "
                                                             pictureName:@"monumentWbdropin4.png"];
     ICETutorialPage *layer4 = [[ICETutorialPage alloc] initWithSubTitle:@""
                                                             description:@"A swipe away from\n your Pocket."

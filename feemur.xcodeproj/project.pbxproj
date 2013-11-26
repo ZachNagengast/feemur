@@ -29,6 +29,10 @@
 		A511C4A81838D344002E9072 /* pocket-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4A41838D344002E9072 /* pocket-icon.png */; };
 		A511C4AC1838D3E3002E9072 /* pocket-icon_saved@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4AA1838D3E3002E9072 /* pocket-icon_saved@2x.png */; };
 		A511C4AD1838D3E3002E9072 /* pocket-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4AB1838D3E3002E9072 /* pocket-icon@2x.png */; };
+		A511C4AF18409DA9002E9072 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = A511C4AE18409DA9002E9072 /* background.png */; };
+		A511C4BA1840A061002E9072 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A511C4B91840A061002E9072 /* libGoogleAnalyticsServices.a */; };
+		A511C4BC1840A084002E9072 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A511C4BB1840A084002E9072 /* CoreData.framework */; };
+		A511C4BE1840A0A5002E9072 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A511C4BD1840A0A5002E9072 /* libz.dylib */; };
 		A51F3A1917C979F4008C6C39 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1817C979F4008C6C39 /* FeedViewController.m */; };
 		A51F3A1C17C97A12008C6C39 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A51F3A1B17C97A12008C6C39 /* HomeViewController.m */; };
 		A535F88E182748850069D7ED /* EmptyPockets1.png in Resources */ = {isa = PBXBuildFile; fileRef = A535F88D182748850069D7ED /* EmptyPockets1.png */; };
@@ -169,6 +173,16 @@
 		A511C4A41838D344002E9072 /* pocket-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon.png"; sourceTree = "<group>"; };
 		A511C4AA1838D3E3002E9072 /* pocket-icon_saved@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon_saved@2x.png"; sourceTree = "<group>"; };
 		A511C4AB1838D3E3002E9072 /* pocket-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pocket-icon@2x.png"; sourceTree = "<group>"; };
+		A511C4AE18409DA9002E9072 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		A511C4B91840A061002E9072 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		A511C4BB1840A084002E9072 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A511C4BD1840A0A5002E9072 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		A511C4BF1840A48A002E9072 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		A511C4C01840A48A002E9072 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		A511C4C11840A48A002E9072 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		A511C4C21840A48A002E9072 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		A511C4C31840A48A002E9072 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		A511C4C41840A48A002E9072 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
 		A51F3A1717C979F4008C6C39 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		A51F3A1817C979F4008C6C39 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		A51F3A1A17C97A12008C6C39 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -321,9 +335,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A511C4BE1840A0A5002E9072 /* libz.dylib in Frameworks */,
+				A511C4BC1840A084002E9072 /* CoreData.framework in Frameworks */,
 				A5AF0608182DD7A4002AC141 /* AudioToolbox.framework in Frameworks */,
 				A5AF0606182DD797002AC141 /* AdSupport.framework in Frameworks */,
 				A5AF0604182DD787002AC141 /* SystemConfiguration.framework in Frameworks */,
+				A511C4BA1840A061002E9072 /* libGoogleAnalyticsServices.a in Frameworks */,
 				A5AF0602182DD77B002AC141 /* MessageUI.framework in Frameworks */,
 				A59DC7181818D0EF00DF9B39 /* CoreImage.framework in Frameworks */,
 				A5AF05FF182DD5C8002AC141 /* libGoogleAdMobAds.a in Frameworks */,
@@ -374,6 +391,21 @@
 				A511C4731838C119002E9072 /* FontAwesome.ttf */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		A511C4B81840A032002E9072 /* GAI */ = {
+			isa = PBXGroup;
+			children = (
+				A511C4B91840A061002E9072 /* libGoogleAnalyticsServices.a */,
+				A511C4BF1840A48A002E9072 /* GAI.h */,
+				A511C4C01840A48A002E9072 /* GAIDictionaryBuilder.h */,
+				A511C4C11840A48A002E9072 /* GAIFields.h */,
+				A511C4C21840A48A002E9072 /* GAILogger.h */,
+				A511C4C31840A48A002E9072 /* GAITrackedViewController.h */,
+				A511C4C41840A48A002E9072 /* GAITracker.h */,
+			);
+			name = GAI;
+			path = feemur;
 			sourceTree = "<group>";
 		};
 		A59DC72C181C91AD00DF9B39 /* REMenu */ = {
@@ -457,6 +489,7 @@
 				A511C4571832C0E2002E9072 /* EmptyList.png */,
 				A535F88D182748850069D7ED /* EmptyPockets1.png */,
 				A511C4691838A207002E9072 /* selected.png */,
+				A511C4B81840A032002E9072 /* GAI */,
 				A5AF0600182DD70C002AC141 /* GAD */,
 				A59DC74C181CAFC600DF9B39 /* RESideMenu */,
 				A59DC72C181C91AD00DF9B39 /* REMenu */,
@@ -484,6 +517,8 @@
 		A5B51CD017AA1AFD00334619 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A511C4BD1840A0A5002E9072 /* libz.dylib */,
+				A511C4BB1840A084002E9072 /* CoreData.framework */,
 				A5AF0607182DD7A4002AC141 /* AudioToolbox.framework */,
 				A5AF0605182DD797002AC141 /* AdSupport.framework */,
 				A5AF0603182DD787002AC141 /* SystemConfiguration.framework */,
@@ -622,6 +657,7 @@
 		A5BA3C3617E8E15D005AB2F0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A511C4AE18409DA9002E9072 /* background.png */,
 				A511C49A1838D16E002E9072 /* more-icon.png */,
 				A511C49B1838D16E002E9072 /* more-icon@2x.png */,
 				A511C47F1838C329002E9072 /* monumentWCdropin4.png */,
@@ -741,6 +777,7 @@
 				A5BA3C3F17E8E15D005AB2F0 /* check.png in Resources */,
 				A59DC75D181CB70C00DF9B39 /* Images.xcassets in Resources */,
 				A511C4A61838D344002E9072 /* pocket-icon_saved.png in Resources */,
+				A511C4AF18409DA9002E9072 /* background.png in Resources */,
 				A511C4AD1838D3E3002E9072 /* pocket-icon@2x.png in Resources */,
 				A5BA3C4417E8E15D005AB2F0 /* cross@2x.png in Resources */,
 				A59DC746181CA4E400DF9B39 /* Icon_Explore.png in Resources */,
@@ -993,6 +1030,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
@@ -1001,6 +1040,8 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					/Users/zachnagengast09/Drive/App/feemur_ios/feemur,
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur/feemur/Images,
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur/feemur,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1019,6 +1060,8 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "feemur/feemur-Prefix.pch";
 				INFOPLIST_FILE = "feemur/feemur-Info.plist";
@@ -1027,6 +1070,8 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 					/Users/zachnagengast09/Drive/App/feemur_ios/feemur,
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur/feemur/Images,
+					/Users/zachnagengast09/Drive/App/feemur_ios/feemur/feemur,
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

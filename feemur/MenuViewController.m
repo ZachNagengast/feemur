@@ -14,6 +14,7 @@
 #import "FeemurHandler.h"
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
+#import "GAI.h"
 
 @interface MenuViewController ()
 
@@ -24,6 +25,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     PocketAPI *pkt_api = [PocketAPI sharedAPI];
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 53 * 7) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
@@ -153,6 +155,12 @@
 - (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController
 {
     NSLog(@"didShowMenuViewController");
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // Sending the same screen view hit using [GAIDictionaryBuilder createAppView]
+    [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"Menu Screen"
+                                                      forKey:kGAIScreenName] build]];
 }
 
 - (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController

@@ -12,6 +12,7 @@
 #import "API.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "DTAlertView.h"
+#import "GAI.h"
 
 @interface LoginViewController ()
 
@@ -32,6 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    // Sending the same screen view hit using [GAIDictionaryBuilder createAppView]
+    [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"Login Screen"
+                                                      forKey:kGAIScreenName] build]];
 	// Do any additional setup after loading the view.
 }
 
