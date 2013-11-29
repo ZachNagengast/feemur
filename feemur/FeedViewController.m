@@ -53,6 +53,7 @@
     
 
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:72/255.0 green:71/255.0 blue:67/255.0 alpha:1];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
     
@@ -99,7 +100,7 @@
     allItem = [[REMenuItem alloc] initWithTitle:@"All Time"
                                                     subtitle:@""
                                                        image:nil
-                                            highlightedImage:[UIImage imageNamed:@"selected"]
+                                            highlightedImage:nil
                                                       action:^(REMenuItem *item) {
                                                           [self updateMenu:item];
                                                           [self refreshFeed:nil];
@@ -107,7 +108,7 @@
     
     monthItem = [[REMenuItem alloc] initWithTitle:@"This Month"
                                                           image:nil
-                                               highlightedImage:[UIImage imageNamed:@"selected"]
+                                               highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              [self updateMenu:item];
                                                              [self refreshFeed:nil];
@@ -115,7 +116,7 @@
     
     weekItem = [[REMenuItem alloc] initWithTitle:@"This Week"
                                                            image:nil
-                                                highlightedImage:[UIImage imageNamed:@"selected"]
+                                                highlightedImage:nil
                                                           action:^(REMenuItem *item) {
                                                               [self updateMenu:item];
                                                               [self refreshFeed:nil];
@@ -123,7 +124,7 @@
     
     todayItem = [[REMenuItem alloc] initWithTitle:@"Today"
                                                           image:nil
-                                               highlightedImage:[UIImage imageNamed:@"selected"]
+                                               highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              [self updateMenu:item];
                                                              [self refreshFeed:nil];
@@ -154,7 +155,7 @@
     monthItem.image = nil;
     weekItem.image = nil;
     todayItem.image = nil;
-    item.image =[UIImage imageNamed:@"selected"];
+//    item.image =[UIImage imageNamed:@"selected"];
     [defaults setObject:item.title forKey:FEED_PREFS_KEY];
     [defaults synchronize];
     [titleLabel setTitle:[NSString stringWithFormat:@"%@",[defaults valueForKey:FEED_PREFS_KEY]] forState:UIControlStateNormal];
@@ -353,8 +354,11 @@
     }
      NSString *countString = [[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"count"];
     cell.countTotal = countString;
-    if ([countString intValue] >= 10000 ) {
+    if ([countString intValue] >= 1000 && [countString intValue] <= 10000) {
         countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+    }
+    else if ([countString intValue] >= 10000 ) {
+        countString = [NSString stringWithFormat:@"%4.0fk",[countString floatValue]/1000];
     }
     [cell.countLabel setText:countString];
     [cell.timeLabel setText:[self timeSinceNow:[[[[dict objectForKey:@"result"] objectAtIndex:indexPath.row] valueForKey:@"time_added"] floatValue]]];
@@ -365,7 +369,7 @@
     CGSize expectedLabelSize = [cell.mainLabel.text sizeWithFont:cell.mainLabel.font constrainedToSize:maximumLabelSize lineBreakMode:cell.mainLabel.lineBreakMode];
     CGRect newFrame = cell.mainLabel.frame;
     newFrame.size.height = expectedLabelSize.height;
-    rowHeight = newFrame.size.height+46+60;
+    rowHeight = newFrame.size.height+46+10;
     [cell.descriptionLabel setCenter:CGPointMake(cell.descriptionLabel.frame.origin.x+cell.descriptionLabel.frame.size.width/2, rowHeight-15)];
     
     
@@ -403,7 +407,7 @@
     CGRect newFrame = cell.mainLabel.frame;
     newFrame.size.height = expectedLabelSize.height;
     cell.mainLabel.frame = newFrame;
-    rowHeight = newFrame.size.height+46+60;
+    rowHeight = newFrame.size.height+46+15;
     return rowHeight;
 }
 
@@ -549,8 +553,11 @@
         NSLog(@"Unsaved cell: %@", [self.tableView indexPathForCell:cell]);
         //            cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]-1];
         NSString *countString = cell.countTotal;
-        if ([cell.countTotal intValue] >= 10000 ) {
+        if ([countString intValue] >= 1000 && [countString intValue] <= 10000) {
             countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+        }
+        else if ([countString intValue] >= 10000 ) {
+            countString = [NSString stringWithFormat:@"%4.0fk",[countString floatValue]/1000];
         }
         [cell.countLabel setText:countString];
         //set it to unsaved in the list & database
@@ -564,9 +571,11 @@
             cell.countTotal = [NSString stringWithFormat:@"%d",[cell.countTotal intValue]+1];
         }
         NSString *countString = cell.countTotal;
-#warning eventually take care of larger counts
-        if ([cell.countTotal intValue] >= 10000 ) {
+        if ([countString intValue] >= 1000 && [countString intValue] <= 10000) {
             countString = [NSString stringWithFormat:@"%4.1fk",[countString floatValue]/1000];
+        }
+        else if ([countString intValue] >= 10000 ) {
+            countString = [NSString stringWithFormat:@"%4.0fk",[countString floatValue]/1000];
         }
         [cell.countLabel setText:countString];
         NSLog(@"Saved cell: %@", [self.tableView indexPathForCell:cell]);
@@ -678,7 +687,7 @@
         detailViewController.currentUrl = self.currentUrl;
         detailViewController.selectedCell = self.selectedCell;
         detailViewController.feed = self;
-        if (addCount<=3) {
+        if (addCount<=2) {
             addCount= addCount +1;
             detailViewController.addCount = addCount;
         }else{
@@ -721,29 +730,33 @@
 
 //UI methods
 - (void)setCellSaved:(MCSwipeTableViewCell *)cell{
-    [cell setFirstStateIconName:@"pocket-icon_saved.png"
+    [cell setFirstStateIconName:@"pkt_pink.png"
                      firstColor:[UIColor whiteColor]
-            secondStateIconName:@"pocket-icon.png"
+            secondStateIconName:@"pkt_gray.png"
                     secondColor:[UIColor whiteColor]
                   thirdIconName:@"more-icon.png"
                      thirdColor:[UIColor whiteColor]
                  fourthIconName:@"more-icon.png"
                     fourthColor:[UIColor whiteColor]];
     //change label color
-    [cell.countLabel setTextColor:[UIColor redColor]];
+    [cell.countLabel setTextColor:[UIColor whiteColor]];
+    cell.countLabel.backgroundColor = [UIColor colorWithRed:241/255.0 green:65/255.0 blue:85/255.0 alpha:1];
+    
 }
 
 - (void)setCellUnsaved:(MCSwipeTableViewCell *)cell{
-    [cell setFirstStateIconName:@"pocket-icon.png"
+    [cell setFirstStateIconName:@"pkt_gray.png"
                      firstColor:[UIColor whiteColor]
-            secondStateIconName:@"pocket-icon_saved.png"
+            secondStateIconName:@"pkt_pink.png"
                     secondColor:[UIColor whiteColor]
                   thirdIconName:@"more-icon.png"
                      thirdColor:[UIColor whiteColor]
                  fourthIconName:@"more-icon.png"
                     fourthColor:[UIColor whiteColor]];
     
-    [cell.countLabel setTextColor:[UIColor darkTextColor]];
+    //change label color
+    [cell.countLabel setTextColor:[UIColor whiteColor]];
+    cell.countLabel.backgroundColor = [UIColor colorWithRed:199/255.0 green:198/255.0 blue:194/255.0 alpha:1];
 }
 
 @end

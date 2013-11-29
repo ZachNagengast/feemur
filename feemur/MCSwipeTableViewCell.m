@@ -40,38 +40,38 @@ static NSTimeInterval const kMCDurationHightLimit = 0.1; // Highest duration whe
         // Helpers
         CGSize size = self.contentView.frame.size;
         // Initialize Main Label
-        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 8.0, size.width - 43.0 -43, size.height -16)];
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 36.0, size.width - 43.0, size.height - 16.0)];
-        self.urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 0.0, size.width - 43.0, size.height - 16.0)];
-        self.countLabel = [[UILabel alloc] initWithFrame:CGRectMake(-16.0, 16.0, 78, size.height - 16.0)];
-        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(-16.0, 24.0+8, 78, size.height - 16.0)];
+        self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 8.0, size.width - 43.0 -30, size.height -16)];
+        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 36.0, size.width - 43.0-30.0, size.height - 16.0)];
+        self.urlLabel = [[UILabel alloc] initWithFrame:CGRectMake(43.0, 8.0, size.width - 43.0, size.height - 16.0)];
+        self.countLabel = [[UILabel alloc] initWithFrame:CGRectMake(4.0, 28.0, 36, 35.0)];
+        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(size.width-62.0, 8.0, 78, size.height - 16.0)];
 
         // Configure Labels
-        [self.mainLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:18]];
+        [self.mainLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:18]];
         [self.mainLabel setTextAlignment:NSTextAlignmentLeft];
-        [self.mainLabel setTextColor:[UIColor darkTextColor]];
+        [self.mainLabel setTextColor:[UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1]];
         [self.mainLabel setLineBreakMode:NSLineBreakByWordWrapping];
         [self.mainLabel setNumberOfLines:0];
         [self.mainLabel setAutoresizingMask:UIViewAutoresizingFlexibleHeight];
         
-        [self.descriptionLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
+        [self.descriptionLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18]];
         [self.descriptionLabel setTextAlignment:NSTextAlignmentLeft];
-        [self.descriptionLabel setTextColor:[UIColor darkTextColor]];
+        [self.descriptionLabel setTextColor:[UIColor colorWithRed:156/255.0 green:155/255.0 blue:151/255.0 alpha:1]];
 //        [self.descriptionLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
-        [self.urlLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:12]];
+        [self.urlLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:12]];
         [self.urlLabel setTextAlignment:NSTextAlignmentLeft];
-        [self.urlLabel setTextColor:[UIColor darkTextColor]];
+        [self.urlLabel setTextColor:[UIColor colorWithRed:156/255.0 green:155/255.0 blue:151/255.0 alpha:1]];
 //        [self.urlLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
-        [self.countLabel setFont:[UIFont boldSystemFontOfSize:13]];
+        [self.countLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Medium" size:16]];
         [self.countLabel setTextAlignment:NSTextAlignmentCenter];
-        [self.countLabel setTextColor:[UIColor blueColor]];
+        self.countLabel.layer.cornerRadius = 18;
 //        [self.countLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
         [self.timeLabel setFont:[UIFont systemFontOfSize:12]];
         [self.timeLabel setTextAlignment:NSTextAlignmentCenter];
-        [self.timeLabel setTextColor:[UIColor darkTextColor]];
+        [self.timeLabel setTextColor:[UIColor colorWithRed:156/255.0 green:155/255.0 blue:151/255.0 alpha:1]];
 //        [self.timeLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
         
         // Add Labels to Content View

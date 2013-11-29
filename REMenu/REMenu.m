@@ -63,19 +63,19 @@
         
         self.textOffset = CGSizeMake(0, 0);
         self.subtitleTextOffset = CGSizeMake(0, 0);
-        self.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:21.0];
+        self.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:21.0];
         self.subtitleFont = [UIFont systemFontOfSize:14.0];
         
-//        self.backgroundColor = [UIColor colorWithRed:15/255.0 green:118/255.0 blue:223/255.0 alpha:.7];
+        self.backgroundColor = [UIColor colorWithRed:15/255.0 green:118/255.0 blue:223/255.0 alpha:1];
         self.separatorColor = [UIColor colorWithPatternImage:self.separatorImage];
-        self.textColor = [UIColor colorWithRed:0/255.0 green:128/255.0 blue:225/255.0 alpha:1];
+        self.textColor = [UIColor colorWithRed:200/255.0 green:199/255.0 blue:195/255.0 alpha:1];
 //        self.textShadowColor = [UIColor blackColor];
 //        self.textShadowOffset = CGSizeMake(0, -1.0);
         self.textAlignment = NSTextAlignmentCenter;
         
 //        self.highlightedBackgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"selectedBackground"]];
 //        self.highlightedSeparatorColor = [UIColor colorWithRed:28/255.0 green:28/255.0 blue:27/255.0 alpha:1.0];
-        self.highlightedTextColor = [UIColor colorWithRed:40/255.0 green:140/255.0 blue:255/255.0 alpha:1];
+        self.highlightedTextColor = [UIColor colorWithRed:130/255.0 green:129/255.0 blue:125/255.0 alpha:1];
 //        self.highlightedTextShadowColor = [UIColor blackColor];
 //        self.highlightedTextShadowOffset = CGSizeMake(0, -1.0);
         
@@ -143,9 +143,9 @@
         self.toolbar = ({
             UIToolbar *toolbar = [[UIToolbar alloc] init];
             [toolbar setAlpha:1];
-            toolbar.barStyle = self.liveBlurBackgroundStyle;
+            toolbar.barStyle = UIBarStyleDefault;
             if ([toolbar respondsToSelector:@selector(setBarTintColor:)])
-                [toolbar performSelector:@selector(setBarTintColor:) withObject:self.liveBlurTintColor];
+                [toolbar performSelector:@selector(setBarTintColor:) withObject:[UIColor whiteColor]];
             toolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             toolbar;
         });

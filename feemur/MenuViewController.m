@@ -127,8 +127,8 @@
         cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
         cell.selectedBackgroundView = [[UIView alloc] init];
     }
-//    PocketAPI *pkt_api = [PocketAPI sharedAPI];
-//    NSString *username = pkt_api.username;
+    PocketAPI *pkt_api = [PocketAPI sharedAPI];
+    NSString *username = pkt_api.username;
     NSArray *titles = @[@"Home", @"Log Out", @"Feedback", @"", @""];
     NSArray *images = @[@"IconHome", @"IconSettings", @"IconProfile", @"", @""];
 //    NSArray *titles = @[@"Home", @"Account", @"Settings", @"Calendar", @"Log Out",];

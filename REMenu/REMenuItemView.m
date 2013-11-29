@@ -143,7 +143,12 @@
     //
     self.titleLabel.font = self.menu.font;
     self.titleLabel.text = self.item.title;
-    self.titleLabel.textColor = self.menu.textColor;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.item.title == [defaults objectForKey:@"feedKey"] ) {
+        self.titleLabel.textColor = self.menu.highlightedTextColor;
+    }else{
+        self.titleLabel.textColor = self.menu.textColor;
+    }
     self.titleLabel.shadowColor = self.menu.textShadowColor;
     self.titleLabel.shadowOffset = self.menu.textShadowOffset;
     self.titleLabel.textAlignment = self.menu.textAlignment;
@@ -159,6 +164,7 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    self.titleLabel.textColor = self.menu.highlightedTextColor;
     self.backgroundView.backgroundColor = self.menu.highlightedBackgroundColor;
     self.separatorView.backgroundColor = self.menu.highlightedSeparatorColor;
     self.imageView.image = self.item.higlightedImage ? self.item.higlightedImage : self.item.image;
@@ -175,7 +181,12 @@
     self.backgroundView.backgroundColor = [UIColor clearColor];
     self.separatorView.backgroundColor = self.menu.separatorColor;
     self.imageView.image = self.item.image;
-    self.titleLabel.textColor = self.menu.textColor;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.item.title == [defaults objectForKey:@"feedKey"] ) {
+        self.titleLabel.textColor = self.menu.textColor;
+    }else{
+        self.titleLabel.textColor = self.menu.highlightedTextColor;
+    }
     self.titleLabel.shadowColor = self.menu.textShadowColor;
     self.titleLabel.shadowOffset = self.menu.textShadowOffset;
     self.subtitleLabel.textColor = self.menu.subtitleTextColor;
@@ -188,7 +199,12 @@
     self.backgroundView.backgroundColor = [UIColor clearColor];
     self.separatorView.backgroundColor = self.menu.separatorColor;
     self.imageView.image = self.item.image;
-    self.titleLabel.textColor = self.menu.textColor;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (self.item.title == [defaults objectForKey:@"feedKey"] ) {
+        self.titleLabel.textColor = self.menu.textColor;
+    }else{
+        self.titleLabel.textColor = self.menu.highlightedTextColor;
+    }
     self.titleLabel.shadowColor = self.menu.textShadowColor;
     self.titleLabel.shadowOffset = self.menu.textShadowOffset;
     self.subtitleLabel.textColor = self.menu.subtitleTextColor;

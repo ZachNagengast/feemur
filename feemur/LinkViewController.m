@@ -31,6 +31,15 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *btnBack = [[UIBarButtonItem alloc]
+                                initWithTitle:@""
+                                style:UIBarButtonItemStyleBordered
+                                target:self
+                                action:nil];
+    btnBack.tintColor =[UIColor whiteColor];
+    self.navigationController.navigationBar.topItem.backBarButtonItem=btnBack;
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
     //load ad
     interstitial_ = [[GADInterstitial alloc] init];
     [interstitial_ setDelegate:self];

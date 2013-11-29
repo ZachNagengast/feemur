@@ -82,6 +82,7 @@
 {
     _title = title;
     self.itemView.titleLabel.text = title;
+    self.itemView.titleLabel.tintColor = [UIColor blackColor];
     self.itemView.accessibilityLabel = title;
 }
 
