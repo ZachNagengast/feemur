@@ -20,6 +20,12 @@
     self.menuViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"menuController"];
     self.backgroundImage = [UIImage imageNamed:@"background.png"];
     self.delegate = (MenuViewController *)self.menuViewController;
+    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

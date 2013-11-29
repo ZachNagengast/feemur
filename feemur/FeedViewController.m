@@ -50,9 +50,10 @@
     // Sending the same screen view hit using [GAIDictionaryBuilder createAppView]
     [tracker send:[[[GAIDictionaryBuilder createAppView] set:@"Feed Screen"
                                                       forKey:kGAIScreenName] build]];
+    
 
-//    self.navigationController.navigationBar.tintColor = [UIColor darkGrayColor];
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:72/255.0 green:71/255.0 blue:67/255.0 alpha:1];
+    
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(reload:)];
     
     
@@ -156,15 +157,15 @@
     item.image =[UIImage imageNamed:@"selected"];
     [defaults setObject:item.title forKey:FEED_PREFS_KEY];
     [defaults synchronize];
-    [titleLabel setTitle:[NSString stringWithFormat:@"Feed : %@",[defaults valueForKey:FEED_PREFS_KEY]] forState:UIControlStateNormal];
+    [titleLabel setTitle:[NSString stringWithFormat:@"%@",[defaults valueForKey:FEED_PREFS_KEY]] forState:UIControlStateNormal];
 //    [self refreshFeed:nil];
 }
 
 -(void)didDidAppear:(BOOL)animated{
  
     //update ui
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
-    self.navigationItem.rightBarButtonItem = barButton;
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
+//    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 -(void)showTitleMenu:(id)sender{
@@ -213,13 +214,14 @@
     
     if (latestLinks && linkCount>=1){
         //handle the new links
-        [timeoutTimer invalidate];
-        timeoutTimer = nil;
-        timeout=0;
 //        [ProgressHUD dismiss];
 //        [ProgressHUD showSuccess:@"Success"];
         [self stopRefresh];
         [self updateLinks];
+        
+        [timeoutTimer invalidate];
+        timeoutTimer = nil;
+        timeout=0;
         
     }
     else if (timeout>= 300){
@@ -232,8 +234,8 @@
         timeoutTimer = nil;
         timeout=0;
         //update ui
-        UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
-        self.navigationItem.rightBarButtonItem = barButton;
+//        UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
+//        self.navigationItem.rightBarButtonItem = barButton;
 //        [ProgressHUD dismiss];
         [self stopRefresh];
     }
@@ -245,8 +247,8 @@
 -(void)updateLinks{
     NSLog(@"Links found: %i", [[latestLinks objectForKey:@"result"] count]);
     //update ui
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
-    self.navigationItem.rightBarButtonItem = barButton;
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshFeed:)];
+//    self.navigationItem.rightBarButtonItem = barButton;
 
     [timeoutTimer invalidate];
     timeoutTimer = nil;
@@ -321,7 +323,7 @@
     cell.shouldAnimatesIcons = NO;
     
     // Configure the cell...
-    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+    [cell setAccessoryType:UITableViewCellAccessoryNone];
 #warning sort by date once using multiple platforms!
     
     //show the main title
@@ -363,7 +365,7 @@
     CGSize expectedLabelSize = [cell.mainLabel.text sizeWithFont:cell.mainLabel.font constrainedToSize:maximumLabelSize lineBreakMode:cell.mainLabel.lineBreakMode];
     CGRect newFrame = cell.mainLabel.frame;
     newFrame.size.height = expectedLabelSize.height;
-    rowHeight = newFrame.size.height+46;
+    rowHeight = newFrame.size.height+46+60;
     [cell.descriptionLabel setCenter:CGPointMake(cell.descriptionLabel.frame.origin.x+cell.descriptionLabel.frame.size.width/2, rowHeight-15)];
     
     
@@ -401,16 +403,16 @@
     CGRect newFrame = cell.mainLabel.frame;
     newFrame.size.height = expectedLabelSize.height;
     cell.mainLabel.frame = newFrame;
-    rowHeight = newFrame.size.height+46;
+    rowHeight = newFrame.size.height+46+60;
     return rowHeight;
 }
 
 -(IBAction)refreshFeed:(id)sender{
     //update loading ui
-    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:activityIndicator];
-    self.navigationItem.rightBarButtonItem = barButton;
-    [activityIndicator startAnimating];
+//    activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc]initWithCustomView:activityIndicator];
+//    self.navigationItem.rightBarButtonItem = barButton;
+//    [activityIndicator startAnimating];
     
 //    [ProgressHUD show:@"Please Wait..."];
     

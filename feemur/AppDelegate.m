@@ -28,7 +28,6 @@
     // Initialize tracker.
     id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-32529139-3"];
 
-
     NSString *deviceType = [UIDevice currentDevice].model;
     
     if([deviceType isEqualToString:@"iPhone"])

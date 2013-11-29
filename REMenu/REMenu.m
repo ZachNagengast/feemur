@@ -142,7 +142,7 @@
     if (!REUIKitIsFlatMode()) {
         self.toolbar = ({
             UIToolbar *toolbar = [[UIToolbar alloc] init];
-            [toolbar setAlpha:.99];
+            [toolbar setAlpha:1];
             toolbar.barStyle = self.liveBlurBackgroundStyle;
             if ([toolbar respondsToSelector:@selector(setBarTintColor:)])
                 [toolbar performSelector:@selector(setBarTintColor:) withObject:self.liveBlurTintColor];
